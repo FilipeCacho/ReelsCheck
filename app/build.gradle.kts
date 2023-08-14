@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId = "pt.ulusofona.deisi.cm2223.g21702361"
-        minSdk = 26
+        minSdk = 23
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
@@ -74,6 +74,7 @@ dependencies {
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
 
+    implementation ("androidx.recyclerview:recyclerview:1.3.1")
 
-
+    implementation ("com.squareup.picasso:picasso:2.8")
 }

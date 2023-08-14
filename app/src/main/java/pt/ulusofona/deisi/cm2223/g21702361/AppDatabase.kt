@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Movie::class], version = 1)
+@Database(entities = [Movie::class], version = 2, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun movieDao(): MovieDao
@@ -24,7 +24,10 @@ abstract class AppDatabase : RoomDatabase() {
                     context.applicationContext,
                     AppDatabase::class.java,
                     "movies"
-                ).build()
+                )
+                    .fallbackToDestructiveMigration() // Handling migration by destroying and recreating the DB
+                    .build()
+
                 INSTANCE = instance
                 return instance
             }

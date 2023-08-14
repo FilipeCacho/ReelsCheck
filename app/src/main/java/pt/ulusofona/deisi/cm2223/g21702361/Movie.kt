@@ -6,6 +6,10 @@ import androidx.room.PrimaryKey
 @Entity
 data class Movie(
     @PrimaryKey val imdbID: String,
-    val title: String
-    // ... add other fields as necessary (year, director, etc.).
+    val title: String,
+    val released: String,
+    val plot: String,
+    val poster: String,
+    val imdbrating: String
+
 )
