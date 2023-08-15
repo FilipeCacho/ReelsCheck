@@ -1,6 +1,4 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,136 +6,235 @@
     android:background="#000000"
     tools:context=".MainActivity">
 
-    <!-- Status Bar -->
-    <TextView
-        android:id="@+id/statusBar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:background="@color/slightlyBlack"
-        android:fontFamily="@font/baloo"
-        android:gravity="center"
-        android:letterSpacing="0.2"
-        android:paddingTop="16dp"
-        android:text="Reels"
-        android:textColor="#FFFF00"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- HorizontalScrollView to hold the icons -->
-    <HorizontalScrollView
-        android:id="@+id/horizontalScrollView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/slightlyBlack"
-        android:scrollbarThumbHorizontal="@color/yellow"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/statusBar">
-
-        <!-- LinearLayout to hold the icons -->
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <!-- Status Bar -->
+        <TextView
+            android:id="@+id/statusBar"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="0dp"
+            android:background="@color/slightlyBlack"
+            android:fontFamily="@font/baloo"
+            android:gravity="center"
+            android:letterSpacing="0.2"
+            android:paddingTop="16dp"
+            android:text="Reels"
+            android:textColor="#FFFF00"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- Add your clickable icon views here -->
-            <ImageView
-                android:id="@+id/action"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:clickable="true"
-                android:onClick="onIconClicked"
-                android:padding="16dp"
-                android:src="@drawable/fight" />
+        <!-- HorizontalScrollView to hold the icons -->
+        <HorizontalScrollView
+            android:id="@+id/horizontalScrollView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/slightlyBlack"
+            android:scrollbarThumbHorizontal="@color/yellow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/statusBar">
 
-            <ImageView
-                android:id="@+id/history"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:clickable="true"
-                android:onClick="onIconClicked"
-                android:padding="16dp"
-                android:src="@drawable/history" />
+            <!-- LinearLayout to hold the icons -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/western"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:clickable="true"
-                android:onClick="onIconClicked"
-                android:padding="16dp"
-                android:src="@drawable/western" />
+                <!-- Add your clickable icon views here -->
+                <ImageView
+                    android:id="@+id/action"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:clickable="true"
+                    android:onClick="onIconClicked"
+                    android:padding="16dp"
+                    android:src="@drawable/fight" />
+
+                <ImageView
+                    android:id="@+id/history"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:clickable="true"
+                    android:onClick="onIconClicked"
+                    android:padding="16dp"
+                    android:src="@drawable/history" />
+
+                <ImageView
+                    android:id="@+id/western"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:clickable="true"
+                    android:onClick="onIconClicked"
+                    android:padding="16dp"
+                    android:src="@drawable/western" />
 
 
-            <ImageView
-                android:id="@+id/sports"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:clickable="true"
-                android:onClick="onIconClicked"
-                android:padding="16dp"
-                android:src="@drawable/sports" />
+                <ImageView
+                    android:id="@+id/sports"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:clickable="true"
+                    android:onClick="onIconClicked"
+                    android:padding="16dp"
+                    android:src="@drawable/sports" />
 
-            <ImageView
-                android:id="@+id/love"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:clickable="true"
-                android:onClick="onIconClicked"
-                android:padding="16dp"
-                android:src="@drawable/love" />
+                <ImageView
+                    android:id="@+id/love"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:clickable="true"
+                    android:onClick="onIconClicked"
+                    android:padding="16dp"
+                    android:src="@drawable/love" />
 
-            <ImageView
-                android:id="@+id/murder"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:clickable="true"
-                android:onClick="onIconClicked"
-                android:padding="16dp"
-                android:src="@drawable/murder" />
+                <ImageView
+                    android:id="@+id/murder"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:clickable="true"
+                    android:onClick="onIconClicked"
+                    android:padding="16dp"
+                    android:src="@drawable/murder" />
 
-            <ImageView
-                android:id="@+id/horror"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:clickable="true"
-                android:onClick="onIconClicked"
-                android:padding="16dp"
-                android:src="@drawable/horror" />
+                <ImageView
+                    android:id="@+id/horror"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:clickable="true"
+                    android:onClick="onIconClicked"
+                    android:padding="16dp"
+                    android:src="@drawable/horror" />
 
-            <ImageView
-                android:id="@+id/war"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:clickable="true"
-                android:onClick="onIconClicked"
-                android:padding="16dp"
-                android:src="@drawable/war" />
+                <ImageView
+                    android:id="@+id/war"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:clickable="true"
+                    android:onClick="onIconClicked"
+                    android:padding="16dp"
+                    android:src="@drawable/war" />
 
-        </LinearLayout>
-    </HorizontalScrollView>
+            </LinearLayout>
+        </HorizontalScrollView>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView1"
+
+    <ScrollView
+        android:id="@+id/mainScrollView"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-    android:layout_marginBottom="16dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
+        app:layout_constraintBottom_toTopOf="@+id/bottomBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-    android:background="@color/slightlyBlack"
-    android:scrollbars="horizontal"
-        android:scrollbarThumbHorizontal="@color/yellow"
-    app:layout_constraintTop_toBottomOf="@id/horizontalScrollView"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@color/slightlyBlack"
+            android:scrollbars="horizontal"
+            android:scrollbarThumbHorizontal="@color/yellow"
+            app:layout_constraintTop_toBottomOf="@id/horizontalScrollView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@color/slightlyBlack"
+            android:scrollbars="horizontal"
+            android:scrollbarThumbHorizontal="@color/yellow"
+            app:layout_constraintTop_toBottomOf="@id/recyclerView1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@color/slightlyBlack"
+            android:scrollbars="horizontal"
+            android:scrollbarThumbHorizontal="@color/yellow"
+            app:layout_constraintTop_toBottomOf="@id/recyclerView2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@color/slightlyBlack"
+            android:scrollbars="horizontal"
+            android:scrollbarThumbHorizontal="@color/yellow"
+            app:layout_constraintTop_toBottomOf="@id/recyclerView3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@color/slightlyBlack"
+            android:scrollbars="horizontal"
+            android:scrollbarThumbHorizontal="@color/yellow"
+            app:layout_constraintTop_toBottomOf="@id/recyclerView4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@color/slightlyBlack"
+            android:scrollbars="horizontal"
+            android:scrollbarThumbHorizontal="@color/yellow"
+            app:layout_constraintTop_toBottomOf="@id/recyclerView5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView7"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@color/slightlyBlack"
+            android:scrollbars="horizontal"
+            android:scrollbarThumbHorizontal="@color/yellow"
+            app:layout_constraintTop_toBottomOf="@id/recyclerView6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView8"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@color/slightlyBlack"
+            android:scrollbars="horizontal"
+            android:scrollbarThumbHorizontal="@color/yellow"
+            app:layout_constraintTop_toBottomOf="@id/recyclerView7"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
     <!-- Bottom Bar -->
-
     <LinearLayout
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
@@ -150,7 +247,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
@@ -160,6 +257,8 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 app:tint="@color/slightlyGray"
+                android:id="@+id/bottomBar_add"
+                android:onClick="onAddClicked"
                 android:src="@android:drawable/ic_menu_add" />
 
             <TextView
@@ -171,7 +270,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
@@ -181,6 +280,8 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 app:tint="@color/slightlyGray"
+                android:id="@+id/bottomBar_edit"
+                android:onClick="onEditClicked"
                 android:src="@android:drawable/ic_menu_edit" />
 
             <TextView
@@ -192,7 +293,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
@@ -201,9 +302,10 @@
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:id="@+id/bottomBar_delete"
+                android:onClick="onDeleteClicked"
                 android:src="@android:drawable/ic_menu_delete"
-                app:tint="@color/slightlyGray"
-                />
+                app:tint="@color/slightlyGray" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -213,15 +315,16 @@
 
         </LinearLayout>
 
-    </LinearLayout>
+        </LinearLayout>
 
-    <View
-        android:id="@+id/viewBottom"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="#FFFF00"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <View
+            android:id="@+id/viewBottom"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="#FFFF00"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
