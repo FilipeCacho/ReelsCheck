@@ -77,4 +77,6 @@ dependencies {
     implementation ("androidx.recyclerview:recyclerview:1.3.1")
 
     implementation ("com.squareup.picasso:picasso:2.8")
+
+    implementation ("com.github.bumptech.glide:glide:4.15.1")
 }

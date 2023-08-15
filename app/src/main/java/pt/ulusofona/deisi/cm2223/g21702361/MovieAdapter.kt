@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.squareup.picasso.Picasso
 import java.util.Locale
 
@@ -27,8 +28,13 @@ class MovieAdapter(var movies: MutableList<Movie>) : RecyclerView.Adapter<MovieA
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         val movie = movies[position]
 
-        // Load the movie poster image using Picasso
-        Picasso.get()
+        //load movie posters using picasso
+        //Picasso.get()
+          //  .load(movie.poster)
+            //.into(holder.posterImageView)
+
+        // Load the movie poster image using glide
+        Glide.with(holder.view.context)
             .load(movie.poster)
             .into(holder.posterImageView)
 
@@ -40,8 +46,9 @@ class MovieAdapter(var movies: MutableList<Movie>) : RecyclerView.Adapter<MovieA
         }
     }
 
-    fun addMovie(movie: Movie) {
-        movies.add(movie)
-        notifyItemInserted(movies.size - 1)
+    fun addMovies(movies: List<Movie>) {
+        this.movies.addAll(movies)
+        notifyDataSetChanged()
     }
+
 }
