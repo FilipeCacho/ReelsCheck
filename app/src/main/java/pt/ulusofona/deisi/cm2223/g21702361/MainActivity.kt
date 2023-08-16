@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.Job
 import android.widget.ScrollView
+import java.lang.ref.WeakReference
 
 
 class MainActivity : AppCompatActivity() {
@@ -30,7 +31,8 @@ class MainActivity : AppCompatActivity() {
         mainScrollView = findViewById(R.id.mainScrollView)
 
         db = AppDatabase.getDatabase(applicationContext)
-        movieRecyclerManager = MainMovieRecyclerManager(this, db)
+        movieRecyclerManager = MainMovieRecyclerManager(WeakReference(this), db)
+
         recyclerViewSetupManager = MainRecyclerViewSetupManager(this)
 
         val recyclerViews = recyclerViewSetupManager.getRecyclerViews()
@@ -88,7 +90,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
+        movieRecyclerManager.cancelAllActiveCalls()
         job.cancel()  // cancels all coroutines under this scope
     }
+
 
 }
