@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.squareup.picasso.Picasso
 import java.util.Locale
 
@@ -28,27 +29,29 @@ class MovieAdapter(var movies: MutableList<Movie>) : RecyclerView.Adapter<MovieA
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         val movie = movies[position]
 
-        //load movie posters using picasso
-        //Picasso.get()
-          //  .load(movie.poster)
-            //.into(holder.posterImageView)
-
-        // Load the movie poster image using glide
+        // Load movie poster image using glide
         Glide.with(holder.view.context)
             .load(movie.poster)
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
             .into(holder.posterImageView)
+
 
         // Set IMDb rating icon and text
         try {
             holder.imdbRatingTextView.text = String.format(Locale.getDefault(), "%.1f", movie.imdbrating.toFloat())
         } catch (e: NumberFormatException) {
-            holder.imdbRatingTextView.text = "N/A"  // or some default value
+            holder.imdbRatingTextView.text = "N/A"
         }
+
+
     }
 
+
     fun addMovies(movies: List<Movie>) {
+        this.movies.clear()
         this.movies.addAll(movies)
         notifyDataSetChanged()
     }
+
 
 }

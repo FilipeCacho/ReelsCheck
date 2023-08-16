@@ -1,19 +1,20 @@
 package pt.ulusofona.deisi.cm2223.g21702361
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.Job
 import android.widget.ScrollView
+import androidx.lifecycle.lifecycleScope
 import java.lang.ref.WeakReference
-
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mainScrollView: ScrollView
-
 
     val job = Job()
     private lateinit var movieRecyclerManager: MainMovieRecyclerManager
@@ -21,10 +22,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var recyclerViewSetupManager: MainRecyclerViewSetupManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
-
-
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -42,10 +39,27 @@ class MainActivity : AppCompatActivity() {
             recyclerView.adapter = movieAdapters[index]
         }
 
-        movieRecyclerManager.setupAllRecyclerViews(*recyclerViews.toTypedArray())
-        movieRecyclerManager.fetchAllMoviesForRecyclerViews(recyclerViewSetupManager.getUrlsList(), *movieAdapters.toTypedArray())
+        // Perform database operations using coroutines
+        lifecycleScope.launch {
+            val moviesFromDb = db.movieDao().getAllMovies()
 
+            // Log the total number of movies in the database
+            val totalMoviesInDb = moviesFromDb.size
+            Log.d("Total Movies in DB", "Total movies: $totalMoviesInDb")
+
+            // Distribute movies to the correct adapters based on recyclerViewId
+            movieAdapters.forEachIndexed { index, adapter ->
+                val recyclerViewId = index + 1
+                val moviesForAdapter = moviesFromDb.filter { it.recyclerViewId == recyclerViewId }
+                adapter.addMovies(moviesForAdapter)
+            }
+
+            // Continue with other setup
+            movieRecyclerManager.setupAllRecyclerViews(*recyclerViews.toTypedArray())
+            movieRecyclerManager.fetchAllMoviesForRecyclerViews(recyclerViewSetupManager.getUrlsList(), *movieAdapters.toTypedArray())
+        }
     }
+
 
     fun onIconClicked(view: View) {
         val recyclerViews = recyclerViewSetupManager.getRecyclerViews()
@@ -93,6 +107,5 @@ class MainActivity : AppCompatActivity() {
         movieRecyclerManager.cancelAllActiveCalls()
         job.cancel()  // cancels all coroutines under this scope
     }
-
 
 }

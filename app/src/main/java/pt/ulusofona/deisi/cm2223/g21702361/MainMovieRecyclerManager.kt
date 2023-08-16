@@ -1,5 +1,10 @@
 package pt.ulusofona.deisi.cm2223.g21702361
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
+import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -36,23 +41,68 @@ class MainMovieRecyclerManager(
 
     fun fetchAllMoviesForRecyclerViews(urlsList: List<List<String>>, vararg adapters: MovieAdapter) {
         urlsList.forEachIndexed { index, urls ->
-            fetchMoviesForRecyclerView(urls, adapters[index])
+            val recyclerViewId = index + 1
+            fetchMoviesForRecyclerView(urls, adapters[index], recyclerViewId)
         }
     }
 
-    private fun fetchMoviesForRecyclerView(urls: List<String>, adapter: MovieAdapter) {
+
+
+    private fun fetchMoviesForRecyclerView(urls: List<String>, adapter: MovieAdapter, recyclerViewId: Int) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val existingMovies = db.movieDao().getMoviesByRecyclerViewId(recyclerViewId)
+            if (existingMovies.isNotEmpty()) {
+                // If movies for this recyclerViewId already exist in the database, use them instead of fetching online.
+                withContext(Dispatchers.Main) {
+                    adapter.addMovies(existingMovies)
+                    adapter.notifyDataSetChanged()
+                }
+            } else {
+                fetchOnlineAndInsert(urls, adapter, recyclerViewId)
+            }
+        }
+    }
+
+    private fun fetchOnlineAndInsert(urls: List<String>, adapter: MovieAdapter, recyclerViewId: Int) {
         var moviesFetched = 0
         val moviesList = mutableListOf<Movie>()
 
         urls.forEach { url ->
-            val request = Request.Builder().url(url).build()
-            val call = client.newCall(request)
-            activeCalls.add(call)
-            call.enqueue(object : Callback {
+            val request = Request.Builder()
+                .url(url)
+                .build()
+
+            client.newCall(request).enqueue(object : Callback {
                 override fun onFailure(call: Call, e: IOException) {
                     val context = contextReference.get()
-                    context?.runOnUiThread {
-                        Toast.makeText(context, "Error fetching data for $url", Toast.LENGTH_SHORT).show()
+
+
+                    if (isNetworkAvailable(context)) {
+                        context?.runOnUiThread {
+                            Toast.makeText(
+                                context,
+                                "Error fetching data for $url",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+                }
+
+                fun isNetworkAvailable(context: Context?): Boolean {
+                    val connectivityManager = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as? ConnectivityManager
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        val network = connectivityManager?.activeNetwork ?: return false
+                        val activeNetwork = connectivityManager.getNetworkCapabilities(network) ?: return false
+                        return when {
+                            activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+                            activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+                            activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
+                            else -> false
+                        }
+                    } else {
+                        val activeNetworkInfo = connectivityManager?.activeNetworkInfo
+                        return activeNetworkInfo != null && activeNetworkInfo.isConnected
                     }
                 }
 
@@ -69,13 +119,17 @@ class MainMovieRecyclerManager(
                         val poster = jsonResponse.optString("Poster", "N/A")
                         val imdbRating = jsonResponse.optString("imdbRating", "N/A")
 
-                        val movie = Movie(imdbID, title, released, plot, poster, imdbRating)
+                        val movie = Movie(imdbID, title, released, plot, poster, imdbRating, recyclerViewId)
                         moviesList.add(movie)
 
                         moviesFetched++
                         if (moviesFetched == urls.size) {
-                            insertMoviesToDbAndNotifyAdapter(moviesList, adapter)
+                            CoroutineScope(Dispatchers.IO).launch {
+                                db.movieDao().deleteByRecyclerViewId(recyclerViewId)
+                                insertMoviesToDbAndNotifyAdapter(moviesList, adapter)
+                            }
                         }
+
                     }
                 }
             })
@@ -88,9 +142,13 @@ class MainMovieRecyclerManager(
             val coroutineScope = CoroutineScope(Dispatchers.Main + it.job)
             coroutineScope.launch(Dispatchers.IO) {
                 try {
-                    db.movieDao().insertAll(*movies.toTypedArray()) // insert all movies in the database
+                    // Clear the data for this recyclerViewId before inserting the new data.
+                    db.movieDao().deleteByRecyclerViewId(movies[0].recyclerViewId) // assuming all movies have the same recyclerViewId
+                    db.movieDao().insertAll(*movies.toTypedArray())
+
                     withContext(Dispatchers.Main) {
-                        adapter.addMovies(movies) // update the adapter with all movies
+                        adapter.addMovies(movies)
+                        adapter.notifyDataSetChanged() // Notify the adapter of changes
                     }
                 } catch (e: Exception) {
                     // Handle the exception.
@@ -98,6 +156,9 @@ class MainMovieRecyclerManager(
             }
         }
     }
+
+
+
 
     fun cancelAllActiveCalls() {
         for (call in activeCalls) {
