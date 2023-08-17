@@ -96,9 +96,9 @@ object MovieUrlDataSource {
             "https://www.omdbapi.com/?t=Undisputed&apiKey=187966",
             "https://www.omdbapi.com/?t=Creed+III&apiKey=187966",
             "https://www.omdbapi.com/?t=Real+Steel&apiKey=187966",
-            "https://www.omdbapi.com/?t=Boyka%3A+Undisputed+IV&apiKey=187966",
+            "https://www.omdbapi.com/?t=Eight+Men+Out&apiKey=187966",
             "https://www.omdbapi.com/?t=The+Blind+Side&apiKey=187966",
-            "https://www.omdbapi.com/?t=All+the+Right+Moves&apiKey=187966"
+            "https://www.omdbapi.com/?t=The+Waterboy&apiKey=187966"
         )
     }
     fun getMovieUrlsForRecyclerView5(): List<String> {

@@ -6,14 +6,14 @@ class MainRecyclerViewSetupManager(private val activity: MainActivity) {
 
     fun getRecyclerViews(): List<RecyclerView> {
         return listOf(
-            activity.findViewById(R.id.recyclerView1),
-            activity.findViewById(R.id.recyclerView2),
-            activity.findViewById(R.id.recyclerView3),
-            activity.findViewById(R.id.recyclerView4),
-            activity.findViewById(R.id.recyclerView5),
-            activity.findViewById(R.id.recyclerView6),
-            activity.findViewById(R.id.recyclerView7),
-            activity.findViewById(R.id.recyclerView8)
+            activity.binding.recyclerView1,
+            activity.binding.recyclerView2,
+            activity.binding.recyclerView3,
+            activity.binding.recyclerView4,
+            activity.binding.recyclerView5,
+            activity.binding.recyclerView6,
+            activity.binding.recyclerView7,
+            activity.binding.recyclerView8
         )
     }
 

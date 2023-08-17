@@ -3,33 +3,34 @@ package pt.ulusofona.deisi.cm2223.g21702361
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ScrollView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.Job
-import android.widget.ScrollView
 import androidx.lifecycle.lifecycleScope
 import java.lang.ref.WeakReference
 import kotlinx.coroutines.launch
+import pt.ulusofona.deisi.cm2223.g21702361.databinding.ActivityMainBinding // Import the generated binding class
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var mainScrollView: ScrollView
-
+    lateinit var binding: ActivityMainBinding  // Declare the binding variable
     val job = Job()
     private lateinit var movieRecyclerManager: MainMovieRecyclerManager
     private lateinit var db: AppDatabase
     private lateinit var recyclerViewSetupManager: MainRecyclerViewSetupManager
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        mainScrollView = findViewById(R.id.mainScrollView)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding.activity = this
 
         db = AppDatabase.getDatabase(applicationContext)
         movieRecyclerManager = MainMovieRecyclerManager(WeakReference(this), db)
-
         recyclerViewSetupManager = MainRecyclerViewSetupManager(this)
 
         val recyclerViews = recyclerViewSetupManager.getRecyclerViews()
@@ -39,7 +40,6 @@ class MainActivity : AppCompatActivity() {
             recyclerView.adapter = movieAdapters[index]
         }
 
-        // Perform database operations using coroutines
         lifecycleScope.launch {
             val moviesFromDb = db.movieDao().getAllMovies()
 
@@ -60,7 +60,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
     fun onIconClicked(view: View) {
         val recyclerViews = recyclerViewSetupManager.getRecyclerViews()
         when (view.id) {
@@ -79,12 +78,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Replace mainScrollView with binding.mainScrollView
+
     private fun scrollToPosition(recyclerView: RecyclerView) {
-        mainScrollView.post {
+        binding.mainScrollView.post {
             val scrollTo = recyclerView.top
-            mainScrollView.smoothScrollTo(0, scrollTo)
+            binding.mainScrollView.smoothScrollTo(0, scrollTo)
         }
     }
+
 
 
     fun onAddClicked(view: View?) {

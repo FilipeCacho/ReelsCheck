@@ -1,27 +1,24 @@
 package pt.ulusofona.deisi.cm2223.g21702361
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.squareup.picasso.Picasso
 import java.util.Locale
+import pt.ulusofona.deisi.cm2223.g21702361.databinding.MovieItemBinding
 
 class MovieAdapter(var movies: MutableList<Movie>) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
-    inner class MovieViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        val posterImageView: ImageView = view.findViewById(R.id.posterImageView)
-        val imdbIconImageView: ImageView = view.findViewById(R.id.imdbIcon)
-        val imdbRatingTextView: TextView = view.findViewById(R.id.imdbRatingTextView)
+    inner class MovieViewHolder(private val binding: MovieItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        val posterImageView = binding.posterImageView
+        val imdbIconImageView = binding.imdbIcon
+        val imdbRatingTextView = binding.imdbRatingTextView
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.movie_item, parent, false)
-        return MovieViewHolder(view)
+        val binding = MovieItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return MovieViewHolder(binding)
     }
 
     override fun getItemCount(): Int = movies.size
@@ -30,11 +27,10 @@ class MovieAdapter(var movies: MutableList<Movie>) : RecyclerView.Adapter<MovieA
         val movie = movies[position]
 
         // Load movie poster image using glide
-        Glide.with(holder.view.context)
+        Glide.with(holder.itemView.context)
             .load(movie.poster)
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .into(holder.posterImageView)
-
 
         // Set IMDb rating icon and text
         try {
@@ -42,16 +38,11 @@ class MovieAdapter(var movies: MutableList<Movie>) : RecyclerView.Adapter<MovieA
         } catch (e: NumberFormatException) {
             holder.imdbRatingTextView.text = "N/A"
         }
-
-
     }
-
 
     fun addMovies(movies: List<Movie>) {
         this.movies.clear()
         this.movies.addAll(movies)
         notifyDataSetChanged()
     }
-
-
 }
