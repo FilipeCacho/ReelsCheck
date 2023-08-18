@@ -29,7 +29,7 @@
             android:letterSpacing="0.2"
             android:paddingTop="16dp"
             android:text="Reels"
-            android:textColor="#FFFF00"
+            android:textColor="@color/myYellow"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +41,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/slightlyBlack"
-            android:scrollbarThumbHorizontal="@color/yellow"
+            android:scrollbarThumbHorizontal="@color/myYellow"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/statusBar">
@@ -150,7 +150,7 @@
                     android:layout_marginBottom="16dp"
                     android:background="@color/slightlyBlack"
                     android:scrollbars="horizontal"
-                    android:scrollbarThumbHorizontal="@color/yellow"
+                    android:scrollbarThumbHorizontal="@color/myYellow"
                     app:layout_constraintTop_toBottomOf="@id/horizontalScrollView"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -162,7 +162,7 @@
                     android:layout_marginBottom="16dp"
                     android:background="@color/slightlyBlack"
                     android:scrollbars="horizontal"
-                    android:scrollbarThumbHorizontal="@color/yellow"
+                    android:scrollbarThumbHorizontal="@color/myYellow"
                     app:layout_constraintTop_toBottomOf="@id/recyclerView1"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -174,7 +174,7 @@
                     android:layout_marginBottom="16dp"
                     android:background="@color/slightlyBlack"
                     android:scrollbars="horizontal"
-                    android:scrollbarThumbHorizontal="@color/yellow"
+                    android:scrollbarThumbHorizontal="@color/myYellow"
                     app:layout_constraintTop_toBottomOf="@id/recyclerView2"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -186,7 +186,7 @@
                     android:layout_marginBottom="16dp"
                     android:background="@color/slightlyBlack"
                     android:scrollbars="horizontal"
-                    android:scrollbarThumbHorizontal="@color/yellow"
+                    android:scrollbarThumbHorizontal="@color/myYellow"
                     app:layout_constraintTop_toBottomOf="@id/recyclerView3"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -198,7 +198,7 @@
                     android:layout_marginBottom="16dp"
                     android:background="@color/slightlyBlack"
                     android:scrollbars="horizontal"
-                    android:scrollbarThumbHorizontal="@color/yellow"
+                    android:scrollbarThumbHorizontal="@color/myYellow"
                     app:layout_constraintTop_toBottomOf="@id/recyclerView4"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -210,7 +210,7 @@
                     android:layout_marginBottom="16dp"
                     android:background="@color/slightlyBlack"
                     android:scrollbars="horizontal"
-                    android:scrollbarThumbHorizontal="@color/yellow"
+                    android:scrollbarThumbHorizontal="@color/myYellow"
                     app:layout_constraintTop_toBottomOf="@id/recyclerView5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -222,7 +222,7 @@
                     android:layout_marginBottom="16dp"
                     android:background="@color/slightlyBlack"
                     android:scrollbars="horizontal"
-                    android:scrollbarThumbHorizontal="@color/yellow"
+                    android:scrollbarThumbHorizontal="@color/myYellow"
                     app:layout_constraintTop_toBottomOf="@id/recyclerView6"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -234,7 +234,7 @@
                     android:layout_marginBottom="16dp"
                     android:background="@color/slightlyBlack"
                     android:scrollbars="horizontal"
-                    android:scrollbarThumbHorizontal="@color/yellow"
+                    android:scrollbarThumbHorizontal="@color/myYellow"
                     app:layout_constraintTop_toBottomOf="@id/recyclerView7"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -330,7 +330,7 @@
             android:id="@+id/viewBottom"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:background="#FFFF00"
+            android:background="@color/myYellow"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
