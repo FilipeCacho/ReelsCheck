@@ -58,6 +58,7 @@ class MovieDetailFragment : Fragment() {
 
                         binding.calendarValue.text = movie.released
                         binding.ratingValue.text = movie.imdbrating
+                        binding.plot.text = movie.plot
                         Log.d("MovieDetailFragment", "Movie title set: ${movie.title}")
                         Glide.with(requireContext())
                             .load(movie.poster)
