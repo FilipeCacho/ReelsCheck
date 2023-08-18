@@ -2,7 +2,10 @@ package pt.ulusofona.deisi.cm2223.g21702361
 
 import androidx.recyclerview.widget.RecyclerView
 
-class MainRecyclerViewSetupManager(private val activity: MainActivity) {
+class MainRecyclerViewSetupManager(
+    private val activity: MainActivity,
+    private val onMovieClick: (Movie) -> Unit
+) {
 
     fun getRecyclerViews(): List<RecyclerView> {
         return listOf(
@@ -19,14 +22,14 @@ class MainRecyclerViewSetupManager(private val activity: MainActivity) {
 
     fun getMovieAdapters(): List<MovieAdapter> {
         return listOf(
-            MovieAdapter(mutableListOf()),
-            MovieAdapter(mutableListOf()),
-            MovieAdapter(mutableListOf()),
-            MovieAdapter(mutableListOf()),
-            MovieAdapter(mutableListOf()),
-            MovieAdapter(mutableListOf()),
-            MovieAdapter(mutableListOf()),
-            MovieAdapter(mutableListOf())
+            MovieAdapter(mutableListOf(), onMovieClick),
+            MovieAdapter(mutableListOf(), onMovieClick),
+            MovieAdapter(mutableListOf(), onMovieClick),
+            MovieAdapter(mutableListOf(), onMovieClick),
+            MovieAdapter(mutableListOf(), onMovieClick),
+            MovieAdapter(mutableListOf(), onMovieClick),
+            MovieAdapter(mutableListOf(), onMovieClick),
+            MovieAdapter(mutableListOf(), onMovieClick)
         )
     }
 
@@ -42,6 +45,4 @@ class MainRecyclerViewSetupManager(private val activity: MainActivity) {
             MovieUrlDataSource.getMovieUrlsForRecyclerView8()
         )
     }
-
-
 }
