@@ -11,5 +11,10 @@ data class Movie(
     val plot: String,
     val poster: String,
     val imdbrating: String,
+    val genre: String,
+    val imdbTotalVotes: String,
     val recyclerViewId: Int // Add this property
 )
+
+
+

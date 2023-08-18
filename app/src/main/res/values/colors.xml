@@ -6,6 +6,12 @@
     <color name="myYellow">#FFB43A</color>
     <color name="slightlyBlack">#0c1014</color>
     <color name="slightlyGray">#7c7c7d</color>
+    <color name="boxgray">#373741</color>
+
+    <color name="graylevel1">#191B1F</color>
+    <color name="graylevel2">#1F2125</color>
+    <color name="graylevel3">#25272B</color>
+
 
 
 </resources>

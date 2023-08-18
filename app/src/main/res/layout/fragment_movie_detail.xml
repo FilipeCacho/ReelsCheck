@@ -28,10 +28,10 @@
         android:id="@+id/cardPoster"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="32dp"
         android:layout_marginStart="20dp"
         app:cardElevation="0dp"
-        app:cardCornerRadius="8dp"
+        app:cardCornerRadius="12dp"
         app:cardBackgroundColor="@color/slightlyBlack"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/statusBar">
@@ -72,6 +72,46 @@
         app:layout_constraintStart_toEndOf="@+id/cardPoster"
         app:layout_constraintVertical_chainStyle="spread" />
 
+    <ImageView
+        android:id="@+id/calendaricon"
+        android:layout_width="25dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/calendar"
+        android:scaleType="fitCenter"
+        app:layout_constraintTop_toTopOf="@+id/yellowSquare1"
+        app:layout_constraintStart_toStartOf="@+id/yellowSquare1"
+        app:layout_constraintEnd_toEndOf="@+id/yellowSquare1" />
+
+
+    <TextView
+        android:id="@+id/calendarText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat_light"
+        android:text="Released"
+        android:textColor="#01D2AD"
+        android:textSize="14dp"
+        app:layout_constraintEnd_toEndOf="@+id/yellowSquare1"
+        app:layout_constraintStart_toStartOf="@+id/yellowSquare1"
+        app:layout_constraintTop_toBottomOf="@+id/calendaricon" />
+
+
+    <TextView
+        android:id="@+id/calendarValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="Release Date"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/calendarText"
+        app:layout_constraintStart_toStartOf="@+id/calendarText"
+        app:layout_constraintTop_toBottomOf="@+id/calendarText" />
+
+
     <View
         android:id="@+id/yellowSquare2"
         android:layout_width="100dp"
@@ -82,6 +122,44 @@
         app:layout_constraintBottom_toTopOf="@+id/yellowSquare3"
         app:layout_constraintStart_toEndOf="@+id/cardPoster" />
 
+    <ImageView
+        android:id="@+id/genre"
+        android:layout_width="25dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/genre"
+        android:scaleType="fitCenter"
+        app:layout_constraintTop_toTopOf="@+id/yellowSquare2"
+        app:layout_constraintStart_toStartOf="@+id/yellowSquare2"
+        app:layout_constraintEnd_toEndOf="@+id/yellowSquare2" />
+
+
+    <TextView
+        android:id="@+id/genreText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Genre"
+        android:fontFamily="@font/montserrat_light"
+        android:textColor="#0077FF"
+        app:layout_constraintTop_toBottomOf="@+id/genre"
+        app:layout_constraintStart_toStartOf="@+id/yellowSquare2"
+        app:layout_constraintEnd_toEndOf="@+id/yellowSquare2" />
+
+
+    <TextView
+        android:id="@+id/genreValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="genre text"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/genreText"
+        app:layout_constraintStart_toStartOf="@+id/genreText"
+        app:layout_constraintEnd_toEndOf="@+id/genreText" />
+
+
     <View
         android:id="@+id/yellowSquare3"
         android:layout_width="100dp"
@@ -91,6 +169,46 @@
         app:layout_constraintTop_toBottomOf="@+id/yellowSquare2"
         app:layout_constraintBottom_toBottomOf="@+id/cardPoster"
         app:layout_constraintStart_toEndOf="@+id/cardPoster" />
+
+
+    <ImageView
+        android:id="@+id/starIcon"
+        android:layout_width="25dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/star"
+        android:scaleType="fitCenter"
+        app:layout_constraintTop_toTopOf="@+id/yellowSquare3"
+        app:layout_constraintStart_toStartOf="@+id/yellowSquare3"
+        app:layout_constraintEnd_toEndOf="@+id/yellowSquare3" />
+
+
+    <TextView
+        android:id="@+id/ratingText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Rating"
+        android:fontFamily="@font/montserrat_light"
+        android:textColor="@color/myYellow"
+        app:layout_constraintTop_toBottomOf="@+id/starIcon"
+        app:layout_constraintStart_toStartOf="@+id/yellowSquare3"
+        app:layout_constraintEnd_toEndOf="@+id/yellowSquare3" />
+
+
+    <TextView
+        android:id="@+id/ratingValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="Rating value"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/ratingText"
+        app:layout_constraintStart_toStartOf="@+id/ratingText"
+
+        app:layout_constraintTop_toBottomOf="@+id/ratingText" />
 
 
 

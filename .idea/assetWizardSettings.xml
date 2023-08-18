@@ -25,6 +25,7 @@
                                               <map>
                                                 <entry key="color" value="000000" />
                                                 <entry key="imagePath" value="C:\Users\Yettick\AppData\Local\Temp\ic_android_black_24dp.xml" />
+                                                <entry key="opacityPercent" value="60" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -79,8 +80,8 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="C:\Users\Yettick\Downloads\movie icons\aliens.png" />
-                                                <entry key="scalingPercent" value="58" />
+                                                <entry key="imagePath" value="C:\Users\Yettick\Downloads\movie icons\star.png" />
+                                                <entry key="scalingPercent" value="53" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -112,7 +113,7 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="outputName" value="alien" />
+                                      <entry key="outputName" value="star" />
                                       <entry key="previewDensity" value="XXXHIGH" />
                                     </map>
                                   </option>

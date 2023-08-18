@@ -45,6 +45,19 @@ class MovieDetailFragment : Fragment() {
                     if (movie != null) {
                         Log.d("MovieDetailFragment", "Movie details fetched successfully: $movie")
                         binding.titleTextView.text = movie.title
+
+                        //Some movies have multiple genres, this would break the layout, so i keep only the first genre
+                        val genre = movie.genre
+                        val formattedGenre = if ("," in genre) {
+                            genre.substringBefore(",")
+                        } else {
+                            genre
+                        }
+                        binding.genreValue.text = formattedGenre
+
+
+                        binding.calendarValue.text = movie.released
+                        binding.ratingValue.text = movie.imdbrating
                         Log.d("MovieDetailFragment", "Movie title set: ${movie.title}")
                         Glide.with(requireContext())
                             .load(movie.poster)
