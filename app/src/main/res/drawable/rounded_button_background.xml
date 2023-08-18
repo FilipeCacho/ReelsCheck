@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <!-- Corner settings -->
+            <corners android:radius="16dp" />
+
+            <!-- Button color -->
+            <solid android:color="@color/myYellow" />
+
+            <!-- Optionally, if you want to add a border -->
+            <!-- <stroke android:width="1dp" android:color="#FFC107" /> -->  <!-- #FFC107 is Material Design amber -->
+        </shape>
+    </item>
+</selector>
