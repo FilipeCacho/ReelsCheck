@@ -8,11 +8,15 @@
             type="pt.ulusofona.deisi.cm2223.g21702361.Movie" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/slightlyBlack"
-        tools:context=".MovieDetailFragment">
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/slightlyBlack"
+            tools:context=".MovieDetailFragment">
 
 
     <TextView
@@ -272,75 +276,103 @@
 
 
 
-        <!-- Placeholder for User Rating -->
+        <!-- New Purple Line below the Plot -->
+        <View
+            android:id="@+id/lineBelowPlot"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/graylevel3"
+            app:layout_constraintTop_toBottomOf="@+id/plot"
+            app:layout_constraintStart_toStartOf="@+id/plot"
+            app:layout_constraintEnd_toEndOf="@+id/plot" />
+
+        <!-- User Movie Register Title -->
+        <TextView
+            android:id="@+id/userMovieRegisterTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="User Movie Register"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:paddingEnd="48dp"
+            app:layout_constraintStart_toStartOf="@+id/lineBelowPlot"
+            app:layout_constraintTop_toBottomOf="@+id/lineBelowPlot" />
+
+        <!-- User Rating (with same properties as the Plot) -->
         <TextView
             android:id="@+id/userRatingTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/montserrat_medium"
-            android:text=""
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/montserrat_light"
             android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="@+id/ratingText"
-            app:layout_constraintEnd_toEndOf="@+id/ratingText"
-            app:layout_constraintTop_toBottomOf="@+id/ratingValue"
-            android:visibility="gone" />
+            android:textSize="14sp"
+            android:letterSpacing="0.04"
+            android:lineSpacingExtra="2dp"
+            app:layout_constraintStart_toStartOf="@+id/userMovieRegisterTitle"
+            app:layout_constraintTop_toBottomOf="@+id/userMovieRegisterTitle" />
 
-        <!-- Placeholder for Times Watched -->
+        <!-- Times Watched (with same properties as the Plot) -->
         <TextView
             android:id="@+id/timesWatchedTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/montserrat_medium"
-            android:text=""
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/montserrat_light"
             android:textColor="@color/white"
+            android:textSize="14sp"
+            android:letterSpacing="0.04"
+            android:lineSpacingExtra="2dp"
             app:layout_constraintStart_toStartOf="@+id/userRatingTextView"
-            app:layout_constraintEnd_toEndOf="@+id/userRatingTextView"
-            app:layout_constraintTop_toBottomOf="@+id/userRatingTextView"
-            android:visibility="gone" />
+            app:layout_constraintTop_toBottomOf="@+id/userRatingTextView" />
 
-        <!-- Placeholder for Cinema Location -->
+        <!-- Cinema Location (with same properties as the Plot) -->
         <TextView
             android:id="@+id/cinemaLocationTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/montserrat_medium"
-            android:text=""
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/montserrat_light"
             android:textColor="@color/white"
+            android:textSize="14sp"
+            android:letterSpacing="0.04"
+            android:lineSpacingExtra="2dp"
             app:layout_constraintStart_toStartOf="@+id/timesWatchedTextView"
-            app:layout_constraintEnd_toEndOf="@+id/timesWatchedTextView"
-            app:layout_constraintTop_toBottomOf="@+id/timesWatchedTextView"
-            android:visibility="gone" />
+            app:layout_constraintTop_toBottomOf="@+id/timesWatchedTextView" />
 
-        <!-- Placeholder for Watch Date -->
+        <!-- Watch Date (with same properties as the Plot) -->
         <TextView
-            android:id="@+id/wachDateTextView"
+            android:id="@+id/watchDateTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/montserrat_medium"
-            android:text=""
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/montserrat_light"
             android:textColor="@color/white"
+            android:textSize="14sp"
+            android:letterSpacing="0.04"
+            android:lineSpacingExtra="2dp"
             app:layout_constraintStart_toStartOf="@+id/cinemaLocationTextView"
-            app:layout_constraintEnd_toEndOf="@+id/cinemaLocationTextView"
-            app:layout_constraintTop_toBottomOf="@+id/cinemaLocationTextView"
-            android:visibility="gone" />
+            app:layout_constraintTop_toBottomOf="@+id/cinemaLocationTextView" />
 
-        <!-- Placeholder for Comments -->
+
+        <!-- Comments (with same properties as the Plot) -->
         <TextView
             android:id="@+id/commentsTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/montserrat_medium"
-            android:text=""
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/montserrat_light"
             android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="@+id/wachDateTextView"
-            app:layout_constraintEnd_toEndOf="@+id/wachDateTextView"
-            app:layout_constraintTop_toBottomOf="@+id/wachDateTextView"
-            android:visibility="gone" />
+            android:textSize="14sp"
+            android:letterSpacing="0.04"
+            android:lineSpacingExtra="2dp"
+            app:layout_constraintStart_toStartOf="@+id/watchDateTextView"
+            app:layout_constraintTop_toBottomOf="@+id/watchDateTextView" />
+
 
 
     <androidx.appcompat.widget.AppCompatButton
@@ -360,4 +392,6 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-    </layout>
+    </ScrollView>
+
+</layout>
