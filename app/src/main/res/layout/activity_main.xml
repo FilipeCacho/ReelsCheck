@@ -15,8 +15,6 @@
         android:background="#000000"
         tools:context=".MainActivity">
 
-
-
         <!-- Status Bar -->
         <TextView
             android:id="@+id/statusBar"
@@ -347,6 +345,17 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        <fragment
+            android:id="@+id/nav_host_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:navGraph="@navigation/nav_graph"
+            android:visibility="gone" />
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

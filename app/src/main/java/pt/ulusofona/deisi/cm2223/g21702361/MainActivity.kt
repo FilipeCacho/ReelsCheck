@@ -7,26 +7,40 @@ import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.Job
-import androidx.lifecycle.lifecycleScope
-import java.lang.ref.WeakReference
 import kotlinx.coroutines.launch
-import pt.ulusofona.deisi.cm2223.g21702361.databinding.ActivityMainBinding // Import the generated binding class
+import java.lang.ref.WeakReference
+import pt.ulusofona.deisi.cm2223.g21702361.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityMainBinding  // Declare the binding variable
+    lateinit var binding: ActivityMainBinding
     val job = Job()
     private lateinit var movieRecyclerManager: MainMovieRecyclerManager
     private lateinit var db: AppDatabase
     private lateinit var recyclerViewSetupManager: MainRecyclerViewSetupManager
+    private lateinit var navController: NavController
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.activity = this
+
+        // Initialize the NavController
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        navController = navHostFragment.navController
+
+        // Make the NavHostFragment visible. This should automatically show the PlaceholderFragment
+        // if it's set as the starting destination in your navigation graph.
+        navHostFragment.view?.visibility = View.VISIBLE
 
         db = AppDatabase.getDatabase(applicationContext)
         movieRecyclerManager = MainMovieRecyclerManager(WeakReference(this), db)
@@ -43,7 +57,6 @@ class MainActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             val moviesFromDb = db.movieDao().getAllMovies()
-
             val totalMoviesInDb = moviesFromDb.size
             Log.d("Total Movies in DB", "Total movies: $totalMoviesInDb")
 
@@ -59,17 +72,24 @@ class MainActivity : AppCompatActivity() {
 
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                val fragment = supportFragmentManager.findFragmentById(R.id.fragmentContainer)
-                if (fragment != null) {
-                    supportFragmentManager.beginTransaction().remove(fragment).commit()
-                    binding.fragmentContainer.visibility = View.GONE
-                } else {
+                // Check if there's any fragment in the back stack and pop it.
+                // If there's none, then proceed with the default back button behavior.
+                if (!navController.popBackStack()) {
                     isEnabled = false
                     onBackPressedDispatcher.onBackPressed()
                 }
             }
         }
         onBackPressedDispatcher.addCallback(this, callback)
+
+
+
+
+        // NavigationUI.setupActionBarWithNavController(this, navController)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp()
     }
 
     fun onIconClicked(view: View) {
@@ -96,19 +116,11 @@ class MainActivity : AppCompatActivity() {
 
     fun onMovieClicked(movie: Movie) {
         Log.d("MainActivity", "Movie clicked: ${movie.imdbID}")
+        val destination = R.id.fragment_movie_detail
 
         val bundle = Bundle()
         bundle.putString("movieImdbId", movie.imdbID)
-
-        val fragment = MovieDetailFragment()
-        fragment.arguments = bundle
-
-        binding.fragmentContainer.visibility = View.VISIBLE
-
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainer, fragment)
-            .addToBackStack(null)
-            .commit()
+        navController.navigate(destination, bundle)
     }
 
     fun onAddClicked(view: View?) {
@@ -126,6 +138,6 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         movieRecyclerManager.cancelAllActiveCalls()
-        job.cancel()  // cancels all coroutines under this scope
+        job.cancel()
     }
 }

@@ -121,7 +121,11 @@ class MainMovieRecyclerManager(
                         val genre = jsonResponse.optString("Genre", "N/A")
                         val imdbTotalVotes = jsonResponse.optString("imdbVotes", "N/A")
 
-                        val movie = Movie(imdbID, title, released, plot, poster, imdbRating, genre, imdbTotalVotes, recyclerViewId)
+                        //remove comma from genre if it exists
+                        val genreFormatted = genre.substringBefore(",")
+
+
+                        val movie = Movie(imdbID, title, released, plot, poster, imdbRating, genreFormatted, imdbTotalVotes, recyclerViewId)
                         moviesList.add(movie)
 
                         moviesFetched++

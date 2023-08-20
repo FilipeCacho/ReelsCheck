@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="movieTitle"
+            type="String" />
+        <variable
+            name="posterPath"
+            type="String" />
+        <variable
+            name="imdbId"
+            type="String" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/slightlyBlack"
+            tools:context=".MovieDetailFragment">
+
+            <TextView
+                android:id="@+id/statusBarRegistration"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@color/slightlyBlack"
+                android:fontFamily="@font/baloo"
+                android:gravity="center"
+                android:letterSpacing="0.2"
+                android:paddingTop="4dp"
+                android:text="Movie Registration"
+                android:textColor="@color/myYellow"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Movie Poster Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardPosterRegistration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                app:cardElevation="0dp"
+                app:cardCornerRadius="12dp"
+                app:cardBackgroundColor="@color/slightlyBlack"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/statusBarRegistration">
+
+                <ImageView
+                    android:id="@+id/posterImageViewRegistration"
+                    android:layout_width="240dp"
+                    android:layout_height="360dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    app:imageUrl="@{posterPath}" />
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Movie Title -->
+            <TextView
+                android:id="@+id/titleTextViewRegistration"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@{movieTitle}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/cardPosterRegistration"
+                app:layout_constraintStart_toStartOf="@id/cardPosterRegistration"
+                app:layout_constraintEnd_toEndOf="@id/cardPosterRegistration" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</layout>

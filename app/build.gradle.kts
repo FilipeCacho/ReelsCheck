@@ -5,6 +5,7 @@ plugins {
 
 
 
+
 }
 
 android {
@@ -81,5 +82,8 @@ dependencies {
 
     implementation ("com.github.bumptech.glide:glide:4.15.1")
     implementation ("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
+    implementation ("androidx.navigation:navigation-fragment-ktx:2.3.4")
+    implementation ("androidx.navigation:navigation-ui-ktx:2.3.4")
+
 
 }

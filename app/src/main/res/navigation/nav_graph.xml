@@ -1,0 +1,42 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/placeholderFragment">
+
+    <fragment
+        android:id="@+id/placeholderFragment"
+        android:name="pt.ulusofona.deisi.cm2223.g21702361.PlaceholderFragment"
+        android:label="Placeholder Fragment"
+        tools:layout="@layout/fragment_placeholder" />
+
+
+    <fragment
+        android:id="@+id/fragment_movie_detail"
+        android:name="pt.ulusofona.deisi.cm2223.g21702361.MovieDetailFragment"
+        android:label="movie_detail"
+        tools:layout="@layout/fragment_movie_detail">
+
+        <!-- Action to transition to MovieRegistrationFragment -->
+        <action
+            android:id="@+id/action_movieDetailFragment_to_movieRegistrationFragment"
+            app:destination="@id/fragment_movie_registration" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_movie_registration"
+        android:name="pt.ulusofona.deisi.cm2223.g21702361.MovieRegistrationFragment"
+        android:label="movie_registration"
+        tools:layout="@layout/fragment_movie_registration">
+    </fragment>
+
+    <!-- Define arguments separately outside of fragments -->
+    <argument
+        android:name="imdbId"
+        app:argType="string" />
+    <argument
+        android:name="movieTitle"
+        app:argType="string" />
+    <argument
+        android:name="posterPath"
+        app:argType="string" />
+</navigation>

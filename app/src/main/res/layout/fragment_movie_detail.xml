@@ -1,10 +1,19 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/slightlyBlack"
-    tools:context=".MovieDetailFragment">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="movie"
+            type="pt.ulusofona.deisi.cm2223.g21702361.Movie" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/slightlyBlack"
+        tools:context=".MovieDetailFragment">
+
 
     <TextView
         android:id="@+id/statusBar"
@@ -36,27 +45,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/statusBar">
 
+        <!-- Movie Poster Card -->
         <ImageView
             android:id="@+id/posterImageView"
             android:layout_width="240dp"
             android:layout_height="360dp"
-        android:adjustViewBounds="true"
-        android:scaleType="centerCrop"/>
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{movie.poster}" />
     </androidx.cardview.widget.CardView>
 
-    <!-- Movie Title -->
-    <TextView
-        android:id="@+id/titleTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="Movie Title"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="@id/cardPoster"
-        app:layout_constraintTop_toBottomOf="@id/cardPoster" />
+        <!-- Movie Title -->
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@{movie.title}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="@id/cardPoster"
+            app:layout_constraintTop_toBottomOf="@id/cardPoster" />
 
 
 
@@ -86,20 +97,21 @@
 
 
 
-    <TextView
-        android:id="@+id/plot"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/montserrat_light"
-        android:text="Plot text goes here"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        android:letterSpacing="0.04"
-    android:lineSpacingExtra="2dp"
-    app:layout_constraintEnd_toEndOf="@+id/yellowLine"
-    app:layout_constraintStart_toStartOf="@+id/synopsis"
-    app:layout_constraintTop_toBottomOf="@+id/synopsis" />
+        <!-- Plot Text -->
+        <TextView
+            android:id="@+id/plot"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/montserrat_light"
+            android:text="@{movie.plot}"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:letterSpacing="0.04"
+            android:lineSpacingExtra="2dp"
+            app:layout_constraintEnd_toEndOf="@+id/yellowLine"
+            app:layout_constraintStart_toStartOf="@+id/synopsis"
+            app:layout_constraintTop_toBottomOf="@+id/synopsis" />
 
 
 
@@ -143,18 +155,19 @@
         app:layout_constraintTop_toBottomOf="@+id/calendaricon" />
 
 
-    <TextView
-        android:id="@+id/calendarValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:fontFamily="@font/montserrat_medium"
-        android:text="Release Date"
-        android:textColor="@color/white"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/calendarText"
-        app:layout_constraintStart_toStartOf="@+id/calendarText"
-        app:layout_constraintTop_toBottomOf="@+id/calendarText" />
+        <!-- Release Date -->
+        <TextView
+            android:id="@+id/calendarValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="@{movie.released}"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/calendarText"
+            app:layout_constraintStart_toStartOf="@+id/calendarText"
+            app:layout_constraintTop_toBottomOf="@+id/calendarText" />
 
 
     <View
@@ -192,17 +205,18 @@
         app:layout_constraintEnd_toEndOf="@+id/yellowSquare2" />
 
 
-    <TextView
-        android:id="@+id/genreValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:fontFamily="@font/montserrat_medium"
-        android:text="genre text"
-        android:textColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/genreText"
-        app:layout_constraintStart_toStartOf="@+id/genreText"
-        app:layout_constraintEnd_toEndOf="@+id/genreText" />
+        <!-- Genre -->
+        <TextView
+            android:id="@+id/genreValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="@{movie.genre}"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/genreText"
+            app:layout_constraintStart_toStartOf="@+id/genreText"
+            app:layout_constraintEnd_toEndOf="@+id/genreText" />
 
 
     <View
@@ -241,19 +255,18 @@
         app:layout_constraintEnd_toEndOf="@+id/yellowSquare3" />
 
 
-    <TextView
-        android:id="@+id/ratingValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:fontFamily="@font/montserrat_medium"
-        android:text="Rating value"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/ratingText"
-        app:layout_constraintStart_toStartOf="@+id/ratingText"
-
-        app:layout_constraintTop_toBottomOf="@+id/ratingText" />
+        <TextView
+            android:id="@+id/ratingValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="@{String.valueOf(movie.imdbrating)}"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/ratingText"
+            app:layout_constraintStart_toStartOf="@+id/ratingText"
+            app:layout_constraintTop_toBottomOf="@+id/ratingText" />
 
 
     <androidx.appcompat.widget.AppCompatButton
@@ -273,3 +286,4 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+    </layout>
