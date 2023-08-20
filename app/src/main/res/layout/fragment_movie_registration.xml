@@ -13,7 +13,14 @@
         <variable
             name="imdbId"
             type="String" />
+        <variable
+            name="userRating"
+            type="String" />
+        <variable
+            name="dateWatched"
+            type="String" />
     </data>
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -81,6 +88,183 @@
                 app:layout_constraintTop_toBottomOf="@id/cardPosterRegistration"
                 app:layout_constraintStart_toStartOf="@id/cardPosterRegistration"
                 app:layout_constraintEnd_toEndOf="@id/cardPosterRegistration" />
+
+
+
+
+            --------------------------------------------------------------------------------
+
+            <!-- User Rating -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/userRatingTextInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:hint="User Rating"
+                android:textColorHint="@color/myYellow"
+                app:boxStrokeColor="@color/outlined_box_stroke_color"
+                app:hintTextColor="@color/hint_text_color_selector"
+                app:endIconTint="@color/white"
+
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:layout_constraintTop_toBottomOf="@+id/titleTextViewRegistration"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.45"
+                app:layout_constraintBaseline_toBaselineOf="@+id/DateWatchedTextInputLayout"
+                app:layout_constraintBottom_toBottomOf="@+id/DateWatchedTextInputLayout"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintEnd_toStartOf="@+id/DateWatchedTextInputLayout"
+                android:layout_marginEnd="8dp">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/userRatingEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+
+                    android:textColorHint="@color/white"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:textColorLink="#000000" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Date Watched -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/DateWatchedTextInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:hint="Date Watched"
+                android:textColorHint="@color/myYellow"
+                app:boxStrokeColor="@color/outlined_box_stroke_color"
+                app:hintTextColor="@color/hint_text_color_selector"
+                app:endIconTint="@color/white"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:layout_constraintTop_toBottomOf="@+id/titleTextViewRegistration"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/userRatingTextInputLayout"
+                android:layout_marginStart="8dp"
+                app:layout_constraintWidth_percent="0.45">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/DateWatchedText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
+
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.3" />
+
+
+
+            <!-- Cinema Location -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/cinemaLocationTextInputLayout"
+                android:layout_width="0dp"
+                android:inputType="textNoSuggestions"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Cinema Location"
+
+                android:textColorHint="@color/myYellow"
+                app:boxStrokeColor="@color/outlined_box_stroke_color"
+                app:hintTextColor="@color/hint_text_color_selector"
+                app:endIconTint="@color/white"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:layout_constraintTop_toBottomOf="@+id/userRatingTextInputLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/cinemaLocationEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Comments -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/commentsTextInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:inputType="textNoSuggestions"
+                android:hint="Comments"
+                android:textColorHint="@color/myYellow"
+                app:boxStrokeColor="@color/outlined_box_stroke_color"
+                app:hintTextColor="@color/hint_text_color_selector"
+                app:endIconTint="@color/white"
+                app:counterEnabled="true"
+                app:counterMaxLength="200"
+
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:layout_constraintTop_toBottomOf="@+id/cinemaLocationTextInputLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/commentsEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textNoSuggestions"
+
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+
+            <!-- Watch Date and Comments -->
+            <!-- Add appropriate UI elements for Watch Date and Comments here -->
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/finishButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="28dp"
+                android:background="@drawable/rounded_button_background"
+                android:text="Finish Registration"
+                android:textColor="@color/slightlyBlack"
+                android:padding="12dp"
+                android:textSize="16sp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/commentsTextInputLayout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+
+                />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

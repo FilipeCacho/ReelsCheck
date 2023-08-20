@@ -1,13 +1,27 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+
     <!-- Base application theme. -->
     <style name="Base.Theme.ReelsCheck" parent="Theme.Material3.DayNight.NoActionBar">
-        // action bar color
+        <!-- action bar color -->
         <item name="colorPrimary">@color/slightlyBlack</item>
-
-
     </style>
 
-    <style name="Theme.ReelsCheck" parent="Base.Theme.ReelsCheck"
+    <style name="Theme.ReelsCheck" parent="Base.Theme.ReelsCheck">
+        <!-- other customizations for Theme.ReelsCheck can go here if you need any in the future -->
+    </style>
 
-        />
+    <!-- Custom DatePickerDialog Theme -->
+    <style name="CustomDatePickerDialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <!-- Header background color -->
+        <item name="colorAccent">@color/myYellow</item>
+        <!-- Positive button style -->
+        <item name="android:buttonBarPositiveButtonStyle">@style/DatePickerDialogButtonPositive</item>
+    </style>
+
+    <!-- Style for Positive Button with Black Text -->
+    <style name="DatePickerDialogButtonPositive" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+
 </resources>

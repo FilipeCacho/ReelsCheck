@@ -5,21 +5,22 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Movie::class], version = 2, exportSchema = false)
+@Database(entities = [Movie::class, UserMovieDetails::class], version = 2, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
-
     abstract fun movieDao(): MovieDao
+    abstract fun userMovieDetailsDao(): UserMovieDetailsDao
 
     companion object {
         @Volatile
         private var INSTANCE: AppDatabase? = null
+        private val LOCK = Any()
 
         fun getDatabase(context: Context): AppDatabase {
             val tempInstance = INSTANCE
             if (tempInstance != null) {
                 return tempInstance
             }
-            synchronized(this) {
+            synchronized(LOCK) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,

@@ -1,0 +1,714 @@
+{
+  "cinemas":[
+    {
+      "cinema_id":90829,
+      "cinema_name":"Fórum Montijo",
+      "cinema_provider":"Cinemas NOS",
+      "latitude":38.6949792,
+      "longitude":-8.942057,
+      "address": "Praça da Liberdade, 32",
+      "postcode": "2870-461",
+      "county": "Montijo",
+      "ratings":[
+        {
+          "category":"limpeza de salas",
+          "score":4
+        },
+        {
+          "category":"qualidade de som",
+          "score":1
+        },
+        {
+          "category":"conforto",
+          "score":10
+        },
+        {
+          "category":"qualidade de imagem",
+          "score":9
+        }
+      ],
+      "opening_hours":{
+        "Monday":{
+          "open":"14:00",
+          "close":"23:00"
+        },
+        "Tuesday":{
+          "open":"14:00",
+          "close":"23:00"
+        },
+        "Wednesday":{
+          "open":"14:00",
+          "close":"23:00"
+        },
+        "Thursday":{
+          "open":"14:00",
+          "close":"23:00"
+        },
+        "Friday":{
+          "open":"14:00",
+          "close":"23:00"
+        },
+        "Saturday":{
+          "open":"14:00",
+          "close":"23:00"
+        },
+        "Sunday":{
+          "open":"14:00",
+          "close":"23:00"
+        }
+      }
+    },
+    {
+      "cinema_id":90849,
+      "cinema_name":"Cinema Ideal",
+      "cinema_provider":"Cinemateca Portuguesa",
+      "logo_url":"https://mir-s3-cdn-cf.behance.net/projects/404/d6ad44144476641.Y3JvcCw2MzYsNDk3LDkyLDY3.png",
+      "latitude":38.71031433095038,
+      "longitude":-9.144281436853934,
+      "address":"Rua do Loreto, 15",
+      "postcode":"1200-241",
+      "county":"Lisboa",
+      "photos":[
+        "https://bolimg.blob.core.windows.net/producao/imagens/entidades/aderentes/ent3129.jpg?v=21",
+        "https://www.cinemateca.pt/getattachment/680f9471-3670-481e-b788-a17a3769ee8c/CINEMATECA-ULTIMOS-ESPACOS-REABERTOS.aspx?maxsidesize=650",
+        "https://festadocinemaitaliano.com/library/media/257",
+        "https://3.bp.blogspot.com/-PZP01-bnZd4/Urfs8M19qQI/AAAAAAAAESc/n00ysuZfOHo/s1600/historia_cinemateca02.jpg",
+        "https://portugalfilmcommission.com/wp-content/uploads/2020/12/Cinemateca-portuguesa.jpg"
+      ],
+      "ratings":[
+        {
+          "category":"limpeza de salas",
+          "score":8
+        },
+        {
+          "category":"qualidade de som",
+          "score":9
+        },
+        {
+          "category":"conforto",
+          "score":7
+        },
+        {
+          "category":"qualidade de imagem",
+          "score":9
+        }
+      ],
+      "opening_hours":{
+        "Monday":{
+          "open":"14:00",
+          "close":"22:00"
+        },
+        "Tuesday":{
+          "open":"14:00",
+          "close":"22:00"
+        },
+        "Wednesday":{
+          "open":"14:00",
+          "close":"22:00"
+        },
+        "Thursday":{
+          "open":"14:00",
+          "close":"22:00"
+        },
+        "Friday":{
+          "open":"14:00",
+          "close":"22:00"
+        },
+        "Saturday":{
+          "open":"14:00",
+          "close":"22:00"
+        },
+        "Sunday":{
+          "open":"14:00",
+          "close":"22:00"
+        }
+      }
+    },
+    {
+      "cinema_id":8579,
+      "cinema_name":"Cinema City Campo Pequeno",
+      "cinema_provider":"Cinema City",
+      "logo_url":"https://www.aerlis.pt/images/cinema_city_blue_logo_transp.png",
+      "latitude":38.74265837959478,
+      "longitude":-9.146832184181024,
+      "address":"Centro Comercial Campo Pequeno, Piso 2, Loja 410",
+      "postcode":"1000-082",
+      "county":"Lisboa",
+      "photos":[
+        "https://media-manager.noticiasaominuto.com/1920/1591017510/naom_5ed4ffe789d8d.jpg?crop_params=eyJsYW5kc2NhcGUiOnsiY3JvcFdpZHRoIjoyNTYwLCJjcm9wSGVpZ2h0IjoxNDQwLCJjcm9wWCI6MCwiY3JvcFkiOjI2Nn19",
+        "http://www.campopequeno.com/docs/images/crop/20160118145018498041.jpg",
+        "https://www.cinemacity.pt/images/editorials/CAMPO_3.png",
+        "https://www.cinemacity.pt/images/editorials/CAMPO_5.png",
+        "https://www.cinemacity.pt/images/editorials/CAMPO_4.png",
+        "https://www.cinemacity.pt/images/editorials/CAMPO_1.png",
+        "https://www.cinemacity.pt/images/editorials/CAMPO_2.png"
+      ],
+      "ratings":[
+        {
+          "category":"limpeza de salas",
+          "score":9
+        },
+        {
+          "category":"qualidade de som",
+          "score":8
+        },
+        {
+          "category":"conforto",
+          "score":9
+        },
+        {
+          "category":"qualidade de imagem",
+          "score":8
+        }
+      ],
+      "opening_hours":{
+        "Monday":{
+          "open":"14:00",
+          "close":"22:00"
+        },
+        "Tuesday":{
+          "open":"14:00",
+          "close":"22:00"
+        },
+        "Wednesday":{
+          "open":"14:00",
+          "close":"22:00"
+        },
+        "Thursday":{
+          "open":"14:00",
+          "close":"22:00"
+        },
+        "Friday":{
+          "open":"14:00",
+          "close":"23:00"
+        },
+        "Saturday":{
+          "open":"10:30",
+          "close":"23:00"
+        },
+        "Sunday":{
+          "open":"10:30",
+          "close":"22:00"
+        }
+      }
+    },
+    {
+      "cinema_id":1234,
+      "cinema_name":"El Corte Inglês",
+      "cinema_provider":"UCI Cinemas",
+      "logo_url":"https://pbs.twimg.com/profile_images/1148208610184482817/4PQn2FUf_400x400.png",
+      "latitude":38.74265803270522,
+      "longitude":-9.153398256219777,
+      "address":"Av. António Augusto de Aguiar 31, 1069-413",
+      "postcode":"1069-413",
+      "county":"Lisboa",
+      "photos":[
+        "https://festadocinemaitaliano.com/library/media/715",
+        "http://convida.pt/images/POIs/UCIcinema_ECI_01.jpg",
+        "https://www.centralcomics.com/wp-content/uploads/2020/07/IMG-20200710-WA0000.jpg",
+        "https://fastly.4sqi.net/img/general/600x600/gkh06Omu9veyltOJ02zdf9Vs3OtG8bDIs7TMiNo1rqY.jpg",
+        "https://eco.imgix.net/uploads/2022/02/cropped-fachada-eci-1.jpg",
+        "https://site.qmagine.com/qmagine_content/uploads/2020/02/uci_cinemas_el_corte_ingles_lisboa_thumb.jpg"
+      ],
+      "ratings":[
+        {
+          "category":"limpeza de salas",
+          "score":9
+        },
+        {
+          "category":"qualidade de som",
+          "score":8
+        },
+        {
+          "category":"conforto",
+          "score":9
+        },
+        {
+          "category":"qualidade de imagem",
+          "score":8
+        }
+      ],
+      "opening_hours":{
+        "Monday":{
+          "open":"12:00",
+          "close":"23:00"
+        },
+        "Tuesday":{
+          "open":"12:00",
+          "close":"23:00"
+        },
+        "Wednesday":{
+          "open":"12:00",
+          "close":"23:00"
+        },
+        "Thursday":{
+          "open":"12:00",
+          "close":"23:00"
+        },
+        "Friday":{
+          "open":"12:00",
+          "close":"23:00"
+        },
+        "Saturday":{
+          "open":"12:00",
+          "close":"23:00"
+        },
+        "Sunday":{
+          "open":"12:00",
+          "close":"23:00"
+        }
+      }
+    },
+    {
+      "cinema_id":2589,
+      "cinema_name":"Cinemas NOS Centro Comercial Colombo",
+      "cinema_provider":"Cinemas NOS",
+      "logo_url":"https://www.nos.pt/institucional/PT/sobre-a-nos/empresas-e-negocios/PublishingImages/Logos/cinemas.jpg",
+      "latitude":38.75366130000005,
+      "longitude":-9.205767760449193,
+      "address":"Centro Comercial Colombo, Avenida Lusíada",
+      "postcode":"1500-392",
+      "county":"Lisboa",
+      "photos":[
+        "https://lisbonshopping.com/wp-content/uploads/2022/11/LisbonShopping_1600x1200_CinemaColombo_0001_wZnyazd-1000x680.jpg",
+        "https://gyptec.eu/wp-content/uploads/2021/03/gyptec_imax1.jpg",
+        "https://take.com.pt/wp-content/uploads/2017/07/1-H1lb-Q9sYGubhu2a2rVQYg-730x487.jpeg",
+        "https://www.nit.pt/wp-content/uploads/2021/04/73c2a8d86d428177b8da839b09b4b153-754x424.jpeg",
+        "https://cinemas.nos.pt/_layouts/15/Handlers/RenderImage.ashx?file=49930.jpg"
+      ],
+      "ratings":[
+        {
+          "category":"limpeza de salas",
+          "score":7
+        },
+        {
+          "category":"qualidade de som",
+          "score":8
+        },
+        {
+          "category":"conforto",
+          "score":9
+        },
+        {
+          "category":"qualidade de imagem",
+          "score":8
+        }
+      ],
+      "opening_hours":{
+        "Monday":{
+          "open":"13:30",
+          "close":"23:00"
+        },
+        "Tuesday":{
+          "open":"13:30",
+          "close":"23:00"
+        },
+        "Wednesday":{
+          "open":"13:30",
+          "close":"23:00"
+        },
+        "Thursday":{
+          "open":"13:30",
+          "close":"23:00"
+        },
+        "Friday":{
+          "open":"13:30",
+          "close":"23:00"
+        },
+        "Saturday":{
+          "open":"10:30",
+          "close":"23:00"
+        },
+        "Sunday":{
+          "open":"10:30",
+          "close":"23:00"
+        }
+      }
+    },
+    {
+      "cinema_id":9023,
+      "cinema_name":"Cinemas NOS Alvaláxia",
+      "cinema_provider":"Cinemas NOS",
+      "logo_url":"https://www.nos.pt/institucional/PT/sobre-a-nos/empresas-e-negocios/PublishingImages/Logos/cinemas.jpg",
+      "latitude":38.76098497959197,
+      "longitude":-9.162060684180636,
+      "address":"Av. de Roma, 100",
+      "postcode":"1700-349",
+      "county":"Lisboa",
+      "photos":[
+        "https://gyptec.eu/wp-content/uploads/2021/03/gyptec_imax1.jpg",
+        "https://take.com.pt/wp-content/uploads/2017/07/1-H1lb-Q9sYGubhu2a2rVQYg-730x487.jpeg",
+        "https://www.nit.pt/wp-content/uploads/2021/04/73c2a8d86d428177b8da839b09b4b153-754x424.jpeg",
+        "https://lh5.googleusercontent.com/p/AF1QipMdKC7Fl0fsGNpj6DJmwjkKejie5DK50KxF0zcg=w280-h226-k-no"
+      ],
+      "ratings":[
+        {
+          "category":"limpeza de salas",
+          "score":9
+        },
+        {
+          "category":"qualidade de som",
+          "score":8
+        },
+        {
+          "category":"conforto",
+          "score":7
+        },
+        {
+          "category":"qualidade de imagem",
+          "score":8
+        }
+      ],
+      "opening_hours":{
+        "Monday":{
+          "open":"12:30",
+          "close":"23:00"
+        },
+        "Tuesday":{
+          "open":"12:30",
+          "close":"23:00"
+        },
+        "Wednesday":{
+          "open":"12:30",
+          "close":"23:00"
+        },
+        "Thursday":{
+          "open":"12:30",
+          "close":"23:00"
+        },
+        "Friday":{
+          "open":"12:30",
+          "close":"00:00"
+        },
+        "Saturday":{
+          "open":"11:00",
+          "close":"00:00"
+        },
+        "Sunday":{
+          "open":"11:00",
+          "close":"23:00"
+        }
+      }
+    },
+    {
+      "cinema_id":9632,
+      "cinema_name":"Cinema São Jorge",
+      "cinema_provider":"EGEAC",
+      "logo_url":"https://egeac.pt/wp-content/themes/egeac/assets/img/egeac-signature.png",
+      "latitude":38.7203028795984,
+      "longitude":-9.14848308418151,
+      "address":"Avenida da Liberdade, 175",
+      "postcode":"1250-146",
+      "county":"Lisboa",
+      "photos":[
+        "https://egeac.pt/wp-content/uploads/2021/02/dsc04360jose-frade-20190212-184601-1-1024x683.jpg"
+      ],
+      "ratings":[
+        {
+          "category":"limpeza de salas",
+          "score":9
+        },
+        {
+          "category":"qualidade de som",
+          "score":8
+        },
+        {
+          "category":"conforto",
+          "score":7
+        },
+        {
+          "category":"qualidade de imagem",
+          "score":8
+        }
+      ],
+      "opening_hours":{
+        "Monday":{
+          "open":"14:00",
+          "close":"23:00"
+        },
+        "Tuesday":{
+          "open":"14:00",
+          "close":"23:00"
+        },
+        "Wednesday":{
+          "open":"14:00",
+          "close":"23:00"
+        },
+        "Thursday":{
+          "open":"14:00",
+          "close":"23:00"
+        },
+        "Friday":{
+          "open":"14:00",
+          "close":"23:00"
+        },
+        "Saturday":{
+          "open":"14:00",
+          "close":"23:00"
+        },
+        "Sunday":{
+          "open":"14:00",
+          "close":"23:00"
+        }
+      }
+    },
+    {
+      "cinema_id":82974,
+      "cinema_name":"Cinema do Parque",
+      "cinema_provider":"Cineclube de Lisboa",
+      "logo_url":null,
+      "latitude":38.718222079598625,
+      "longitude":-9.137756484181562,
+      "address":"Rua da Palma, 246",
+      "postcode":"1100-394",
+      "county":"Lisboa",
+      "photos":[
+
+      ],
+      "ratings":[
+        {
+          "category":"limpeza de salas",
+          "score":9
+        },
+        {
+          "category":"qualidade de som",
+          "score":8
+        },
+        {
+          "category":"conforto",
+          "score":7
+        },
+        {
+          "category":"qualidade de imagem",
+          "score":9
+        }
+      ],
+      "opening_hours":{
+        "Monday":{
+          "open":"16:00",
+          "close":"23:00"
+        },
+        "Tuesday":{
+          "open":"16:00",
+          "close":"23:00"
+        },
+        "Wednesday":{
+          "open":"16:00",
+          "close":"23:00"
+        },
+        "Thursday":{
+          "open":"16:00",
+          "close":"23:00"
+        },
+        "Friday":{
+          "open":"16:00",
+          "close":"23:00"
+        },
+        "Saturday":{
+          "open":"14:00",
+          "close":"23:00"
+        },
+        "Sunday":{
+          "open":"14:00",
+          "close":"23:00"
+        }
+      }
+    },
+    {
+      "cinema_id":1357,
+      "cinema_name":"UCI Cinemas Ubbo",
+      "cinema_provider":"UCI Cinemas",
+      "logo_url":"https://pbs.twimg.com/profile_images/1148208610184482817/4PQn2FUf_400x400.png",
+      "latitude":38.77588027958963,
+      "longitude":-9.22224658418028,
+      "address":"Avenida Cruzeiro Seixas, 7",
+      "postcode":"2650-504",
+      "county":"Amadora",
+      "photos":[
+        "https://ubbo.pt/wp-content/uploads/2021/05/UCI-cinemas-3.jpg",
+        "https://www.centralcomics.com/wp-content/uploads/2020/11/UCI-Cinemas-600x364.jpg",
+        "https://www.centralcomics.com/wp-content/uploads/2020/08/ubbo-600x450.jpg",
+        "https://ubbo.pt/wp-content/uploads/2021/04/Cinema-UCi-1-1.jpg"
+      ],
+      "ratings":[
+        {
+          "category":"limpeza de salas",
+          "score":9
+        },
+        {
+          "category":"qualidade de som",
+          "score":8
+        },
+        {
+          "category":"conforto",
+          "score":8
+        },
+        {
+          "category":"qualidade de imagem",
+          "score":9
+        }
+      ],
+      "opening_hours":{
+        "Monday":{
+          "open":"14:00",
+          "close":"23:00"
+        },
+        "Tuesday":{
+          "open":"14:00",
+          "close":"23:00"
+        },
+        "Wednesday":{
+          "open":"14:00",
+          "close":"23:00"
+        },
+        "Thursday":{
+          "open":"14:00",
+          "close":"23:00"
+        },
+        "Friday":{
+          "open":"14:00",
+          "close":"23:00"
+        },
+        "Saturday":{
+          "open":"10:30",
+          "close":"23:00"
+        },
+        "Sunday":{
+          "open":"10:30",
+          "close":"23:00"
+        }
+      }
+    },
+    {
+      "cinema_id":5678,
+      "cinema_name":"Cinema City Alegro Alfragide",
+      "cinema_provider":"Cinema City",
+      "logo_url":"https://www.aerlis.pt/images/cinema_city_blue_logo_transp.png",
+      "latitude":38.727573979597146,
+      "longitude":-9.221235684181355,
+      "address":"Estrada Nacional 117, 67",
+      "postcode":"2790-143",
+      "county":"Amadora",
+      "photos":[
+        "https://www.cinemacity.pt/images/editorials/ALFRAGIDE.png",
+        "https://www.cinemacity.pt/images/editorials/ALFRAGIDE_2.png",
+        "https://www.cinemacity.pt/images/editorials/ALFRAGIDE_3.png",
+        "https://www.cinemacity.pt/images/editorials/ALFRAGIDE_4.png",
+        "https://alegro.pt/alegro-setubal/wp-content/uploads/sites/3/2018/06/996x520_Cinema_City_03.jpg",
+        "https://www.cinemacity.pt/images/editorials/alf_site_square_2.jpg",
+        "https://www.distribuicaohoje.com/wp-content/uploads/sites/2/2016/07/Alegro-Alfragide-Distribui%C3%A7%C3%A3o-Hoje.jpg"
+      ],
+      "ratings":[
+        {
+          "category":"limpeza de salas",
+          "score":9
+        },
+        {
+          "category":"qualidade de som",
+          "score":8
+        },
+        {
+          "category":"conforto",
+          "score":9
+        },
+        {
+          "category":"qualidade de imagem",
+          "score":8
+        }
+      ],
+      "opening_hours":{
+        "Monday":{
+          "open":"13:00",
+          "close":"23:00"
+        },
+        "Tuesday":{
+          "open":"13:00",
+          "close":"23:00"
+        },
+        "Wednesday":{
+          "open":"13:00",
+          "close":"23:00"
+        },
+        "Thursday":{
+          "open":"13:00",
+          "close":"23:00"
+        },
+        "Friday":{
+          "open":"13:00",
+          "close":"23:30"
+        },
+        "Saturday":{
+          "open":"11:00",
+          "close":"23:30"
+        },
+        "Sunday":{
+          "open":"11:00",
+          "close":"23:00"
+        }
+      }
+    },
+    {
+      "cinema_id":9876,
+      "cinema_name":"Cinema City Almada Forum",
+      "cinema_provider":"Cinemas NOS",
+      "logo_url":"https://www.nos.pt/institucional/PT/sobre-a-nos/empresas-e-negocios/PublishingImages/Logos/cinemas.jpg",
+      "latitude":38.6599766296079,
+      "longitude":-9.176672034182891,
+      "address":"Centro Comercial Almada Fórum, Loja 3016",
+      "postcode":"2810-354",
+      "county":"Almada",
+      "ratings":[
+        {
+          "category":"limpeza de salas",
+          "score":9
+        },
+        {
+          "category":"qualidade de som",
+          "score":8
+        },
+        {
+          "category":"conforto",
+          "score":9
+        },
+        {
+          "category":"qualidade de imagem",
+          "score":9
+        }
+      ],
+      "opening_hours":{
+        "Monday":{
+          "open":"14:00",
+          "close":"23:00"
+        },
+        "Tuesday":{
+          "open":"14:00",
+          "close":"23:00"
+        },
+        "Wednesday":{
+          "open":"14:00",
+          "close":"23:00"
+        },
+        "Thursday":{
+          "open":"14:00",
+          "close":"23:00"
+        },
+        "Friday":{
+          "open":"14:00",
+          "close":"00:00"
+        },
+        "Saturday":{
+          "open":"11:00",
+          "close":"00:00"
+        },
+        "Sunday":{
+          "open":"11:00",
+          "close":"23:00"
+        }
+      }
+    }
+  ],
+  "status":{
+    "state":"OK",
+    "datetime":"2023-03-09T15:43:52.950Z"
+  }
+}

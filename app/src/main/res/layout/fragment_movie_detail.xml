@@ -66,8 +66,10 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@color/white"
             android:textSize="20dp"
+            android:paddingEnd="48dp"
             app:layout_constraintStart_toStartOf="@id/cardPoster"
-            app:layout_constraintTop_toBottomOf="@id/cardPoster" />
+            app:layout_constraintTop_toBottomOf="@id/cardPoster"
+            />
 
 
 
@@ -267,6 +269,78 @@
             app:layout_constraintEnd_toEndOf="@+id/ratingText"
             app:layout_constraintStart_toStartOf="@+id/ratingText"
             app:layout_constraintTop_toBottomOf="@+id/ratingText" />
+
+
+
+        <!-- Placeholder for User Rating -->
+        <TextView
+            android:id="@+id/userRatingTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:text=""
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@+id/ratingText"
+            app:layout_constraintEnd_toEndOf="@+id/ratingText"
+            app:layout_constraintTop_toBottomOf="@+id/ratingValue"
+            android:visibility="gone" />
+
+        <!-- Placeholder for Times Watched -->
+        <TextView
+            android:id="@+id/timesWatchedTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:text=""
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@+id/userRatingTextView"
+            app:layout_constraintEnd_toEndOf="@+id/userRatingTextView"
+            app:layout_constraintTop_toBottomOf="@+id/userRatingTextView"
+            android:visibility="gone" />
+
+        <!-- Placeholder for Cinema Location -->
+        <TextView
+            android:id="@+id/cinemaLocationTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:text=""
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@+id/timesWatchedTextView"
+            app:layout_constraintEnd_toEndOf="@+id/timesWatchedTextView"
+            app:layout_constraintTop_toBottomOf="@+id/timesWatchedTextView"
+            android:visibility="gone" />
+
+        <!-- Placeholder for Watch Date -->
+        <TextView
+            android:id="@+id/wachDateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:text=""
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@+id/cinemaLocationTextView"
+            app:layout_constraintEnd_toEndOf="@+id/cinemaLocationTextView"
+            app:layout_constraintTop_toBottomOf="@+id/cinemaLocationTextView"
+            android:visibility="gone" />
+
+        <!-- Placeholder for Comments -->
+        <TextView
+            android:id="@+id/commentsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:text=""
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@+id/wachDateTextView"
+            app:layout_constraintEnd_toEndOf="@+id/wachDateTextView"
+            app:layout_constraintTop_toBottomOf="@+id/wachDateTextView"
+            android:visibility="gone" />
 
 
     <androidx.appcompat.widget.AppCompatButton

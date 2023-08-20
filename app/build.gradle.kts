@@ -85,5 +85,7 @@ dependencies {
     implementation ("androidx.navigation:navigation-fragment-ktx:2.3.4")
     implementation ("androidx.navigation:navigation-ui-ktx:2.3.4")
 
+    implementation ("org.json:json:20210307")
+
 
 }
