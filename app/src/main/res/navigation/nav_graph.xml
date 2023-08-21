@@ -9,12 +9,22 @@
         android:label="Placeholder Fragment"
         tools:layout="@layout/fragment_placeholder" />
 
-
     <fragment
         android:id="@+id/fragment_movie_detail"
         android:name="pt.ulusofona.deisi.cm2223.g21702361.MovieDetailFragment"
         android:label="movie_detail"
         tools:layout="@layout/fragment_movie_detail">
+
+        <!-- Define arguments for movie details inside the fragment -->
+        <argument
+            android:name="imdbId"
+            app:argType="string" />
+        <argument
+            android:name="movieTitle"
+            app:argType="string" />
+        <argument
+            android:name="posterPath"
+            app:argType="string" />
 
         <!-- Action to transition to MovieRegistrationFragment -->
         <action
@@ -29,14 +39,27 @@
         tools:layout="@layout/fragment_movie_registration">
     </fragment>
 
-    <!-- Define arguments separately outside of fragments -->
-    <argument
-        android:name="imdbId"
-        app:argType="string" />
-    <argument
-        android:name="movieTitle"
-        app:argType="string" />
-    <argument
-        android:name="posterPath"
-        app:argType="string" />
+    <fragment
+        android:id="@+id/fragment_watchlist"
+        android:name="pt.ulusofona.deisi.cm2223.g21702361.WatchlistFragment"
+        android:label="Watchlist"
+        tools:layout="@layout/fragment_watchlist">
+
+        <!-- Action to transition to fragment_movie_detail -->
+        <action
+            android:id="@+id/action_watchlist_to_movieDetailFragment"
+            app:destination="@id/fragment_movie_detail">
+            <argument
+                android:name="imdbId"
+                app:argType="string" />
+            <argument
+                android:name="movieTitle"
+                app:argType="string" />
+            <argument
+                android:name="posterPath"
+                app:argType="string" />
+        </action>
+
+
+    </fragment>
 </navigation>

@@ -15,4 +15,7 @@ interface UserMovieDetailsDao {
 
     @Query("SELECT * FROM user_movie_details WHERE imdb_id = :imdbId")
     suspend fun getUserMovieDetails(imdbId: String): UserMovieDetails?
+
+    @Query("SELECT * FROM user_movie_details")
+    fun getAllUserMovieDetails(): List<UserMovieDetails>
 }

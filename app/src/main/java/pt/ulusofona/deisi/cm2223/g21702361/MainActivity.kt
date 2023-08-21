@@ -119,21 +119,17 @@ class MainActivity : AppCompatActivity() {
         val destination = R.id.fragment_movie_detail
 
         val bundle = Bundle()
-        bundle.putString("movieImdbId", movie.imdbID)
+        bundle.putString("imdbId", movie.imdbID)
         navController.navigate(destination, bundle)
     }
 
-    fun onAddClicked(view: View?) {
-        Toast.makeText(this, "Add icon clicked", Toast.LENGTH_SHORT).show()
+    fun onWatchlistClicked(view: View) {
+        Log.d("MainActivity", "onWatchlistClicked called")
+        val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
+        navController.navigate(R.id.fragment_watchlist)
     }
 
-    fun onEditClicked(view: View?) {
-        Toast.makeText(this, "Edit icon clicked", Toast.LENGTH_SHORT).show()
-    }
 
-    fun onDeleteClicked(view: View?) {
-        Toast.makeText(this, "Delete icon clicked", Toast.LENGTH_SHORT).show()
-    }
 
     override fun onDestroy() {
         super.onDestroy()

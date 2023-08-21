@@ -59,20 +59,10 @@ class MovieDetailFragment : Fragment() {
         binding.cinemaTextView.visibility = View.GONE
 
         binding.watchDateTextView.visibility= View.GONE
-       
-
-
-
-
-
-
-
 
         (activity as? AppCompatActivity)?.supportActionBar?.hide()
         return binding.root
     }
-
-
 
     private suspend fun getMovieByImdbId(imdbId: String): Movie? {
         Log.d(
@@ -168,7 +158,12 @@ class MovieDetailFragment : Fragment() {
         Log.d("MovieDetailFragment", "onViewCreated called")
 
         db = AppDatabase.getDatabase(requireContext())
-        val movieImdbId = arguments?.getString("movieImdbId")
+        val movieImdbId = arguments?.getString("imdbId")
+
+
+        val movieTitle = arguments?.getString("movieTitle")
+        val posterPath = arguments?.getString("posterPath")
+
 
         if (movieImdbId != null) {
             Log.d("MovieDetailFragment", "Fetching movie details for IMDb ID: $movieImdbId")

@@ -33,5 +33,7 @@ interface MovieDao {
     @Query("SELECT * FROM movies WHERE imdbID = :imdbId")
     suspend fun getMovieByImdbId(imdbId: String): Movie?
 
+    
+
 }
 

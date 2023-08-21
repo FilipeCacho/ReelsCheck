@@ -8,8 +8,10 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import java.util.Locale
 import pt.ulusofona.deisi.cm2223.g21702361.databinding.MovieItemBinding
 
-class MovieAdapter(var movies: MutableList<Movie>, private val onMovieClick: (Movie) -> Unit)
-    : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+class MovieAdapter(
+    private var movies: MutableList<Movie>,
+    private val onMovieClick: (Movie) -> Unit
+) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
     inner class MovieViewHolder(private val binding: MovieItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -42,10 +44,12 @@ class MovieAdapter(var movies: MutableList<Movie>, private val onMovieClick: (Mo
             holder.imdbRatingTextView.text = "N/A"
         }
 
+        // Set the click listener for the entire item view
         holder.itemView.setOnClickListener {
             onMovieClick(movie)
         }
     }
+
 
     fun addMovies(movies: List<Movie>) {
         this.movies.clear()
@@ -53,3 +57,4 @@ class MovieAdapter(var movies: MutableList<Movie>, private val onMovieClick: (Mo
         notifyDataSetChanged()
     }
 }
+

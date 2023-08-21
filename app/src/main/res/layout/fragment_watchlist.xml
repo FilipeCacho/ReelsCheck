@@ -1,0 +1,41 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="watchlistAdapter"
+            type="pt.ulusofona.deisi.cm2223.g21702361.WatchlistAdapter" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/slightlyBlack"
+        android:orientation="vertical">
+
+        <!-- Status Bar -->
+        <TextView
+            android:id="@+id/statusBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/slightlyBlack"
+            android:fontFamily="@font/baloo"
+            android:gravity="center"
+            android:letterSpacing="0.2"
+            android:paddingTop="16dp"
+            android:text="Watched List"
+            android:textColor="@color/myYellow"
+            android:textSize="24sp" />
+
+        <!-- RecyclerView for the watchlist -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/watchlistRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:adapter="@{watchlistAdapter}"/>
+    </LinearLayout>
+</layout>
