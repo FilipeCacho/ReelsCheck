@@ -37,8 +37,8 @@
         <!-- IMDb Icon -->
         <ImageView
             android:id="@+id/imdbIcon"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
             android:layout_marginEnd="8dp"
             android:src="@drawable/imdb" />
 
@@ -49,6 +49,6 @@
             android:layout_height="wrap_content"
             android:text="7.5"
             android:textColor="#FFFFFF"
-            android:textSize="12sp" />
+            android:textSize="16sp" />
     </LinearLayout>
 </LinearLayout>

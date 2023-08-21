@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#000000"
+        android:background="@color/slightlyBlack"
         tools:context=".MainActivity">
 
         <!-- Status Bar -->
@@ -141,101 +141,217 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <!-- Title for RecyclerView1 -->
+                <TextView
+                    android:id="@+id/titleRecyclerView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="28dp"
+                    android:text="Fight"
+                    android:textColor="#2EA9FF"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="MissingConstraints" />
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:background="@color/slightlyBlack"
                     android:scrollbars="horizontal"
                     android:scrollbarThumbHorizontal="@color/myYellow"
-                    app:layout_constraintTop_toBottomOf="@id/horizontalScrollView"
+                    app:layout_constraintTop_toBottomOf="@id/titleRecyclerView1"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
+
+                <!-- Title for RecyclerView2 -->
+                <TextView
+                    android:id="@+id/titleRecyclerView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="28dp"
+                    android:text="History"
+                    android:textColor="#BFB69D"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintTop_toBottomOf="@id/recyclerView1"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:background="@color/slightlyBlack"
                     android:scrollbars="horizontal"
                     android:scrollbarThumbHorizontal="@color/myYellow"
-                    app:layout_constraintTop_toBottomOf="@id/recyclerView1"
+                    app:layout_constraintTop_toBottomOf="@id/titleRecyclerView2"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
+
+
+
+                <!-- Title for RecyclerView3 -->
+                <TextView
+                    android:id="@+id/titleRecyclerView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="28dp"
+                    android:text="Western"
+                    android:textColor="#FAB857"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintTop_toBottomOf="@id/recyclerView2"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:background="@color/slightlyBlack"
                     android:scrollbars="horizontal"
                     android:scrollbarThumbHorizontal="@color/myYellow"
-                    app:layout_constraintTop_toBottomOf="@id/recyclerView2"
+                    app:layout_constraintTop_toBottomOf="@id/titleRecyclerView3"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
+
+
+                <!-- Title for RecyclerView4 -->
+                <TextView
+                    android:id="@+id/titleRecyclerView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="28dp"
+                    android:text="Sports"
+                    android:textColor="#C91D2B"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintTop_toBottomOf="@id/recyclerView3"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView4"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:background="@color/slightlyBlack"
                     android:scrollbars="horizontal"
                     android:scrollbarThumbHorizontal="@color/myYellow"
-                    app:layout_constraintTop_toBottomOf="@id/recyclerView3"
+                    app:layout_constraintTop_toBottomOf="@id/titleRecyclerView4"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
+
+                <!-- Title for RecyclerView5 -->
+                <TextView
+                    android:id="@+id/titleRecyclerView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="28dp"
+                    android:text="Romantic"
+                    android:textColor="#FF4589"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintTop_toBottomOf="@id/recyclerView4"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView5"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:background="@color/slightlyBlack"
                     android:scrollbars="horizontal"
                     android:scrollbarThumbHorizontal="@color/myYellow"
-                    app:layout_constraintTop_toBottomOf="@id/recyclerView4"
+                    app:layout_constraintTop_toBottomOf="@id/titleRecyclerView5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
+
+                <!-- Title for RecyclerView6 -->
+                <TextView
+                    android:id="@+id/titleRecyclerView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="28dp"
+                    android:text="Murder"
+                    android:textColor="#FD2700"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintTop_toBottomOf="@id/recyclerView5"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView6"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:background="@color/slightlyBlack"
                     android:scrollbars="horizontal"
                     android:scrollbarThumbHorizontal="@color/myYellow"
-                    app:layout_constraintTop_toBottomOf="@id/recyclerView5"
+                    app:layout_constraintTop_toBottomOf="@id/titleRecyclerView6"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
+
+                <!-- Title for RecyclerView7 -->
+                <TextView
+                    android:id="@+id/titleRecyclerView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="28dp"
+                    android:text="Horror"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintTop_toBottomOf="@id/recyclerView6"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView7"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:background="@color/slightlyBlack"
                     android:scrollbars="horizontal"
                     android:scrollbarThumbHorizontal="@color/myYellow"
-                    app:layout_constraintTop_toBottomOf="@id/recyclerView6"
+                    app:layout_constraintTop_toBottomOf="@id/titleRecyclerView7"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
+
+                <!-- Title for RecyclerView8 -->
+                <TextView
+                    android:id="@+id/titleRecyclerView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="28dp"
+                    android:text="War"
+                    android:textColor="#FFC82B"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintTop_toBottomOf="@id/recyclerView7"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView8"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:background="@color/slightlyBlack"
                     android:scrollbars="horizontal"
                     android:scrollbarThumbHorizontal="@color/myYellow"
-                    app:layout_constraintTop_toBottomOf="@id/recyclerView7"
+                    app:layout_constraintTop_toBottomOf="@id/titleRecyclerView8"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -354,9 +470,6 @@
             android:layout_height="match_parent"
             app:navGraph="@navigation/nav_graph"
             android:visibility="gone" />
-
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
