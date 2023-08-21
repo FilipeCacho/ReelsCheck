@@ -10,284 +10,280 @@
 
     <ScrollView
         android:layout_width="match_parent"
+        android:fillViewport="true"
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/slightlyBlack"
-            tools:context=".MovieDetailFragment">
-
-
-    <TextView
-        android:id="@+id/statusBar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+            android:layout_height="match_parent"
         android:background="@color/slightlyBlack"
-        android:fontFamily="@font/baloo"
-        android:gravity="center"
-        android:letterSpacing="0.2"
-        android:paddingTop="4dp"
-        android:text="Movie Detail"
-        android:textColor="@color/myYellow"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!-- Movie Poster Card -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardPoster"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginStart="20dp"
-        app:cardElevation="0dp"
-        app:cardCornerRadius="12dp"
-        app:cardBackgroundColor="@color/slightlyBlack"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/statusBar">
-
-        <!-- Movie Poster Card -->
-        <ImageView
-            android:id="@+id/posterImageView"
-            android:layout_width="240dp"
-            android:layout_height="360dp"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            app:imageUrl="@{movie.poster}" />
-    </androidx.cardview.widget.CardView>
-
-        <!-- Movie Title -->
-        <TextView
-            android:id="@+id/titleTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="@{movie.title}"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:paddingEnd="48dp"
-            app:layout_constraintStart_toStartOf="@id/cardPoster"
-            app:layout_constraintTop_toBottomOf="@id/cardPoster"
-            />
-
-
-
-    <!-- Yellow Line -->
-    <View
-        android:id="@+id/yellowLine"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/graylevel3"
-        app:layout_constraintTop_toBottomOf="@+id/titleTextView"
-        app:layout_constraintStart_toStartOf="@+id/cardPoster"
-        app:layout_constraintEnd_toEndOf="@+id/yellowSquare3" />
-
-    <TextView
-        android:id="@+id/synopsis"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:fontFamily="@font/montserrat_light"
-        android:text="Synopsis"
-        android:textColor="@color/white"
-        android:textSize="16dp"
-
-        app:layout_constraintStart_toStartOf="@+id/yellowLine"
-        app:layout_constraintTop_toBottomOf="@+id/yellowLine" />
-
-
-
-        <!-- Plot Text -->
-        <TextView
-            android:id="@+id/plot"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/montserrat_light"
-            android:text="@{movie.plot}"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            android:letterSpacing="0.04"
-            android:lineSpacingExtra="2dp"
-            app:layout_constraintEnd_toEndOf="@+id/yellowLine"
-            app:layout_constraintStart_toStartOf="@+id/synopsis"
-            app:layout_constraintTop_toBottomOf="@+id/synopsis" />
-
-
-
-    <!-- ... other components ... -->
-
-    <!-- Yellow Squares with Borders -->
-    <View
-        android:id="@+id/yellowSquare1"
-        android:layout_width="100dp"
-        android:layout_height="104dp"
-        android:background="@drawable/square_border"
-        android:layout_marginStart="28dp"
-        app:layout_constraintTop_toTopOf="@+id/cardPoster"
-        app:layout_constraintBottom_toTopOf="@+id/yellowSquare2"
-        app:layout_constraintStart_toEndOf="@+id/cardPoster"
-        app:layout_constraintVertical_chainStyle="spread" />
-
-    <ImageView
-        android:id="@+id/calendaricon"
-        android:layout_width="25dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/calendar"
-        android:scaleType="fitCenter"
-        app:layout_constraintTop_toTopOf="@+id/yellowSquare1"
-        app:layout_constraintStart_toStartOf="@+id/yellowSquare1"
-        app:layout_constraintEnd_toEndOf="@+id/yellowSquare1" />
-
-
-    <TextView
-        android:id="@+id/calendarText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/montserrat_light"
-        android:text="Released"
-        android:textColor="#01D2AD"
-        android:textSize="14dp"
-        app:layout_constraintEnd_toEndOf="@+id/yellowSquare1"
-        app:layout_constraintStart_toStartOf="@+id/yellowSquare1"
-        app:layout_constraintTop_toBottomOf="@+id/calendaricon" />
-
-
-        <!-- Release Date -->
-        <TextView
-            android:id="@+id/calendarValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:fontFamily="@font/montserrat_medium"
-            android:text="@{movie.released}"
-            android:textColor="@color/white"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="@+id/calendarText"
-            app:layout_constraintStart_toStartOf="@+id/calendarText"
-            app:layout_constraintTop_toBottomOf="@+id/calendarText" />
-
-
-    <View
-        android:id="@+id/yellowSquare2"
-        android:layout_width="100dp"
-        android:layout_height="104dp"
-        android:background="@drawable/square_border"
-        android:layout_marginStart="28dp"
-        app:layout_constraintTop_toBottomOf="@+id/yellowSquare1"
-        app:layout_constraintBottom_toTopOf="@+id/yellowSquare3"
-        app:layout_constraintStart_toEndOf="@+id/cardPoster" />
-
-    <ImageView
-        android:id="@+id/genre"
-        android:layout_width="25dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/genre"
-        android:scaleType="fitCenter"
-        app:layout_constraintTop_toTopOf="@+id/yellowSquare2"
-        app:layout_constraintStart_toStartOf="@+id/yellowSquare2"
-        app:layout_constraintEnd_toEndOf="@+id/yellowSquare2" />
-
-
-    <TextView
-        android:id="@+id/genreText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Genre"
-        android:fontFamily="@font/montserrat_light"
-        android:textColor="#0077FF"
-        app:layout_constraintTop_toBottomOf="@+id/genre"
-        app:layout_constraintStart_toStartOf="@+id/yellowSquare2"
-        app:layout_constraintEnd_toEndOf="@+id/yellowSquare2" />
-
-
-        <!-- Genre -->
-        <TextView
-            android:id="@+id/genreValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:fontFamily="@font/montserrat_medium"
-            android:text="@{movie.genre}"
-            android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@+id/genreText"
-            app:layout_constraintStart_toStartOf="@+id/genreText"
-            app:layout_constraintEnd_toEndOf="@+id/genreText" />
-
-
-    <View
-        android:id="@+id/yellowSquare3"
-        android:layout_width="100dp"
-        android:layout_height="104dp"
-        android:background="@drawable/square_border"
-        android:layout_marginStart="28dp"
-        app:layout_constraintTop_toBottomOf="@+id/yellowSquare2"
-        app:layout_constraintBottom_toBottomOf="@+id/cardPoster"
-        app:layout_constraintStart_toEndOf="@+id/cardPoster" />
-
-
-    <ImageView
-        android:id="@+id/starIcon"
-        android:layout_width="25dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/star"
-        android:scaleType="fitCenter"
-        app:layout_constraintTop_toTopOf="@+id/yellowSquare3"
-        app:layout_constraintStart_toStartOf="@+id/yellowSquare3"
-        app:layout_constraintEnd_toEndOf="@+id/yellowSquare3" />
-
-
-    <TextView
-        android:id="@+id/ratingText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Rating"
-        android:fontFamily="@font/montserrat_light"
-        android:textColor="@color/myYellow"
-        app:layout_constraintTop_toBottomOf="@+id/starIcon"
-        app:layout_constraintStart_toStartOf="@+id/yellowSquare3"
-        app:layout_constraintEnd_toEndOf="@+id/yellowSquare3" />
+        tools:context=".MovieDetailFragment">
 
 
         <TextView
-            android:id="@+id/ratingValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:fontFamily="@font/montserrat_medium"
-            android:text="@{String.valueOf(movie.imdbrating)}"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@+id/ratingText"
-            app:layout_constraintStart_toStartOf="@+id/ratingText"
-            app:layout_constraintTop_toBottomOf="@+id/ratingText" />
+                android:id="@+id/statusBar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@color/slightlyBlack"
+                android:fontFamily="@font/baloo"
+                android:gravity="center"
+                android:letterSpacing="0.2"
+                android:paddingTop="4dp"
+                android:text="Movie Detail"
+                android:textColor="@color/myYellow"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Movie Poster Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardPoster"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="20dp"
+                app:cardElevation="0dp"
+                app:cardCornerRadius="12dp"
+                app:cardBackgroundColor="@color/slightlyBlack"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/statusBar">
+
+                <!-- Movie Poster Card -->
+                <ImageView
+                    android:id="@+id/posterImageView"
+                    android:layout_width="240dp"
+                    android:layout_height="360dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    app:imageUrl="@{movie.poster}" />
+            </androidx.cardview.widget.CardView>
+
+            <!-- Movie Title -->
+            <TextView
+                android:id="@+id/titleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@{movie.title}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:paddingEnd="48dp"
+                app:layout_constraintStart_toStartOf="@id/cardPoster"
+                app:layout_constraintTop_toBottomOf="@id/cardPoster"
+                />
 
 
 
-        <!-- New Purple Line below the Plot -->
-        <View
-            android:id="@+id/lineBelowPlot"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_marginTop="16dp"
-            android:background="@color/graylevel3"
-            app:layout_constraintTop_toBottomOf="@+id/plot"
-            app:layout_constraintStart_toStartOf="@+id/plot"
-            app:layout_constraintEnd_toEndOf="@+id/plot" />
+            <!-- Yellow Line -->
+            <View
+                android:id="@+id/yellowLine"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/graylevel3"
+                app:layout_constraintTop_toBottomOf="@+id/titleTextView"
+                app:layout_constraintStart_toStartOf="@+id/cardPoster"
+                app:layout_constraintEnd_toEndOf="@+id/yellowSquare3" />
+
+            <TextView
+                android:id="@+id/synopsis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:fontFamily="@font/montserrat_light"
+                android:text="Synopsis"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+
+                app:layout_constraintStart_toStartOf="@+id/yellowLine"
+                app:layout_constraintTop_toBottomOf="@+id/yellowLine" />
 
 
+            <!-- Plot Text -->
+            <TextView
+                android:id="@+id/plot"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/montserrat_light"
+                android:text="@{movie.plot}"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:letterSpacing="0.04"
+                android:lineSpacingExtra="2dp"
+                app:layout_constraintEnd_toEndOf="@+id/yellowLine"
+                app:layout_constraintStart_toStartOf="@+id/synopsis"
+                app:layout_constraintTop_toBottomOf="@+id/synopsis" />
+
+
+            <!-- ... other components ... -->
+
+            <!-- Yellow Squares with Borders -->
+            <View
+                android:id="@+id/yellowSquare1"
+                android:layout_width="100dp"
+                android:layout_height="104dp"
+                android:background="@drawable/square_border"
+                android:layout_marginStart="28dp"
+                app:layout_constraintTop_toTopOf="@+id/cardPoster"
+                app:layout_constraintBottom_toTopOf="@+id/yellowSquare2"
+                app:layout_constraintStart_toEndOf="@+id/cardPoster"
+                app:layout_constraintVertical_chainStyle="spread" />
+
+            <ImageView
+                android:id="@+id/calendaricon"
+                android:layout_width="25dp"
+                android:layout_height="26dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/calendar"
+                android:scaleType="fitCenter"
+                app:layout_constraintTop_toTopOf="@+id/yellowSquare1"
+                app:layout_constraintStart_toStartOf="@+id/yellowSquare1"
+                app:layout_constraintEnd_toEndOf="@+id/yellowSquare1" />
+
+
+            <TextView
+                android:id="@+id/calendarText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/montserrat_light"
+                android:text="Released"
+                android:textColor="#01D2AD"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toEndOf="@+id/yellowSquare1"
+                app:layout_constraintStart_toStartOf="@+id/yellowSquare1"
+                app:layout_constraintTop_toBottomOf="@+id/calendaricon" />
+
+
+            <!-- Release Date -->
+            <TextView
+                android:id="@+id/calendarValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="@{movie.released}"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/calendarText"
+                app:layout_constraintStart_toStartOf="@+id/calendarText"
+                app:layout_constraintTop_toBottomOf="@+id/calendarText" />
+
+
+            <View
+                android:id="@+id/yellowSquare2"
+                android:layout_width="100dp"
+                android:layout_height="104dp"
+                android:background="@drawable/square_border"
+                android:layout_marginStart="28dp"
+                app:layout_constraintTop_toBottomOf="@+id/yellowSquare1"
+                app:layout_constraintBottom_toTopOf="@+id/yellowSquare3"
+                app:layout_constraintStart_toEndOf="@+id/cardPoster" />
+
+            <ImageView
+                android:id="@+id/genre"
+                android:layout_width="25dp"
+                android:layout_height="26dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/genre"
+                android:scaleType="fitCenter"
+                app:layout_constraintTop_toTopOf="@+id/yellowSquare2"
+                app:layout_constraintStart_toStartOf="@+id/yellowSquare2"
+                app:layout_constraintEnd_toEndOf="@+id/yellowSquare2" />
+
+
+            <TextView
+                android:id="@+id/genreText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Genre"
+                android:fontFamily="@font/montserrat_light"
+                android:textColor="#0077FF"
+                app:layout_constraintTop_toBottomOf="@+id/genre"
+                app:layout_constraintStart_toStartOf="@+id/yellowSquare2"
+                app:layout_constraintEnd_toEndOf="@+id/yellowSquare2" />
+
+
+            <!-- Genre -->
+            <TextView
+                android:id="@+id/genreValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="@{movie.genre}"
+                android:textColor="@color/white"
+                app:layout_constraintTop_toBottomOf="@+id/genreText"
+                app:layout_constraintStart_toStartOf="@+id/genreText"
+                app:layout_constraintEnd_toEndOf="@+id/genreText" />
+
+
+            <View
+                android:id="@+id/yellowSquare3"
+                android:layout_width="100dp"
+                android:layout_height="104dp"
+                android:background="@drawable/square_border"
+                android:layout_marginStart="28dp"
+                app:layout_constraintTop_toBottomOf="@+id/yellowSquare2"
+                app:layout_constraintBottom_toBottomOf="@+id/cardPoster"
+                app:layout_constraintStart_toEndOf="@+id/cardPoster" />
+
+
+            <ImageView
+                android:id="@+id/starIcon"
+                android:layout_width="25dp"
+                android:layout_height="26dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/star"
+                android:scaleType="fitCenter"
+                app:layout_constraintTop_toTopOf="@+id/yellowSquare3"
+                app:layout_constraintStart_toStartOf="@+id/yellowSquare3"
+                app:layout_constraintEnd_toEndOf="@+id/yellowSquare3" />
+
+
+            <TextView
+                android:id="@+id/ratingText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Rating"
+                android:fontFamily="@font/montserrat_light"
+                android:textColor="@color/myYellow"
+                app:layout_constraintTop_toBottomOf="@+id/starIcon"
+                app:layout_constraintStart_toStartOf="@+id/yellowSquare3"
+                app:layout_constraintEnd_toEndOf="@+id/yellowSquare3" />
+
+
+            <TextView
+                android:id="@+id/ratingValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="@{String.valueOf(movie.imdbrating)}"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/ratingText"
+                app:layout_constraintStart_toStartOf="@+id/ratingText"
+                app:layout_constraintTop_toBottomOf="@+id/ratingText" />
+
+
+            <!-- New Purple Line below the Plot -->
+            <View
+                android:id="@+id/lineBelowPlot"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/graylevel3"
+                app:layout_constraintTop_toBottomOf="@+id/plot"
+                app:layout_constraintStart_toStartOf="@+id/plot"
+                app:layout_constraintEnd_toEndOf="@+id/plot" />
 
 
 
@@ -297,7 +293,8 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/yellowTicket"
                 android:layout_width="0dp"
-                android:layout_height="200dp"
+                android:layout_height="wrap_content"
+
                 android:layout_marginTop="16dp"
                 android:background="@drawable/yellow_movie_ticket"
                 android:layout_marginStart="16dp"
@@ -306,49 +303,156 @@
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
                 android:paddingTop="8dp"
+                android:paddingBottom="16dp"
                 app:layout_constraintTop_toBottomOf="@+id/lineBelowPlot"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
 
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/centerGuideline"
+
+
+                <!-- "Cinema" TextView -->
+                <TextView
+                    android:id="@+id/cinemaTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.5" />
+                    android:fontFamily="@font/montserrat_light"
+                    android:text="Cinema"
+                    android:scaleY="1.10"
+                    android:textColor="@color/slightlyGray"
+                    android:textSize="16sp"
+                    android:paddingStart="8dp"
+                    android:paddingTop="8dp"
+                    android:layout_gravity="top|start"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <!-- Cinema Name TextView -->
+                <TextView
+                    android:id="@+id/cinemaNameTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+
+                    android:fontFamily="@font/montserrat_subrayada_bold"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:paddingStart="8dp"
+                    android:scaleY="1.15"
+                    app:layout_constraintEnd_toStartOf="@id/userScoreTextView"
+                    app:layout_constraintStart_toStartOf="@+id/cinemaTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/cinemaTextView" />
+
+                <!-- City TextView -->
+                <TextView
+                    android:id="@+id/userCityTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_subrayada_bold"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:paddingStart="8dp"
+                    android:paddingTop="4dp"
+                    android:scaleY="1.15"
+                    app:layout_constraintEnd_toStartOf="@id/userScoreTextView"
+                    app:layout_constraintStart_toStartOf="@+id/cinemaTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/cinemaNameTextView" />
+
+
+
+                <!-- "User Score" TextView -->
+                <TextView
+                    android:id="@+id/userScoreTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_light"
+                    android:text="User Score"
+                    android:paddingTop="8dp"
+                    android:textColor="@color/slightlyGray"
+                    android:textSize="16sp"
+                    android:scaleY="1.1"
+                    android:paddingEnd="8dp"
+                    app:layout_constraintTop_toTopOf="@+id/cinemaTextView"
+                    app:layout_constraintEnd_toEndOf="parent" />
 
                 <!-- User Rating TextView -->
                 <TextView
                     android:id="@+id/userRatingTextView"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/montserrat_light"
+                    android:fontFamily="@font/montserrat_subrayada_bold"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:letterSpacing="0.04"
-                    android:lineSpacingExtra="2dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:textSize="20sp"
+                    android:scaleY="1.15"
+                    android:paddingEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="@+id/userScoreTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/userScoreTextView" />
 
-                <!-- Cinema Location TextView -->
+
                 <TextView
-                    android:id="@+id/cinemaLocationTextView"
+                    android:id="@+id/dateTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_light"
+                    android:text="Date"
+                    android:textSize="16sp"
+                    android:textColor="@color/slightlyGray"
+                    android:scaleY="1.10"
+                    android:paddingEnd="8dp"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintTop_toTopOf="@+id/userCityTextView"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+
+                <!-- Times Watched TextView -->
+                <TextView
+                    android:id="@+id/timesWatchedTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_subrayada_bold"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:paddingStart="8dp"
+
+                    android:scaleY="1.15"
+                    android:paddingEnd="100dp"
+                    app:layout_constraintStart_toStartOf="@+id/dateTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/dateTextView"
+                    app:layout_constraintEnd_toEndOf="@+id/dateTextView" />
+
+
+                <TextView
+                    android:id="@+id/CommentsText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_light"
+                    android:text="Comments"
+                    android:scaleY="1.10"
+                    android:textColor="@color/slightlyGray"
+                    android:textSize="16sp"
+                    android:paddingStart="8dp"
+                    android:paddingTop="16dp"
+                    app:layout_constraintTop_toBottomOf="@+id/userCityTextView"
+                    app:layout_constraintStart_toStartOf="@+id/userCityTextView" />
+
+
+                <!-- Comments TextView -->
+                <TextView
+                    android:id="@+id/commentsTextView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
                     android:fontFamily="@font/montserrat_light"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:letterSpacing="0.04"
                     android:lineSpacingExtra="2dp"
-                    app:layout_constraintStart_toStartOf="@+id/userRatingTextView"
-                    app:layout_constraintEnd_toStartOf="@id/centerGuideline"
-                    app:layout_constraintTop_toBottomOf="@+id/userRatingTextView" />
+                    android:paddingEnd="4dp"
+                    android:paddingStart="8dp"
+                    android:paddingBottom="12dp"
+                    app:layout_constraintStart_toStartOf="@+id/CommentsText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/CommentsText" />
 
-
-                <!-- Watch Date TextView -->
+                <!-- Watch Date TextView TRASH -->
                 <TextView
                     android:id="@+id/watchDateTextView"
                     android:layout_width="wrap_content"
@@ -363,64 +467,27 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <!-- Times Watched TextView -->
-                <TextView
-                    android:id="@+id/timesWatchedTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:fontFamily="@font/montserrat_light"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:letterSpacing="0.04"
-                    android:lineSpacingExtra="2dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/watchDateTextView" />
-
-                <!-- Comments TextView -->
-                <TextView
-                    android:id="@+id/commentsTextView"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:fontFamily="@font/montserrat_light"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:letterSpacing="0.04"
-                    android:lineSpacingExtra="2dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
-
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
-
-
-
-
             <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/registerButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="28dp"
-        android:background="@drawable/rounded_button_background"
-        android:text="Register Movie Details"
-        android:textColor="@color/slightlyBlack"
-        android:padding="12dp"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+                android:id="@+id/registerButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="28dp"
+                android:background="@drawable/rounded_button_background"
+                android:text="Register Movie Details"
+                android:textColor="@color/slightlyBlack"
+                android:padding="12dp"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
 </layout>

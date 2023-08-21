@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.BindingAdapter
 import androidx.fragment.app.Fragment
@@ -24,9 +25,13 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
     }
 }
 
+
+
 class MovieDetailFragment : Fragment() {
     private lateinit var binding: FragmentMovieDetailBinding
     private lateinit var db: AppDatabase
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,11 +45,34 @@ class MovieDetailFragment : Fragment() {
         //binding.userMovieRegisterTitle.visibility = View.GONE
         binding.watchDateTextView.visibility = View.GONE
 
+        //hide yellow ticket and gray text items
+        binding.cinemaNameTextView.visibility = View.GONE
+        binding.userCityTextView.visibility = View.GONE
+        binding.userScoreTextView.visibility = View.GONE
+        binding.userRatingTextView.visibility = View.GONE
+        binding.dateTextView.visibility = View.GONE
+        binding.timesWatchedTextView.visibility = View.GONE
+        binding.CommentsText.visibility = View.GONE
+        binding.commentsTextView.visibility = View.GONE
+        binding.watchDateTextView.visibility = View.GONE
+        binding.yellowTicket.visibility = View.GONE
+        binding.cinemaTextView.visibility = View.GONE
+
+        binding.watchDateTextView.visibility= View.GONE
+       
+
+
+
+
+
+
 
 
         (activity as? AppCompatActivity)?.supportActionBar?.hide()
         return binding.root
     }
+
+
 
     private suspend fun getMovieByImdbId(imdbId: String): Movie? {
         Log.d(
@@ -69,28 +97,65 @@ class MovieDetailFragment : Fragment() {
             val userMovieDetails = userMovieDetailsDao.getUserMovieDetails(movieImdbId)
             if (userMovieDetails != null) {
                 // Set the text of each text view with the appropriate value
-                binding.userRatingTextView.text = userMovieDetails.userRating.toString()
+                binding.userRatingTextView.text = "${userMovieDetails.userRating}/10"
                 binding.timesWatchedTextView.text = userMovieDetails.timesWatched.toString()
-                binding.cinemaLocationTextView.text = userMovieDetails.cinemaLocation.toString()
+                binding.cinemaNameTextView.text = userMovieDetails.cinemaName.toString()
                 binding.watchDateTextView.text = userMovieDetails.watchDate.toString()
                 binding.commentsTextView.text = userMovieDetails.comments.toString()
+                binding.userCityTextView.text=userMovieDetails.county.toString()
 
                 // Set the visibility of each text view to VISIBLE
                 binding.userRatingTextView.visibility = View.VISIBLE
                 binding.timesWatchedTextView.visibility = View.VISIBLE
-                binding.cinemaLocationTextView.visibility = View.VISIBLE
+                binding.cinemaNameTextView.visibility = View.VISIBLE
                 //binding.watchDateTextView.visibility = View.VISIBLE
                 binding.commentsTextView.visibility = View.VISIBLE
                 //binding.userMovieRegisterTitle.visibility= View.VISIBLE
+                binding.userCityTextView.visibility=View.VISIBLE
+
+
+                //show yellow ticket and gray text items
+                binding.cinemaNameTextView.visibility = View.VISIBLE
+                binding.userCityTextView.visibility = View.VISIBLE
+                binding.userScoreTextView.visibility = View.VISIBLE
+                binding.userRatingTextView.visibility = View.VISIBLE
+                binding.dateTextView.visibility = View.VISIBLE
+                binding.timesWatchedTextView.visibility = View.VISIBLE
+                binding.CommentsText.visibility = View.VISIBLE
+                binding.commentsTextView.visibility = View.VISIBLE
+
+                binding.yellowTicket.visibility = View.VISIBLE
+                binding.cinemaTextView.visibility = View.VISIBLE
+
+
+
             } else {
                 // User details not available for this movie, you can handle this case as needed
                 // For example, you might want to hide the text views again
                 binding.userRatingTextView.visibility = View.GONE
                 binding.timesWatchedTextView.visibility = View.GONE
-                binding.cinemaLocationTextView.visibility = View.GONE
+                binding.cinemaNameTextView.visibility = View.GONE
                 binding.watchDateTextView.visibility = View.GONE
                 binding.commentsTextView.visibility = View.GONE
+                binding.userCityTextView.visibility=View.GONE
                 //binding.userMovieRegisterTitle.visibility= View.GONE
+
+                //hide yellow ticket and gray text items
+                binding.cinemaNameTextView.visibility = View.GONE
+                binding.userCityTextView.visibility = View.GONE
+                binding.userScoreTextView.visibility = View.GONE
+                binding.userRatingTextView.visibility = View.GONE
+                binding.dateTextView.visibility = View.GONE
+                binding.timesWatchedTextView.visibility = View.GONE
+                binding.CommentsText.visibility = View.GONE
+                binding.commentsTextView.visibility = View.GONE
+                binding.watchDateTextView.visibility = View.GONE
+                binding.yellowTicket.visibility = View.GONE
+                binding.cinemaTextView.visibility = View.GONE
+
+
+
+
 
                 binding.root.requestLayout()
             }

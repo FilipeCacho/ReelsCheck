@@ -9,7 +9,7 @@ import java.util.Date
 data class UserMovieDetails(
     @PrimaryKey(autoGenerate = true) val id: Long,
     @ColumnInfo(name = "imdb_id") val imdbId: String,
-    @ColumnInfo(name = "user_rating") val userRating: Float,
+    @ColumnInfo(name = "user_rating") val userRating: Int,
     @ColumnInfo(name = "times_watched") val timesWatched: String,
     @ColumnInfo(name = "cinema_location") val cinemaLocation: String,
     @ColumnInfo(name = "watch_date") val watchDate: Long,

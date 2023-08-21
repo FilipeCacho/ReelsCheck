@@ -142,7 +142,7 @@ class MovieRegistrationFragment : Fragment() {
                 Toast.makeText(requireContext(), "Please fill in all fields.", Toast.LENGTH_SHORT)
                     .show()
             } else {
-                val userRating = userRatingText.toFloatOrNull()
+                val userRating = userRatingText.toIntOrNull()
                 if (userRating == null || userRating < 1 || userRating > 10) {
                     binding.userRatingTextInputLayout.error = "Please enter a rating between 1 and 10"
                     return@setOnClickListener
