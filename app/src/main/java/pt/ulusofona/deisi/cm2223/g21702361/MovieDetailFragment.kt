@@ -37,7 +37,8 @@ class MovieDetailFragment : Fragment() {
         binding = FragmentMovieDetailBinding.inflate(inflater, container, false)
 
 
-        binding.userMovieRegisterTitle.visibility = View.GONE
+        //binding.userMovieRegisterTitle.visibility = View.GONE
+        binding.watchDateTextView.visibility = View.GONE
 
 
 
@@ -78,9 +79,9 @@ class MovieDetailFragment : Fragment() {
                 binding.userRatingTextView.visibility = View.VISIBLE
                 binding.timesWatchedTextView.visibility = View.VISIBLE
                 binding.cinemaLocationTextView.visibility = View.VISIBLE
-                binding.watchDateTextView.visibility = View.VISIBLE
+                //binding.watchDateTextView.visibility = View.VISIBLE
                 binding.commentsTextView.visibility = View.VISIBLE
-                binding.userMovieRegisterTitle.visibility= View.VISIBLE
+                //binding.userMovieRegisterTitle.visibility= View.VISIBLE
             } else {
                 // User details not available for this movie, you can handle this case as needed
                 // For example, you might want to hide the text views again
@@ -89,7 +90,7 @@ class MovieDetailFragment : Fragment() {
                 binding.cinemaLocationTextView.visibility = View.GONE
                 binding.watchDateTextView.visibility = View.GONE
                 binding.commentsTextView.visibility = View.GONE
-                binding.userMovieRegisterTitle.visibility= View.GONE
+                //binding.userMovieRegisterTitle.visibility= View.GONE
 
                 binding.root.requestLayout()
             }
