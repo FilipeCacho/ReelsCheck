@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id ("androidx.navigation.safeargs.kotlin")
+    id("kotlin-parcelize")
 
 
 
@@ -86,4 +87,6 @@ dependencies {
     implementation ("androidx.navigation:navigation-ui-ktx:2.5.0")
 
     implementation ("org.json:json:20210307")
+
+    
 }

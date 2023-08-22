@@ -1,10 +1,10 @@
 package pt.ulusofona.deisi.cm2223.g21702361
 
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -15,7 +15,6 @@ import kotlinx.coroutines.withContext
 import pt.ulusofona.deisi.cm2223.g21702361.AppDatabase
 import pt.ulusofona.deisi.cm2223.g21702361.Movie
 import pt.ulusofona.deisi.cm2223.g21702361.WatchlistAdapter
-
 import pt.ulusofona.deisi.cm2223.g21702361.UserMovieDetails
 import pt.ulusofona.deisi.cm2223.g21702361.databinding.FragmentWatchlistBinding
 import pt.ulusofona.deisi.cm2223.g21702361.WatchlistFragmentDirections
@@ -50,7 +49,23 @@ class WatchlistFragment : Fragment() {
         binding.watchlistRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.watchlistRecyclerView.adapter = watchlistAdapter
 
-        loadMoviesBasedOnUserDetails()
+        // Check if savedInstanceState has data
+        if (savedInstanceState != null && savedInstanceState.containsKey("MOVIE_LIST")) {
+            val savedMovies: MutableList<Movie> = savedInstanceState.getParcelableArrayList("MOVIE_LIST") ?: mutableListOf()
+            watchlistAdapter.addMovies(savedMovies)
+        } else {
+            loadMoviesBasedOnUserDetails()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+    }
+
+    override fun onPause() {
+        super.onPause()
+        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
     }
 
     private fun navigateToMovieDetail(movie: Movie) {
@@ -61,10 +76,6 @@ class WatchlistFragment : Fragment() {
         )
         findNavController().navigate(action)
     }
-
-
-
-
 
     private fun loadMoviesBasedOnUserDetails() {
         viewLifecycleOwner.lifecycleScope.launch {
@@ -89,5 +100,10 @@ class WatchlistFragment : Fragment() {
         return withContext(Dispatchers.IO) {
             db.userMovieDetailsDao().getAllUserMovieDetails()
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putParcelableArrayList("MOVIE_LIST", ArrayList<Movie>(watchlistAdapter.movies))
     }
 }

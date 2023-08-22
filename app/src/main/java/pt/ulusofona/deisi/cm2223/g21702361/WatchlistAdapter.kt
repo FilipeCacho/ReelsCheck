@@ -11,7 +11,7 @@ import pt.ulusofona.deisi.cm2223.g21702361.Movie
 
 
 class WatchlistAdapter(
-    private var movies: MutableList<Movie>,
+    internal var movies: MutableList<Movie>,
     private val onMovieClick: (Movie) -> Unit
 ) : RecyclerView.Adapter<WatchlistAdapter.WatchlistViewHolder>() {  // <-- Change here
 

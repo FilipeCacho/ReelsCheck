@@ -1,8 +1,11 @@
 package pt.ulusofona.deisi.cm2223.g21702361
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 @Entity(tableName = "movies")
 data class Movie(
     @PrimaryKey val imdbID: String,
@@ -13,8 +16,8 @@ data class Movie(
     val imdbrating: String,
     val genre: String,
     val imdbTotalVotes: String,
-    val recyclerViewId: Int // Add this property
-)
+    val recyclerViewId: Int
+) : Parcelable
 
 
 
