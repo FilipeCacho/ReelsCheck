@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.BindingAdapter
 import androidx.fragment.app.Fragment
@@ -33,6 +34,8 @@ class MovieDetailFragment : Fragment() {
 
 
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -40,6 +43,9 @@ class MovieDetailFragment : Fragment() {
     ): View {
         Log.d("MovieDetailFragment", "onCreateView called")
         binding = FragmentMovieDetailBinding.inflate(inflater, container, false)
+
+
+
 
 
         //binding.userMovieRegisterTitle.visibility = View.GONE
@@ -60,7 +66,8 @@ class MovieDetailFragment : Fragment() {
 
         binding.watchDateTextView.visibility= View.GONE
 
-        (activity as? AppCompatActivity)?.supportActionBar?.hide()
+        //hide toolbar might be useful later
+       // (activity as? AppCompatActivity)?.supportActionBar?.hide()
         return binding.root
     }
 
@@ -155,6 +162,13 @@ class MovieDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+
+
+
+
+
         Log.d("MovieDetailFragment", "onViewCreated called")
 
         db = AppDatabase.getDatabase(requireContext())
@@ -205,5 +219,7 @@ class MovieDetailFragment : Fragment() {
         } else {
             Log.d("MovieDetailFragment", "No movie IMDb ID provided")
         }
+
+
     }
 }

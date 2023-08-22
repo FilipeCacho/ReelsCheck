@@ -15,23 +15,39 @@
         android:background="@color/slightlyBlack"
         tools:context=".MainActivity">
 
-        <!-- Status Bar -->
-        <TextView
+        <!-- ToolBar -->
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/statusBar"
             android:layout_width="0dp"
+
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
             android:background="@color/slightlyBlack"
-            android:fontFamily="@font/baloo"
-            android:gravity="center"
-            android:letterSpacing="0.2"
             android:paddingTop="16dp"
-            android:text="Reels"
-            android:textColor="@color/myYellow"
-            android:textSize="24sp"
+            app:titleTextColor="@color/myYellow"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reels"
+                android:textColor="@color/myYellow"
+                android:fontFamily="@font/baloo"
+                android:textSize="28sp"
+                android:letterSpacing="0.2"
+                android:layout_gravity="center" />
+
+            <!-- Your ImageView for the Search Icon -->
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+
+
+
 
         <!-- HorizontalScrollView to hold the icons -->
         <HorizontalScrollView

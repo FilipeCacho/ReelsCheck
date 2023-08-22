@@ -88,5 +88,8 @@ dependencies {
 
     implementation ("org.json:json:20210307")
 
-    
+    dependencies {
+        val appcompat_version = "1.6.1"
+
+        implementation("androidx.appcompat:appcompat:$appcompat_version") }
 }
