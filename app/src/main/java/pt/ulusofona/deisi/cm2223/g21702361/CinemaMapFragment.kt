@@ -2,6 +2,10 @@ package pt.ulusofona.deisi.cm2223.g21702361
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +19,8 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptor
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
@@ -80,6 +86,10 @@ class CinemaMapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClic
             for (cinema in cinemas) {
                 val location = LatLng(cinema.latitude, cinema.longitude)
                 val markerOptions = MarkerOptions().position(location).title(cinema.cinema_name)
+
+                val userRating = getUserRatingForCinema(cinema.cinema_name)
+                markerOptions.icon(getPinIconBasedOnScore(userRating))
+
                 val marker = googleMap?.addMarker(markerOptions)
                 marker?.tag = cinema.cinema_name
             }
@@ -88,6 +98,44 @@ class CinemaMapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClic
             googleMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(firstLocation, 10f))
         }
     }
+
+    private suspend fun getUserRatingForCinema(cinemaName: String): Int {
+        return withContext(Dispatchers.IO) {
+            val userMovieDetailsList = db.userMovieDetailsDao().getUserMovieDetailsByCinema(cinemaName)
+            userMovieDetailsList?.firstOrNull()?.userRating ?: 0
+        }
+    }
+
+
+
+    // This function will return the bitmap descriptor for the marker icon based on the user's score
+    private fun getPinIconBasedOnScore(score: Int): BitmapDescriptor {
+        return when (score) {
+            in 1..2 -> createCustomMarkerIcon(Color.parseColor("#FF5733")) // Red for range 1-2
+            in 3..4 -> createCustomMarkerIcon(Color.parseColor("#FFA500")) // Orange for range 3-4
+            in 5..6 -> createCustomMarkerIcon(Color.parseColor("#FFFF00")) // Yellow for range 5-6
+            in 7..8 -> createCustomMarkerIcon(Color.parseColor("#ADFF2F")) // Green-Yellow for range 7-8
+            in 9..10 -> createCustomMarkerIcon(Color.parseColor("#00FF00")) // Green for range 9-10
+            else -> createCustomMarkerIcon(Color.parseColor("#808080")) // Default color if something goes wrong
+        }
+    }
+
+    private fun createCustomMarkerIcon(color: Int): BitmapDescriptor {
+        val width = 48 // Change as needed
+        val height = 48 // Change as needed
+
+        val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(bitmap)
+        val paint = Paint().apply {
+            this.color = color
+            isAntiAlias = true
+        }
+
+        canvas.drawCircle(width / 2f, height / 2f, width / 2f, paint)
+        return BitmapDescriptorFactory.fromBitmap(bitmap)
+    }
+
+
 
     override fun onMarkerClick(marker: Marker): Boolean {
         viewLifecycleOwner.lifecycleScope.launch {
