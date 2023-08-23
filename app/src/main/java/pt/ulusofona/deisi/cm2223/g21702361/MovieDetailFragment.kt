@@ -199,7 +199,7 @@ class MovieDetailFragment : Fragment() {
                             binding.registerButton.visibility = View.VISIBLE
                             binding.registerButton.setOnClickListener {
                                 val bundle = Bundle().apply {
-                                    putString("imdbId", fetchedMovie.imdbID)
+                                    putString("imdbId", fetchedMovie.imdbId)
                                     putString("movieTitle", fetchedMovie.title)
                                     putString("posterPath", fetchedMovie.poster)
                                 }

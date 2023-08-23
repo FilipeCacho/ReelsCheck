@@ -8,7 +8,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 @Entity(tableName = "movies")
 data class Movie(
-    @PrimaryKey val imdbID: String,
+    @PrimaryKey val imdbId: String, // Note the change here
     val title: String,
     val released: String,
     val plot: String,
@@ -18,6 +18,3 @@ data class Movie(
     val imdbTotalVotes: String,
     val recyclerViewId: Int
 ) : Parcelable
-
-
-

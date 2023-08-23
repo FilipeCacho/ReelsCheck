@@ -30,8 +30,9 @@ interface MovieDao {
     @Query("SELECT * FROM movies WHERE recyclerViewId = :recyclerViewId")
     fun getMoviesByRecyclerViewId(recyclerViewId: Int): List<Movie>
 
-    @Query("SELECT * FROM movies WHERE imdbID = :imdbId")
+    @Query("SELECT * FROM movies WHERE imdbId = :imdbId")
     suspend fun getMovieByImdbId(imdbId: String): Movie?
+
 
     @Query("SELECT * FROM movies WHERE title = :title")
     suspend fun getMovieByTitle(title: String): Movie?

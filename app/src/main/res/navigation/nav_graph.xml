@@ -59,7 +59,20 @@
                 android:name="posterPath"
                 app:argType="string" />
         </action>
+    </fragment>
 
+    <!-- Added new CinemaMapFragment -->
+    <fragment
+        android:id="@+id/fragment_cinema_map"
+        android:name="pt.ulusofona.deisi.cm2223.g21702361.CinemaMapFragment"
+        android:label="Cinema Map"
+        tools:layout="@layout/fragment_cinema_map">
 
+        <!-- Action to transition to fragment_movie_detail -->
+        <action
+            android:id="@+id/actionCinemaMapToMovieDetailFragment"
+            app:destination="@id/fragment_movie_detail">
+            <!-- Add arguments if needed -->
+        </action>
     </fragment>
 </navigation>

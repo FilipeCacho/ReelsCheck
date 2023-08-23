@@ -33,7 +33,9 @@ import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import pt.ulusofona.deisi.cm2223.g21702361.databinding.ActivityMainBinding
 import java.lang.ref.WeakReference
@@ -84,11 +86,29 @@ class MainActivity : AppCompatActivity() {
         // Make the NavHostFragment visible
         navHostFragment.view?.isVisible = true
 
+        //populate the map cinemas when the app loads if the cinema tables is emtpy
         db = AppDatabase.getDatabase(applicationContext)
+
+// Check if the cinema table is empty or doesn't exist
+        val cinemasExist = runBlocking {
+            val count = db.cinemaDao().getCinemaCount()
+            count > 0
+        }
+
+// If the cinema table is empty or doesn't exist, populate cinemas data into the database
+        if (!cinemasExist) {
+            lifecycleScope.launch {
+                CinemaJSON.readCinemasFromAssets(applicationContext, db.cinemaDao())
+            }
+        }
+
         movieRecyclerManager = MainMovieRecyclerManager(WeakReference(this), db)
         recyclerViewSetupManager = MainRecyclerViewSetupManager(this) { movie ->
             onMovieClicked(movie)
         }
+
+        //load cinema list to the app
+
 
         val recyclerViews = recyclerViewSetupManager.getRecyclerViews()
         val movieAdapters = recyclerViewSetupManager.getMovieAdapters()
@@ -171,10 +191,6 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-
-
-
-
         val micIcon = findViewById<ImageView>(R.id.microphoneIcon)
         micIcon.setOnClickListener {
             promptVoiceInput()
@@ -208,22 +224,22 @@ class MainActivity : AppCompatActivity() {
             val movieFromDb = db.movieDao().getMovieByTitle(query)
             if (movieFromDb != null) {
                 // Movie found in local DB, navigate to movie detail
-                navigateToMovieDetail(movieFromDb.imdbID)
+                navigateToMovieDetail(movieFromDb.imdbId)
             } else {
                 // Movie not found in local DB, proceed to API search and save
-                val imdbID = movieSearchAndSaveManager.searchAndSaveMovie(query)
-                if (imdbID != null) {
+                val imdbId = movieSearchAndSaveManager.searchAndSaveMovie(query)
+                if (imdbId != null) {
                     // Movie found in API, navigate to movie detail
-                    navigateToMovieDetail(imdbID)
+                    navigateToMovieDetail(imdbId)
                 }
             }
         }
     }
 
-    private fun navigateToMovieDetail(imdbID: String) {
+    private fun navigateToMovieDetail(imdbId: String) {
         val destination = R.id.fragment_movie_detail
         val bundle = Bundle()
-        bundle.putString("imdbId", imdbID)
+        bundle.putString("imdbId", imdbId)
         navController.navigate(destination, bundle)
     }
 
@@ -238,7 +254,7 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
-        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Speak something")
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Say a movie name")
         speechResultLauncher.launch(intent)
     }
 
@@ -298,11 +314,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onMovieClicked(movie: Movie) {
-        Log.d("MainActivity", "Movie clicked: ${movie.imdbID}")
+        Log.d("MainActivity", "Movie clicked: ${movie.imdbId}")
         val destination = R.id.fragment_movie_detail
 
         val bundle = Bundle()
-        bundle.putString("imdbId", movie.imdbID)
+        bundle.putString("imdbId", movie.imdbId)
         navController.navigate(destination, bundle)
     }
 
@@ -310,6 +326,12 @@ class MainActivity : AppCompatActivity() {
         Log.d("MainActivity", "onWatchlistClicked called")
         val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
         navController.navigate(R.id.fragment_watchlist)
+    }
+
+    fun onMapClicked(view: View) {
+        Log.d("MainActivity", "onMapClicked called")
+        val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
+        navController.navigate(R.id.fragment_cinema_map)
     }
 
 

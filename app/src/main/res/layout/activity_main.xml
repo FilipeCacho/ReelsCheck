@@ -435,7 +435,7 @@
                     android:layout_height="40dp"
                     app:tint="@color/slightlyGray"
                     android:id="@+id/bottomBar_edit"
-                    android:onClick="onEditClicked"
+                    android:onClick="onMapClicked"
                     android:src="@android:drawable/ic_menu_edit" />
 
                 <TextView

@@ -70,7 +70,7 @@ class WatchlistFragment : Fragment() {
 
     private fun navigateToMovieDetail(movie: Movie) {
         val action = WatchlistFragmentDirections.actionWatchlistToMovieDetailFragment(
-            imdbId = movie.imdbID,
+            imdbId = movie.imdbId,
             movieTitle = movie.title,
             posterPath = movie.poster
         )

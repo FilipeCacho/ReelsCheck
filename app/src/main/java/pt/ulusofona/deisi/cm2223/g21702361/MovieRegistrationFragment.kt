@@ -214,7 +214,7 @@ class MovieRegistrationFragment : Fragment() {
 
     fun showCinemaBottomSheet() {
         lifecycleScope.launch {
-            val cinemas = CinemaJSON.readCinemasFromAssets(requireContext())
+            val cinemas = CinemaJSON.readCinemasFromAssets(requireContext(), db.cinemaDao())
 
             // Create and show BottomSheetDialog
             val bottomSheetDialog = BottomSheetDialog(requireContext())

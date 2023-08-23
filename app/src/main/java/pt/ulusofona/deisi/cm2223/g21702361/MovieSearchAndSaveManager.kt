@@ -33,7 +33,7 @@ class MovieSearchAndSaveManager(
                 Toast.makeText(context, "Movie already in the database!", Toast.LENGTH_SHORT).show()
             }
             Log.d("MovieSearch", "Movie $query found in the database")
-            return existingMovie.imdbID // return the IMDb ID of the found movie
+            return existingMovie.imdbId // return the IMDb ID of the found movie
         }
 
         // If movie is not found in the database, proceed to search in the API
@@ -56,7 +56,7 @@ class MovieSearchAndSaveManager(
                     Log.d("MovieSearch", "Movie $query not found in the API")
                 } else {
                     val title = jsonResponse.optString("Title", "N/A")
-                    val imdbID = jsonResponse.optString("imdbID", "N/A")
+                    val imdbId = jsonResponse.optString("imdbID", "N/A")
                     val released = jsonResponse.optString("Released", "N/A")
                     val plot = jsonResponse.optString("Plot", "N/A")
                     val poster = jsonResponse.optString("Poster", "N/A")
@@ -68,9 +68,9 @@ class MovieSearchAndSaveManager(
                     val genreFormatted = genre.substringBefore(",")
 
                     if (title != "N/A") {
-                        val movie = Movie(imdbID, title, released, plot, poster, imdbRating, genreFormatted, imdbTotalVotes, 0)
+                        val movie = Movie(imdbId, title, released, plot, poster, imdbRating, genreFormatted, imdbTotalVotes, 0)
                         saveMovieToDb(movie)
-                        return imdbID // return the IMDb ID of the saved movie
+                        return imdbId // return the IMDb ID of the saved movie
                     }
                 }
             } else {

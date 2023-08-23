@@ -113,7 +113,7 @@ class MainMovieRecyclerManager(
                         val jsonResponse = JSONObject(response.body?.string() ?: "")
 
                         val title = jsonResponse.optString("Title", "N/A")
-                        val imdbID = jsonResponse.optString("imdbID", "N/A")
+                        val imdbId = jsonResponse.optString("imdbID", "N/A")
                         val released = jsonResponse.optString("Released", "N/A")
                         val plot = jsonResponse.optString("Plot", "N/A")
                         val poster = jsonResponse.optString("Poster", "N/A")
@@ -125,7 +125,7 @@ class MainMovieRecyclerManager(
                         val genreFormatted = genre.substringBefore(",")
 
 
-                        val movie = Movie(imdbID, title, released, plot, poster, imdbRating, genreFormatted, imdbTotalVotes, recyclerViewId)
+                        val movie = Movie(imdbId, title, released, plot, poster, imdbRating, genreFormatted, imdbTotalVotes, recyclerViewId)
                         moviesList.add(movie)
 
                         moviesFetched++

@@ -18,4 +18,8 @@ interface UserMovieDetailsDao {
 
     @Query("SELECT * FROM user_movie_details")
     fun getAllUserMovieDetails(): List<UserMovieDetails>
+
+    // Added query to get UserMovieDetails by cinema name
+    @Query("SELECT * FROM user_movie_details WHERE cinema_name = :cinemaName")
+    fun getUserMovieDetailsByCinema(cinemaName: String): List<UserMovieDetails>
 }
