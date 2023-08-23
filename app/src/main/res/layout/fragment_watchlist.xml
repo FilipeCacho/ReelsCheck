@@ -24,7 +24,7 @@
             android:gravity="center"
             android:letterSpacing="0.2"
             android:paddingTop="16dp"
-            android:text="Watched List"
+            android:text="@string/watched_list"
             android:textColor="@color/myYellow"
             android:textSize="24sp" />
 

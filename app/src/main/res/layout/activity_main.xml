@@ -47,7 +47,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Reels"
+                android:text="@string/reels"
                 android:textColor="@color/myYellow"
                 android:fontFamily="@font/baloo"
                 android:textSize="28sp"
@@ -180,7 +180,7 @@
                     android:fontFamily="@font/montserrat_bold"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textSize="28dp"
-                    android:text="Fight"
+                    android:text="@string/fight"
                     android:textColor="#2EA9FF"
                     android:layout_marginBottom="8dp"
                     android:layout_marginStart="16dp"
@@ -206,7 +206,7 @@
                     android:fontFamily="@font/montserrat_bold"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textSize="28dp"
-                    android:text="History"
+                    android:text="@string/history"
                     android:textColor="#BFB69D"
                     android:layout_marginBottom="8dp"
                     android:layout_marginStart="16dp"
@@ -234,7 +234,7 @@
                     android:fontFamily="@font/montserrat_bold"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textSize="28dp"
-                    android:text="Western"
+                    android:text="@string/western"
                     android:textColor="#FAB857"
                     android:layout_marginBottom="8dp"
                     android:layout_marginStart="16dp"
@@ -261,7 +261,7 @@
                     android:fontFamily="@font/montserrat_bold"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textSize="28dp"
-                    android:text="Sports"
+                    android:text="@string/sports"
                     android:textColor="#C91D2B"
                     android:layout_marginBottom="8dp"
                     android:layout_marginStart="16dp"
@@ -287,7 +287,7 @@
                     android:fontFamily="@font/montserrat_bold"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textSize="28dp"
-                    android:text="Romantic"
+                    android:text="@string/romantic"
                     android:textColor="#FF4589"
                     android:layout_marginBottom="8dp"
                     android:layout_marginStart="16dp"
@@ -313,7 +313,7 @@
                     android:fontFamily="@font/montserrat_bold"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textSize="28dp"
-                    android:text="Murder"
+                    android:text="@string/murder"
                     android:textColor="#FD2700"
                     android:layout_marginBottom="8dp"
                     android:layout_marginStart="16dp"
@@ -339,7 +339,7 @@
                     android:fontFamily="@font/montserrat_bold"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textSize="28dp"
-                    android:text="Horror"
+                    android:text="@string/horror"
                     android:textColor="#FFFFFF"
                     android:layout_marginBottom="8dp"
                     android:layout_marginStart="16dp"
@@ -365,7 +365,7 @@
                     android:fontFamily="@font/montserrat_bold"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textSize="28dp"
-                    android:text="War"
+                    android:text="@string/war"
                     android:textColor="#FFC82B"
                     android:layout_marginBottom="8dp"
                     android:layout_marginStart="16dp"
@@ -418,7 +418,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Add"
+                    android:text="@string/add"
                     android:textColor="@color/slightlyGray"/>
 
             </LinearLayout>
@@ -441,7 +441,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Edit"
+                    android:text="@string/edit"
                     android:textColor="@color/slightlyGray"/>
 
             </LinearLayout>
@@ -466,7 +466,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Delete"
+                    android:text="@string/delete"
                     android:textColor="@color/slightlyGray"/>
 
             </LinearLayout>

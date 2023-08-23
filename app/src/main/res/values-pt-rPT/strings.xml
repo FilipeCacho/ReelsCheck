@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Reels Check</string>
+    <string name="reels">Reels</string>
+    <string name="fight">Luta</string>
+    <string name="history">História</string>
+    <string name="western">Filmes do Oeste</string>
+    <string name="sports">Desporto</string>
+    <string name="romantic">Romântico</string>
+    <string name="hello_blank_fragment">olá fragmento em branco\t</string>
+    <string name="speech_prompt">Diz Algo</string>
+    <string name="speech_not_supported">Voz Para Texto Não Suportado</string>
+    <string name="murder">Homicídio</string>
+    <string name="add">Adicionar</string>
+    <string name="edit">Editar</string>
+    <string name="delete">Eliminar</string>
+    <string name="horror">Horror</string>
+    <string name="war">Guerra</string>
+    <string name="movie_detail">Detalhe do Fillme</string>
+    <string name="movie_registration">Registar Filme</string>
+    <string name="finish_registration">Concluir Registo</string>
+    <string name="watched_list">Filmes Vistos</string>
+    <string name="movie_detaill">Detalhe do Filme</string>
+    <string name="synopsis">Enredo</string>
+    <string name="released">Estreia</string>
+    <string name="genre">Género</string>
+    <string name="rating">Classificação</string>
+    <string name="cinema">Cinema</string>
+    <string name="user_score">"Avaliação "</string>
+    <string name="date">Data</string>
+    <string name="comments">Comentários</string>
+    <string name="register_movie_details">Registar detalhes do Filme</string>
+</resources>

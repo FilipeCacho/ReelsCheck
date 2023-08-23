@@ -4,4 +4,37 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="speech_prompt">Say something...</string>
     <string name="speech_not_supported">Speech not supported</string>
+    <string name="reels">Reels</string>
+    <string name="fight">Fight</string>
+    <string name="history">History</string>
+    <string name="western">Western</string>
+    <string name="sports">Sports</string>
+    <string name="romantic">Romantic</string>
+    <string name="murder">Murder</string>
+    <string name="add">Add</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="horror">Horror</string>
+    <string name="war">War</string>
+    <string name="movie_detail">Movie Detail</string>
+    <string name="movie_registration">Movie Registration</string>
+    <string name="finish_registration">Finish Registration</string>
+    <string name="watched_list">Watched List</string>
+    <string name="_7_5" translatable="false">7.5</string>
+    <string name="_7_56" translatable="false">7.5</string>
+    <string name="movie_detaill">Movie Detail</string>
+    <string name="synopsis">Synopsis</string>
+    <string name="released">Released</string>
+    <string name="genre">Genre</string>
+    <string name="rating">Rating</string>
+    <string name="cinema">Cinema</string>
+    <string name="user_score">User Score</string>
+    <string name="date">Date</string>
+    <string name="comments">Comments</string>
+    <string name="register_movie_details">Register Movie Details</string>
+    <string name="Rating">User Rating</string>
+    <string name="date_watched">Date Watched</string>
+    <string name="cinema_location">Cinema Location</string>
+    <string name="comments1">Comments</string>
+
 </resources>

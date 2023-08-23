@@ -27,7 +27,7 @@
                 android:gravity="center"
                 android:letterSpacing="0.2"
                 android:paddingTop="4dp"
-                android:text="Movie Detail"
+                android:text="@string/movie_detail"
                 android:textColor="@color/myYellow"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"

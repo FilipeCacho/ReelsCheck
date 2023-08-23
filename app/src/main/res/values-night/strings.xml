@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="fight">Fight</string>
+    <string name="history">History</string>
+    <string name="western">Western</string>
+    <string name="sports">Sports</string>
+    <string name="romantic">Romantic</string>
+</resources>

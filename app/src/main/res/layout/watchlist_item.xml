@@ -84,7 +84,7 @@
             android:id="@+id/imdbRatingTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="7.5"
+            android:text="@string/_7_56"
             android:textColor="#FFFFFF"
             android:textSize="14sp" />
     </LinearLayout>

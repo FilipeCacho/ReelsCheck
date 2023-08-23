@@ -5,6 +5,7 @@ import android.app.SearchManager
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.graphics.Color
 import android.os.Bundle
 import android.speech.RecognizerIntent
@@ -48,6 +49,35 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    private val supportedLocales = setOf(
+        Locale("en"), // English
+        Locale("pt", "PT"), // Portuguese (Portugal)
+        Locale("es", "ES") // Spanish (Spain)
+    )
+
+
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(updateBaseContextLocale(base))
+    }
+
+    private fun updateBaseContextLocale(context: Context): Context {
+        val locale = getPreferredLocale(context) // Define this function to determine preferred locale
+        val config = Configuration(context.resources.configuration)
+        Locale.setDefault(locale)
+        config.setLocale(locale)
+        return context.createConfigurationContext(config)
+    }
+
+    private fun getPreferredLocale(context: Context): Locale {
+        val systemLocale = Locale.getDefault()
+        // Check if the user-selected locale is supported, and fallback to default if not
+        return when {
+            supportedLocales.contains(systemLocale) -> systemLocale
+            else -> Locale.getDefault()
+        }
+    }
+
+
     lateinit var binding: ActivityMainBinding
     val job = Job()
     private lateinit var movieRecyclerManager: MainMovieRecyclerManager
@@ -66,9 +96,6 @@ class MainActivity : AppCompatActivity() {
             Log.d("VoiceInputDebug", "Result not OK or data is null")
         }
     }
-
-
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
