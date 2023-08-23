@@ -2,9 +2,12 @@ package pt.ulusofona.deisi.cm2223.g21702361
 
 import android.app.Activity
 import android.app.SearchManager
+import android.content.ActivityNotFoundException
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.speech.RecognizerIntent
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -13,7 +16,9 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
+import android.widget.Toolbar
 import androidx.activity.OnBackPressedCallback
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -32,8 +37,14 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import pt.ulusofona.deisi.cm2223.g21702361.databinding.ActivityMainBinding
 import java.lang.ref.WeakReference
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
+
+    companion object {
+        private const val REQ_CODE_SPEECH_INPUT = 100
+    }
+
 
     lateinit var binding: ActivityMainBinding
     val job = Job()
@@ -41,6 +52,22 @@ class MainActivity : AppCompatActivity() {
     private lateinit var db: AppDatabase
     private lateinit var recyclerViewSetupManager: MainRecyclerViewSetupManager
     private lateinit var navController: NavController
+    private var mSearchView: SearchView? = null
+
+    private val speechResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK && result.data != null) {
+            val voiceResults = result.data!!.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
+            Log.d("VoiceInputDebug", "Voice results: $voiceResults")
+            val query = voiceResults?.get(0)
+            mSearchView?.setQuery(query, true) // Submit the query
+        } else {
+            Log.d("VoiceInputDebug", "Result not OK or data is null")
+        }
+    }
+
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -97,37 +124,39 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
 
+        val searchItem = menu?.findItem(R.id.search)
+        mSearchView = searchItem?.actionView as SearchView
 
 
 
-        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        val searchView = menu.findItem(R.id.search).actionView as SearchView
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
 
 
         //change search bar items to white, needs to be done with findviewbyid
-        val searchText = searchView.findViewById<EditText>(androidx.appcompat.R.id.search_src_text)
-        searchText.setTextColor(Color.WHITE) // Change to the desired text color
-        searchText.setHintTextColor(Color.WHITE) // Change to the desired hint text color
-        val closeButton = searchView.findViewById<ImageView>(androidx.appcompat.R.id.search_close_btn)
-        closeButton.setColorFilter(Color.WHITE) // Change to the desired close button color
-        val searchButton = searchView.findViewById<ImageView>(androidx.appcompat.R.id.search_mag_icon)
-        searchButton.setColorFilter(Color.WHITE) // Change to the desired search icon color
-        val searchPlateView = searchView.findViewById<View>(androidx.appcompat.R.id.search_plate)
-        searchPlateView.background = ContextCompat.getDrawable(this, R.drawable.search_underline_text_background)
-        val searchButtonView = searchView.findViewById<ImageView>(androidx.appcompat.R.id.search_button)
+        val searchText = mSearchView?.findViewById<EditText>(androidx.appcompat.R.id.search_src_text)
+        searchText?.setTextColor(Color.WHITE) // Change to the desired text color
+        searchText?.setHintTextColor(Color.WHITE) // Change to the desired hint text color
+        val closeButton = mSearchView?.findViewById<ImageView>(androidx.appcompat.R.id.search_close_btn)
+        closeButton?.setColorFilter(Color.WHITE) // Change to the desired close button color
+        val searchButton = mSearchView?.findViewById<ImageView>(androidx.appcompat.R.id.search_mag_icon)
+        searchButton?.setColorFilter(Color.WHITE) // Change to the desired search icon color
+        val searchPlateView = mSearchView?.findViewById<View>(androidx.appcompat.R.id.search_plate)
+        searchPlateView?.background = ContextCompat.getDrawable(this, R.drawable.search_underline_text_background)
+        val searchButtonView =mSearchView?.findViewById<ImageView>(androidx.appcompat.R.id.search_button)
         searchButtonView?.setColorFilter(Color.WHITE) // Replace with your desired color
 
 
 
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
+
+
+        mSearchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 Log.d("SearchDebug", "onQueryTextSubmit called with query: $query")
 
 
-                searchView.clearFocus()
+                mSearchView?.clearFocus()
                 closeKeyboard()
-                searchView.onActionViewCollapsed()
+                mSearchView?.onActionViewCollapsed()
 
 
                 handleSearchQuery(query)
@@ -142,8 +171,20 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
+
+
+
+
+        val micIcon = findViewById<ImageView>(R.id.microphoneIcon)
+        micIcon.setOnClickListener {
+            promptVoiceInput()
+
+            true
+        }
+
         return true
     }
+
 
     fun closeKeyboard() {
         val view = this.currentFocus
@@ -193,6 +234,13 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    fun promptVoiceInput() {
+        val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Speak something")
+        speechResultLauncher.launch(intent)
+    }
 
 
 

@@ -29,6 +29,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+            <!-- Microphone ImageView -->
+            <ImageView
+                android:id="@+id/microphoneIcon"
+
+                android:layout_gravity="end"
+                android:src="@drawable/microphone_icon"
+                android:layout_width="48dp"
+            android:layout_height="48dp"
+                android:contentDescription="Microphone"
+                android:padding="8dp"
+                app:layout_constraintTop_toTopOf="@id/statusBar"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="8dp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -39,7 +54,7 @@
                 android:letterSpacing="0.2"
                 android:layout_gravity="center" />
 
-            <!-- Your ImageView for the Search Icon -->
+
 
 
         </androidx.appcompat.widget.Toolbar>
