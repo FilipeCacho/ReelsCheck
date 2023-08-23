@@ -158,6 +158,20 @@
             </LinearLayout>
         </HorizontalScrollView>
 
+
+        <View
+            android:id="@+id/focusLine"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/myYellow"
+            android:alpha="0.0"
+            android:elevation="10dp"
+            android:layout_marginTop="150dp"
+            android:visibility="visible"
+            tools:ignore="MissingConstraints" />
+
+
         <ScrollView
             android:id="@+id/mainScrollView"
             android:layout_width="0dp"

@@ -56,5 +56,16 @@ class MovieAdapter(
         this.movies.addAll(movies)
         notifyDataSetChanged()
     }
+
+    fun getMovieAtPosition(position: Int): Movie? {
+        return if (position < 0 || position >= movies.size) null else movies[position]
+    }
+
+    // New function to get the item at a specific position
+    fun getItemAtPosition(position: Int): Movie? {
+        return if (position < 0 || position >= movies.size) null else movies[position]
+    }
+
+
 }
 
