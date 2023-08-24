@@ -7,11 +7,17 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.Color
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import android.os.Bundle
+import android.os.SystemClock
 import android.speech.RecognizerIntent
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
@@ -56,6 +62,17 @@ class MainActivity : AppCompatActivity() {
     )
 
 
+    private var sensorManager: SensorManager? = null
+    private var accelerometer: Sensor? = null
+    private var lastUpdate: Long = 0
+    private var lastX: Float = 0.0f
+    private var lastY: Float = 0.0f
+    private var lastZ: Float = 0.0f
+
+    private val SHAKE_THRESHOLD = 800
+    private var clickAttempts = 0
+
+
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(updateBaseContextLocale(base))
     }
@@ -86,6 +103,35 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private var mSearchView: SearchView? = null
 
+    private val sensorEventListener: SensorEventListener = object : SensorEventListener {
+        override fun onAccuracyChanged(sensor: Sensor, accuracy: Int) {}
+
+        override fun onSensorChanged(event: SensorEvent) {
+            if (event.sensor.type == Sensor.TYPE_ACCELEROMETER) {
+                val x = event.values[0]
+                val y = event.values[1]
+                val z = event.values[2]
+
+                val curTime = System.currentTimeMillis()
+
+                if (curTime - lastUpdate > 100) {
+                    val diffTime = curTime - lastUpdate
+                    lastUpdate = curTime
+
+                    val speed = Math.abs(x + y + z - lastX - lastY - lastZ) / diffTime * 10000
+
+                    if (speed > SHAKE_THRESHOLD) {
+                        onShake()
+                    }
+
+                    lastX = x
+                    lastY = y
+                    lastZ = z
+                }
+            }
+        }
+    }
+
     private val speechResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK && result.data != null) {
             val voiceResults = result.data!!.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
@@ -104,7 +150,15 @@ class MainActivity : AppCompatActivity() {
         binding.activity = this
 
         setSupportActionBar(binding.statusBar)
+
         supportActionBar?.setDisplayShowTitleEnabled(false)
+
+
+        sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager?
+        accelerometer = sensorManager?.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+        sensorManager?.registerListener(sensorEventListener, accelerometer, SensorManager.SENSOR_DELAY_NORMAL)
+
+
 
         // Initialize the NavController
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
@@ -175,9 +229,6 @@ class MainActivity : AppCompatActivity() {
         mSearchView = searchItem?.actionView as SearchView
 
 
-
-
-
         //change search bar items to white, needs to be done with findviewbyid
         val searchText = mSearchView?.findViewById<EditText>(androidx.appcompat.R.id.search_src_text)
         searchText?.setTextColor(Color.WHITE) // Change to the desired text color
@@ -190,10 +241,6 @@ class MainActivity : AppCompatActivity() {
         searchPlateView?.background = ContextCompat.getDrawable(this, R.drawable.search_underline_text_background)
         val searchButtonView =mSearchView?.findViewById<ImageView>(androidx.appcompat.R.id.search_button)
         searchButtonView?.setColorFilter(Color.WHITE) // Replace with your desired color
-
-
-
-
 
 
         mSearchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -228,6 +275,81 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    private var lastShakeTime: Long = 0
+
+    private fun onShake() {
+        val now = System.currentTimeMillis()
+        if (now - lastShakeTime < 2000) { // Ignore shakes that occur within 2 seconds of the last one
+            return
+        }
+        lastShakeTime = now
+
+        Log.d("MainActivity", "Shake detected!")
+        val centerX = resources.displayMetrics.widthPixels / 2
+        val centerY = resources.displayMetrics.heightPixels / 2
+
+        val offsets = arrayOf(
+            Pair(0, 0),
+            Pair(50, 0),
+            Pair(-50, 0),
+            Pair(0, 50),
+            Pair(0, -50)
+        )
+
+        for (offset in offsets) {
+            val (offsetX, offsetY) = offset
+            val clickX = centerX + offsetX
+            val clickY = centerY + offsetY
+
+            val fragmentManager = supportFragmentManager
+            val fragment = fragmentManager.findFragmentById(R.id.fragment_movie_detail)
+
+            if (fragment == null) {
+                val motionEventDown = MotionEvent.obtain(
+                    SystemClock.uptimeMillis(),
+                    SystemClock.uptimeMillis(),
+                    MotionEvent.ACTION_DOWN,
+                    clickX.toFloat(),
+                    clickY.toFloat(),
+                    0
+                )
+
+                val motionEventUp = MotionEvent.obtain(
+                    SystemClock.uptimeMillis(),
+                    SystemClock.uptimeMillis(),
+                    MotionEvent.ACTION_UP,
+                    clickX.toFloat(),
+                    clickY.toFloat(),
+                    0
+                )
+
+                dispatchTouchEvent(motionEventDown)
+                dispatchTouchEvent(motionEventUp)
+
+                // Introduce a delay to give the system time to update the fragment stack
+               // Thread.sleep(1000) // 1000 milliseconds, for example
+            } else {
+                // Fragment found, no need to continue clicking
+                break
+            }
+
+            // Additional check after sleep to break the loop if fragment is found
+            val fragmentAfterDelay = fragmentManager.findFragmentById(R.id.fragment_movie_detail)
+            if (fragmentAfterDelay != null) {
+                // Fragment found, no need to continue clicking
+                break
+            }
+        }
+    }
+
+
+
+
+
+    override fun onPause() {
+        super.onPause()
+        sensorManager?.unregisterListener(sensorEventListener)
+    }
 
     fun closeKeyboard() {
         val view = this.currentFocus
@@ -297,14 +419,9 @@ class MainActivity : AppCompatActivity() {
 
         // Perform the API request and handle the response
         val response = withContext(Dispatchers.IO) {
-            // Perform the API request using libraries like Retrofit or OkHttpClient
-            // Parse the response and check if the movie was found
-            // If the movie is found, update the local database with the movie details
-            // If the movie is not found, show an error message to the user
-            // Handle cases where there's no internet connection
+
         }
     }
-
 
 
     override fun onSupportNavigateUp(): Boolean {
@@ -314,9 +431,10 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         setSupportActionBar(binding.statusBar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
+        sensorManager?.registerListener(sensorEventListener, accelerometer, SensorManager.SENSOR_DELAY_NORMAL)
+
         supportActionBar?.show()
     }
-
 
     fun onIconClicked(view: View) {
         val recyclerViews = recyclerViewSetupManager.getRecyclerViews()
@@ -340,7 +458,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private var lastMovieClickTime: Long = 0
+
     fun onMovieClicked(movie: Movie) {
+        val now = System.currentTimeMillis()
+        if (now - lastMovieClickTime < 2000) { // Ignore clicks that occur within 2 seconds of the last one
+            return
+        }
+        lastMovieClickTime = now
+
         Log.d("MainActivity", "Movie clicked: ${movie.imdbId}")
         val destination = R.id.fragment_movie_detail
 
@@ -348,6 +474,7 @@ class MainActivity : AppCompatActivity() {
         bundle.putString("imdbId", movie.imdbId)
         navController.navigate(destination, bundle)
     }
+
 
     fun onWatchlistClicked(view: View) {
         Log.d("MainActivity", "onWatchlistClicked called")
@@ -360,7 +487,6 @@ class MainActivity : AppCompatActivity() {
         val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
         navController.navigate(R.id.fragment_cinema_map)
     }
-
 
 
     override fun onDestroy() {
