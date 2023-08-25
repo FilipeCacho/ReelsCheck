@@ -7,7 +7,10 @@
         android:id="@+id/placeholderFragment"
         android:name="pt.ulusofona.deisi.cm2223.g21702361.PlaceholderFragment"
         android:label="Placeholder Fragment"
-        tools:layout="@layout/fragment_placeholder" />
+        tools:layout="@layout/fragment_placeholder"
+
+
+        />
 
     <fragment
         android:id="@+id/fragment_movie_detail"
@@ -31,6 +34,24 @@
             android:id="@+id/action_movieDetailFragment_to_movieRegistrationFragment"
             app:destination="@id/fragment_movie_registration" />
     </fragment>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <fragment
         android:id="@+id/fragment_movie_registration"

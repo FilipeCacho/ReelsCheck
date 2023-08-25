@@ -36,6 +36,7 @@ class MovieDetailFragment : Fragment() {
 
 
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -67,7 +68,7 @@ class MovieDetailFragment : Fragment() {
         binding.watchDateTextView.visibility= View.GONE
 
         //hide toolbar might be useful later
-       // (activity as? AppCompatActivity)?.supportActionBar?.hide()
+        // (activity as? AppCompatActivity)?.supportActionBar?.hide()
         return binding.root
     }
 
@@ -159,9 +160,73 @@ class MovieDetailFragment : Fragment() {
         }
     }
 
+    fun triggerRegisterButtonClick() {
+        binding.registerButton.performClick()
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+
+        if (SharedVariable.triggerButtonClick) {
+
+
+            db = AppDatabase.getDatabase(requireContext())
+            val movieImdbId = arguments?.getString("imdbId")
+
+
+            val movieTitle = arguments?.getString("movieTitle")
+            val posterPath = arguments?.getString("posterPath")
+
+
+            if (movieImdbId != null) {
+                Log.d("MovieDetailFragment", "Fetching movie details for IMDb ID: $movieImdbId")
+                viewLifecycleOwner.lifecycleScope.launch {
+                    try {
+                        val fetchedMovie = getMovieByImdbId(movieImdbId)
+                        if (fetchedMovie != null) {
+                            binding.movie = fetchedMovie
+                            updateUI(fetchedMovie)
+
+                            val userMovieDetails =
+                                db.userMovieDetailsDao().getUserMovieDetails(movieImdbId)
+                            if (userMovieDetails?.userRating != null) {
+                                // If user rating exists, hide the register button and load the user details
+                                binding.registerButton.visibility = View.GONE
+                                loadUserMovieDetails(movieImdbId)
+                            } else {
+                                // If user rating doesn't exist, keep the register button visible
+                                binding.registerButton.visibility = View.VISIBLE
+                                binding.registerButton.setOnClickListener {
+                                    val bundle = Bundle().apply {
+                                        putString("imdbId", fetchedMovie.imdbId)
+                                        putString("movieTitle", fetchedMovie.title)
+                                        putString("posterPath", fetchedMovie.poster)
+                                    }
+                                    findNavController().navigate(
+                                        R.id.action_movieDetailFragment_to_movieRegistrationFragment,
+                                        bundle
+                                    )
+
+                                }
+
+
+                                binding.registerButton.performClick()
+
+                            }
+                        } else {
+                            Log.d("MovieDetailFragment", "Movie not found in database")
+                        }
+                    } catch (e: Exception) {
+                        Log.e("MovieDetailFragment", "Error fetching movie details: ${e.message}")
+                    }
+                }
+            }
+
+
+            SharedVariable.triggerButtonClick = false // Reset the value after triggering the click
+        }
 
 
 

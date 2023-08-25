@@ -68,9 +68,13 @@ class MainActivity : AppCompatActivity() {
     private var lastX: Float = 0.0f
     private var lastY: Float = 0.0f
     private var lastZ: Float = 0.0f
-
+    private var lastShakeTime: Long = 0
     private val SHAKE_THRESHOLD = 800
-    private var clickAttempts = 0
+    private var moviesClicked = 0
+    private var skipToRegistration=0
+
+
+
 
 
     override fun attachBaseContext(base: Context) {
@@ -275,14 +279,12 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    private var lastShakeTime: Long = 0
 
     private fun onShake() {
-        val now = System.currentTimeMillis()
-        if (now - lastShakeTime < 2000) { // Ignore shakes that occur within 2 seconds of the last one
-            return
-        }
-        lastShakeTime = now
+        // Reset moviesClicked at the beginning of onShake
+        moviesClicked = 0
+
+
 
         Log.d("MainActivity", "Shake detected!")
         val centerX = resources.displayMetrics.widthPixels / 2
@@ -297,6 +299,12 @@ class MainActivity : AppCompatActivity() {
         )
 
         for (offset in offsets) {
+            // If moviesClicked is equal to 1, stop the onShake completely
+            if (moviesClicked == 1) {
+                skipToRegistration=1
+                break
+            }
+
             val (offsetX, offsetY) = offset
             val clickX = centerX + offsetX
             val clickY = centerY + offsetY
@@ -326,8 +334,11 @@ class MainActivity : AppCompatActivity() {
                 dispatchTouchEvent(motionEventDown)
                 dispatchTouchEvent(motionEventUp)
 
+                // Increment moviesClicked after a successful click
+                moviesClicked = 1
+
                 // Introduce a delay to give the system time to update the fragment stack
-               // Thread.sleep(1000) // 1000 milliseconds, for example
+                // Thread.sleep(1000) // 1000 milliseconds, for example
             } else {
                 // Fragment found, no need to continue clicking
                 break
@@ -341,7 +352,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
 
 
 
@@ -458,21 +468,41 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private var lastMovieClickTime: Long = 0
 
     fun onMovieClicked(movie: Movie) {
-        val now = System.currentTimeMillis()
-        if (now - lastMovieClickTime < 2000) { // Ignore clicks that occur within 2 seconds of the last one
-            return
+        moviesClicked = 1
+
+
+
+        if (moviesClicked == 1 && skipToRegistration==1) {
+
+            Log.d("MainActivity", "Movie clicked: ${movie.imdbId}")
+            val destination = R.id.fragment_movie_detail
+
+            val bundle = Bundle()
+            bundle.putString("imdbId", movie.imdbId)
+            SharedVariable.triggerButtonClick = true
+            navController.navigate(destination, bundle)
+
+            moviesClicked=0
+
         }
-        lastMovieClickTime = now
 
-        Log.d("MainActivity", "Movie clicked: ${movie.imdbId}")
-        val destination = R.id.fragment_movie_detail
+        if (moviesClicked == 1 && skipToRegistration==0) {
 
-        val bundle = Bundle()
-        bundle.putString("imdbId", movie.imdbId)
-        navController.navigate(destination, bundle)
+            Log.d("MainActivity", "Movie clicked: ${movie.imdbId}")
+            val destination = R.id.fragment_movie_detail
+
+            val bundle = Bundle()
+            bundle.putString("imdbId", movie.imdbId)
+            SharedVariable.triggerButtonClick = false
+            navController.navigate(destination, bundle)
+
+            moviesClicked=0
+        }
+
+
+        skipToRegistration=0
     }
 
 
