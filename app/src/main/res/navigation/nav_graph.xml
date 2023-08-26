@@ -10,7 +10,14 @@
         tools:layout="@layout/fragment_placeholder"
 
 
-        />
+        >
+        <action
+            android:id="@+id/action_placeholderFragment_to_fragment_cinema_map"
+            app:destination="@id/fragment_cinema_map" />
+        <action
+            android:id="@+id/action_placeholderFragment_to_fragment_movie_detail"
+            app:destination="@id/fragment_movie_detail" />
+    </fragment>
 
     <fragment
         android:id="@+id/fragment_movie_detail"

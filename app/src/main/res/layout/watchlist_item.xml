@@ -21,7 +21,6 @@
         app:layout_constraintBottom_toBottomOf="@id/cardPoster"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
-        <!-- Empty CardView, since the children are moved out -->
     </androidx.cardview.widget.CardView>
 
     <!-- Movie Poster Card -->
@@ -42,24 +41,73 @@
             android:scaleType="centerCrop" />
     </androidx.cardview.widget.CardView>
 
-    <!-- Title TextView (moved outside the CardView) -->
+    <!-- Title TextView -->
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:paddingTop="32dp"
+        android:paddingTop="12dp"
         android:paddingEnd="8dp"
         android:fontFamily="@font/montserrat_bold"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="20dp"
         android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:textColor="@color/myYellow"
-
+        android:layout_marginEnd="16dp"
+        android:textColor="@color/white"
         app:layout_constraintTop_toTopOf="@id/cardPoster"
         app:layout_constraintStart_toEndOf="@id/cardPoster"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/imdbIcon" />
+
+    <!-- Star Icon -->
+    <ImageView
+        android:id="@+id/starIcon"
+        android:layout_width="25dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginBottom="12dp"
+        android:src="@drawable/star"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toEndOf="@id/cardPoster"
+        app:layout_constraintBottom_toBottomOf="@id/cardPoster" />
+
+    <!-- User Rating TextView -->
+    <TextView
+        android:id="@+id/userRatingTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_medium"
+        android:textColor="@color/myYellow"
+        android:textSize="16sp"
+        android:layout_marginStart="8dp"
+        android:text="4.5"
+        app:layout_constraintStart_toEndOf="@id/starIcon"
+        app:layout_constraintBottom_toBottomOf="@id/starIcon" />
+
+    <!-- Cinema Location Icon -->
+    <ImageView
+        android:id="@+id/cinemaIcon"
+        android:layout_width="25dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginBottom="12dp"
+        android:src="@drawable/cinema_location"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toEndOf="@id/userRatingTextView"
+        app:layout_constraintBottom_toBottomOf="@id/cardPoster" />
+
+    <!-- Cinema County TextView -->
+    <TextView
+        android:id="@+id/countyTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_medium"
+        android:textColor="@color/cinemapurple"
+        android:textSize="16sp"
+        android:layout_marginStart="8dp"
+        android:text="San Francisco"
+        app:layout_constraintStart_toEndOf="@id/cinemaIcon"
+        app:layout_constraintBottom_toBottomOf="@id/cinemaIcon" />
 
     <!-- IMDb Section with Icon and Rating -->
     <LinearLayout
@@ -74,8 +122,8 @@
         <!-- IMDb Icon -->
         <ImageView
             android:id="@+id/imdbIcon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_marginEnd="6dp"
             android:src="@drawable/imdb" />
 
@@ -86,7 +134,6 @@
             android:layout_height="wrap_content"
             android:text="@string/_7_56"
             android:textColor="#FFFFFF"
-            android:textSize="14sp" />
+            android:textSize="16sp" />
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,8 +13,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="12" />
-                            <option name="y" value="12" />
+                            <option name="x" value="-284" />
+                            <option name="y" value="411" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -29,34 +29,13 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="fragment_movie_det">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="12" />
-                            <option name="y" value="12" />
-                          </Point>
-                        </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="action_movieDetailFragment_to_movieRegistrationFragment">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
                   <entry key="fragment_movie_detail">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="23" />
-                            <option name="y" value="12" />
+                            <option name="x" value="75" />
+                            <option name="y" value="-2" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -76,8 +55,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="256" />
-                            <option name="y" value="12" />
+                            <option name="x" value="352" />
+                            <option name="y" value="1" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -88,8 +67,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-86" />
-                            <option name="y" value="349" />
+                            <option name="x" value="32" />
+                            <option name="y" value="421" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -109,9 +88,23 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-149" />
-                            <option name="y" value="15" />
+                            <option name="x" value="-373" />
+                            <option name="y" value="18" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_placeholderFragment_to_fragment_cinema_map">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_placeholderFragment_to_fragment_movie_detail">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
