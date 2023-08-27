@@ -172,6 +172,9 @@ class WatchlistFragment : Fragment() {
 
     private fun updateMovieList() {
         Log.d("WatchlistFragment", "updateMovieList called")
+        if (view == null || !::watchlistAdapter.isInitialized) {
+            return
+        }
         viewLifecycleOwner.lifecycleScope.launch {
             if (!::watchlistAdapter.isInitialized) return@launch
 
