@@ -12,8 +12,8 @@
     <string name="speech_prompt">Say something...</string>
     <string name="speech_not_supported">Speech not supported</string>
     <string name="add">Add</string>
-    <string name="edit">Edit</string>
-    <string name="delete">Delete</string>
+    <string name="edit">Cinema Map</string>
+    <string name="delete">Watchlist</string>
     <string name="horror">Horror</string>
     <string name="war">War</string>
     <string name="movie_detail">Movie Detail</string>

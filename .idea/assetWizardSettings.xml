@@ -80,8 +80,8 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="C:\Users\Yettick\Downloads\movie icons\star.png" />
-                                                <entry key="scalingPercent" value="53" />
+                                                <entry key="imagePath" value="C:\Users\Yettick\Downloads\movie icons\reels_logo.png" />
+                                                <entry key="scalingPercent" value="46" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -113,7 +113,9 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="outputName" value="star" />
+                                      <entry key="backgroundAssetType" value="COLOR" />
+                                      <entry key="backgroundColor" value="111111" />
+                                      <entry key="outputName" value="reels_logo" />
                                       <entry key="previewDensity" value="XXXHIGH" />
                                     </map>
                                   </option>

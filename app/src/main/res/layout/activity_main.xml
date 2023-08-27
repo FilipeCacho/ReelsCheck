@@ -32,25 +32,26 @@
             <!-- Microphone ImageView -->
             <ImageView
                 android:id="@+id/microphoneIcon"
-
                 android:layout_gravity="end"
                 android:src="@drawable/microphone_icon"
+                android:layout_marginTop="8dp"
                 android:layout_width="48dp"
-            android:layout_height="48dp"
+                android:layout_height="48dp"
                 android:contentDescription="Microphone"
                 android:padding="8dp"
                 app:layout_constraintTop_toTopOf="@id/statusBar"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="8dp"
-                android:layout_marginTop="8dp" />
+                />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/reels"
                 android:textColor="@color/myYellow"
+                android:layout_marginTop="6dp"
                 android:fontFamily="@font/baloo"
-                android:textSize="28sp"
+                android:textSize="32sp"
                 android:letterSpacing="0.2"
                 android:layout_gravity="center" />
 
@@ -194,6 +195,7 @@
                     android:fontFamily="@font/montserrat_bold"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textSize="28dp"
+                    android:letterSpacing="0.1"
                     android:text="@string/fight"
                     android:textColor="#2EA9FF"
                     android:layout_marginBottom="8dp"
@@ -221,6 +223,7 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textSize="28dp"
                     android:text="@string/history"
+                    android:letterSpacing="0.1"
                     android:textColor="#BFB69D"
                     android:layout_marginBottom="8dp"
                     android:layout_marginStart="16dp"
@@ -249,6 +252,7 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textSize="28dp"
                     android:text="@string/western"
+                    android:letterSpacing="0.1"
                     android:textColor="#FAB857"
                     android:layout_marginBottom="8dp"
                     android:layout_marginStart="16dp"
@@ -276,6 +280,7 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textSize="28dp"
                     android:text="@string/sports"
+                    android:letterSpacing="0.1"
                     android:textColor="#C91D2B"
                     android:layout_marginBottom="8dp"
                     android:layout_marginStart="16dp"
@@ -302,6 +307,7 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textSize="28dp"
                     android:text="@string/romantic"
+                    android:letterSpacing="0.1"
                     android:textColor="#FF4589"
                     android:layout_marginBottom="8dp"
                     android:layout_marginStart="16dp"
@@ -328,6 +334,7 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textSize="28dp"
                     android:text="@string/murder"
+                    android:letterSpacing="0.1"
                     android:textColor="#FD2700"
                     android:layout_marginBottom="8dp"
                     android:layout_marginStart="16dp"
@@ -354,6 +361,7 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textSize="28dp"
                     android:text="@string/horror"
+                    android:letterSpacing="0.1"
                     android:textColor="#FFFFFF"
                     android:layout_marginBottom="8dp"
                     android:layout_marginStart="16dp"
@@ -380,6 +388,7 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textSize="28dp"
                     android:text="@string/war"
+                    android:letterSpacing="0.1"
                     android:textColor="#FFC82B"
                     android:layout_marginBottom="8dp"
                     android:layout_marginStart="16dp"
@@ -414,28 +423,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_weight="1">
 
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    app:tint="@color/slightlyGray"
-                    android:id="@+id/bottomBar_add"
-                    android:onClick="onAddClicked"
-                    android:src="@android:drawable/ic_menu_add" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/add"
-                    android:textColor="@color/slightlyGray"/>
-
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -445,18 +433,18 @@
                 android:layout_weight="1">
 
                 <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    app:tint="@color/slightlyGray"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+
                     android:id="@+id/bottomBar_edit"
                     android:onClick="onMapClicked"
-                    android:src="@android:drawable/ic_menu_edit" />
+                    android:src="@drawable/movie_map" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/edit"
-                    android:textColor="@color/slightlyGray"/>
+                    android:textColor="@color/myYellow"/>
 
             </LinearLayout>
 
@@ -471,9 +459,9 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:id="@+id/bottomBar_delete"
-                    android:src="@android:drawable/ic_menu_delete"
+                    android:src="@drawable/movie_ticket"
                     android:onClick="onWatchlistClicked"
-                    app:tint="@color/slightlyGray" />
+                    />
 
 
 
@@ -481,7 +469,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/delete"
-                    android:textColor="@color/slightlyGray"/>
+                    android:textColor="@color/myYellow"/>
 
             </LinearLayout>
 

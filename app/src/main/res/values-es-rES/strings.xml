@@ -12,8 +12,8 @@
     <string name="speech_not_supported">"Discurso No Soportado "</string>
     <string name="murder">Asesinato</string>
     <string name="add">Añadir</string>
-    <string name="edit">Editar</string>
-    <string name="delete">Eliminar</string>
+    <string name="edit">Mapa de Cines</string>
+    <string name="delete">Películas Vistas</string>
     <string name="horror">Películas de Terror</string>
     <string name="war">Guerra</string>
     <string name="movie_detail">Detalle de la Película</string>

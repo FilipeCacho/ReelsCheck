@@ -12,8 +12,8 @@
     <string name="speech_not_supported">Voz Para Texto Não Suportado</string>
     <string name="murder">Homicídio</string>
     <string name="add">Adicionar</string>
-    <string name="edit">Editar</string>
-    <string name="delete">Eliminar</string>
+    <string name="edit">Mapa de Cinemas</string>
+    <string name="delete">Filmes Vistos</string>
     <string name="horror">Horror</string>
     <string name="war">Guerra</string>
     <string name="movie_detail">Detalhe do Fillme</string>
