@@ -2,6 +2,8 @@ package pt.ulusofona.deisi.cm2223.g21702361
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -82,6 +84,34 @@ class MovieRegistrationFragment : Fragment() {
                 .into(binding.posterImageViewRegistration)
         }
 
+
+
+
+
+
+        // Initialize the TextWatcher here, outside of any button click listeners
+        binding.commentsEditText.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                // No-op
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // No-op
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                val comments = s.toString()
+                binding.finishButton.isEnabled = comments.length <= 200
+            }
+
+        })
+
+
+
+
+
+
+
         //make text inside outlied text box date watched not clickble, else it shows a keyboard
         //this for the datapicker
         binding.DateWatchedText.isFocusable = false
@@ -132,6 +162,9 @@ class MovieRegistrationFragment : Fragment() {
             val dateWatchedText = binding.DateWatchedText.text.toString()
             val cinemaLocation = binding.cinemaLocationEditText.text.toString()
             val comments = binding.commentsEditText.text.toString()
+
+
+
 
 
 
