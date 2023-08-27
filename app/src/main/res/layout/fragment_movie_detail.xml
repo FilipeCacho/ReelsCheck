@@ -28,11 +28,11 @@
                 android:background="@color/slightlyBlack"
                 android:fontFamily="@font/baloo"
                 android:gravity="center"
-                android:letterSpacing="0.2"
+                android:letterSpacing="0.1"
                 android:paddingTop="4dp"
                 android:text="@string/movie_detaill"
                 android:textColor="@color/myYellow"
-                android:textSize="20sp"
+                android:textSize="28sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

@@ -49,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/reels"
                 android:textColor="@color/myYellow"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="8dp"
                 android:fontFamily="@font/baloo"
                 android:textSize="32sp"
                 android:letterSpacing="0.2"

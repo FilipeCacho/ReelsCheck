@@ -22,6 +22,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import pt.ulusofona.deisi.cm2223.g21702361.databinding.FragmentWatchlistBinding
 
+
 class WatchlistFragment : Fragment() {
 
     private lateinit var binding: FragmentWatchlistBinding
@@ -42,7 +43,8 @@ class WatchlistFragment : Fragment() {
         Log.d("WatchlistFragment", "onCreateView called")
         binding = FragmentWatchlistBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
-
+        binding.ratingtext0.visibility = View.VISIBLE // By default, show the initial text view
+        binding.distancetext0.visibility = View.VISIBLE // By default, show the initial text view
         if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION)
             == PackageManager.PERMISSION_GRANTED) {
             val locationManager = requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
@@ -226,6 +228,14 @@ class WatchlistFragment : Fragment() {
                 1 -> binding.iconLocation.setImageResource(R.drawable.location_near)
                 2 -> binding.iconLocation.setImageResource(R.drawable.location_far)
             }
+
+            binding.ratingtext0.visibility = if (ratingOrderMode == 0) View.VISIBLE else View.GONE
+            binding.ratingtext1.visibility = if (ratingOrderMode == 1) View.VISIBLE else View.GONE
+            binding.ratingtext2.visibility = if (ratingOrderMode == 2) View.VISIBLE else View.GONE
+
+            binding.distancetext0.visibility = if (locationFilterMode == 0) View.VISIBLE else View.GONE
+            binding.distancetext1.visibility = if (locationFilterMode == 1) View.VISIBLE else View.GONE
+            binding.distancetext2.visibility = if (locationFilterMode == 2) View.VISIBLE else View.GONE
         }
     }
 

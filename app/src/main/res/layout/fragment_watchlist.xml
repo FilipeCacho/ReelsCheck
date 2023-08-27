@@ -18,34 +18,104 @@
             android:id="@+id/statusBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/baloo"
             android:gravity="center"
-            android:letterSpacing="0.2"
+            android:letterSpacing="0.1"
             android:text="@string/watched_list"
             android:textColor="@color/myYellow"
-            android:textSize="24sp" />
+            android:textSize="28sp" />
 
         <!-- Icons Container -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
 
             <!-- Rating Icon -->
             <ImageView
                 android:id="@+id/icon_order"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginEnd="16dp"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_gravity="center_vertical"
                 android:src="@drawable/unsorted" />
+
+            <!-- Text for Rating -->
+            <TextView
+                android:id="@+id/ratingtext0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Not Ordered by User Rating"
+                android:textColor="@color/white"
+                android:layout_marginStart="4dp"
+                android:maxWidth="120dp"
+                android:layout_gravity="center_vertical" />
+
+            <!-- Additional TextView 1 for Rating (Initially hidden) -->
+            <TextView
+                android:id="@+id/ratingtext1"
+                android:layout_width="wrap_content"
+                android:maxWidth="120dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Ordered by User Rating Ascending"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <!-- Additional TextView 2 for Rating (Initially hidden) -->
+            <TextView
+                android:id="@+id/ratingtext2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="120dp"
+                android:layout_gravity="center_vertical"
+                android:text="Ordered by User Rating Descending"
+                android:textColor="@color/white"
+                android:visibility="gone" />
 
             <!-- Distance Icon -->
             <ImageView
                 android:id="@+id/icon_location"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/no_location" />
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/no_location"
+                android:layout_marginStart="30dp"
+                android:layout_gravity="center_vertical" />
+
+            <!-- Text for Distance -->
+            <TextView
+                android:id="@+id/distancetext0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textColor="@color/white"
+                android:text="Movies not sorted by distance"
+                android:layout_gravity="center_vertical" />
+
+            <!-- Additional TextView 1 for Distance (Initially hidden) -->
+            <TextView
+                android:id="@+id/distancetext1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_gravity="center_vertical"
+                android:text="Showing Movies in >=500m range"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <!-- Additional TextView 2 for Distance (Initially hidden) -->
+            <TextView
+                android:id="@+id/distancetext2"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Showing Movies in >=1000m range"
+                android:textColor="@color/white"
+                android:visibility="gone" />
         </LinearLayout>
 
         <!-- RecyclerView for the watchlist -->
@@ -53,9 +123,9 @@
             android:id="@+id/watchlistRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:layout_weight="1"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:adapter="@{watchlistAdapter}"/>
+            app:adapter="@{watchlistAdapter}" />
     </LinearLayout>
 </layout>
