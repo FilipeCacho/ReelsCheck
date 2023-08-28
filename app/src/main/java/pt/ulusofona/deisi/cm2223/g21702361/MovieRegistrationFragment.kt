@@ -164,15 +164,15 @@ class MovieRegistrationFragment : Fragment() {
             val comments = binding.commentsEditText.text.toString()
 
 
+            //allow for empty comments
+            val commentsToSave = if (comments.isBlank()) "" else comments
 
 
 
 
-
-
-            if (userRatingText.isBlank() || dateWatchedText.isBlank() || cinemaLocation.isBlank() || comments.isBlank()) {
+            if (userRatingText.isBlank() || dateWatchedText.isBlank() || cinemaLocation.isBlank() ) {
                 // Show a message indicating that all fields must be filled
-                Toast.makeText(requireContext(), "Please fill in all fields.", Toast.LENGTH_SHORT)
+                Toast.makeText(requireContext(), "Please fill in all fields (comments are optional).", Toast.LENGTH_SHORT)
                     .show()
             } else {
                 val userRating = userRatingText.toIntOrNull()

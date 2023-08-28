@@ -350,7 +350,7 @@
                     android:text="@string/cinema"
                     android:scaleY="1.10"
                     android:textColor="@color/graylevel2"
-                    android:textSize="16sp"
+                    android:textSize="12sp"
                     android:paddingStart="44dp"
                     android:paddingTop="40dp"
                     app:layout_constraintTop_toBottomOf="@+id/ticketTitleTextView"
@@ -362,7 +362,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:maxWidth="200dp"
+                    android:maxWidth="240dp"
                 android:fontFamily="@font/montserrat_subrayada_bold"
                 android:textColor="@color/black"
                 android:textSize="16sp"
@@ -381,10 +381,10 @@
                     android:fontFamily="@font/montserrat_light"
                     android:text="@string/user_score"
                     android:textColor="@color/graylevel2"
-                    android:textSize="16sp"
+                    android:textSize="12sp"
                     android:scaleY="1.1"
                     android:paddingEnd="6dp"
-                    android:paddingStart="220dp"
+                    android:paddingStart="260dp"
                     android:paddingTop="40dp"
                     app:layout_constraintTop_toBottomOf="@+id/ticketTitleTextView"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -417,8 +417,8 @@
                     android:textSize="16sp"
                     android:scaleY="1.1"
                     android:paddingEnd="6dp"
-                    android:paddingStart="276dp"
-                    android:paddingTop="32dp"
+                    android:paddingStart="296dp"
+                    android:paddingTop="52dp"
                     app:layout_constraintTop_toBottomOf="@+id/userRatingTextView"
                     app:layout_constraintStart_toStartOf="parent" />
 
@@ -457,7 +457,7 @@
                         android:textColor="@color/graylevel2"
                         android:scaleY="1.10"
                         android:paddingStart="44dp"
-                        android:paddingTop="56dp"
+                        android:paddingTop="76dp"
                         android:layout_marginTop="4dp"
 
                         app:layout_constraintTop_toBottomOf="@+id/cinemaTextView" />
@@ -490,7 +490,7 @@
                         android:textColor="@color/graylevel2"
                         android:textSize="16sp"
                         android:paddingStart="44dp"
-                        android:paddingTop="22dp"
+                        android:paddingTop="16dp"
                         app:layout_constraintTop_toBottomOf="@+id/timesWatchedTextView"
                     app:layout_constraintStart_toStartOf="@+id/timesWatchedTextView" />
 

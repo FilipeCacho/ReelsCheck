@@ -119,9 +119,12 @@ class MovieDetailFragment : Fragment() {
                 binding.userRatingTextView.visibility = View.VISIBLE
                 binding.dateTextView.visibility = View.VISIBLE
                 binding.timesWatchedTextView.visibility = View.VISIBLE
-                binding.CommentsText.visibility = View.VISIBLE
-                binding.commentsTextView.visibility = View.VISIBLE
 
+                //hide comment text if the user didnt fill the comments during registration
+                if (userMovieDetails.comments.toString().isBlank()) binding.CommentsText.visibility = View.GONE
+                else binding.CommentsText.visibility = View.VISIBLE
+
+                binding.commentsTextView.visibility = View.VISIBLE
                 binding.yellowTicket.visibility = View.VISIBLE
                 binding.cinemaTextView.visibility = View.VISIBLE
 
