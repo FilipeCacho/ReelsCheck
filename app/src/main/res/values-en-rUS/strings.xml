@@ -31,6 +31,7 @@
     <string name="comments">Comments</string>
     <string name="register_movie_details">Register Movie Details</string>
     <string name="user_rating">User Rating</string>
+    <string name="Rating">User Rating</string>
     <string name="date_watched">Date Watched</string>
     <string name="cinema_location">Cinema Location</string>
     <string name="comments1">Comments</string>

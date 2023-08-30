@@ -30,4 +30,9 @@
     <string name="date">Data</string>
     <string name="comments">Comentários</string>
     <string name="register_movie_details">Registar detalhes do Filme</string>
+    <string name="Rating">Avaliação</string>
+    <string name="date_watched">"Data "</string>
+    <string name="cinema_location">Localização</string>
+    <string name="comments1">Comentários</string>
+    <string name="user_rating">Avaliação</string>
 </resources>
