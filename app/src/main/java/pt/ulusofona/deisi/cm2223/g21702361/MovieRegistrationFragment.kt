@@ -140,14 +140,14 @@ class MovieRegistrationFragment : Fragment() {
                 val userRatingStr = binding.userRatingEditText.text.toString()
 
                 if (userRatingStr.isEmpty() || userRatingStr.toIntOrNull() ?: 0 < 1 || userRatingStr.toIntOrNull() ?: 0 > 10) {
-                    binding.userRatingTextInputLayout.error =
-                        "Please enter a rating between 1 and 10"
+                    binding.userRatingTextInputLayout.error = "Please enter a rating between 1 and 10"
                 } else {
-                    binding.userRatingTextInputLayout.error =
-                        null // Clear the error when the input is correct
+                    binding.userRatingTextInputLayout.error = null
+                    userRatingValue = userRatingStr // Update userRatingValue
                 }
             }
         }
+
 
         // show datetimer picker
         binding.DateWatchedText.setOnClickListener {

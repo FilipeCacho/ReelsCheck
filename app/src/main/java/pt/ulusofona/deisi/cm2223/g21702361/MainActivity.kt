@@ -7,7 +7,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.Color
-import android.graphics.Rect
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
@@ -55,11 +54,13 @@ class MainActivity : AppCompatActivity() {
         private const val REQ_CODE_SPEECH_INPUT = 100
     }
 
+
     private val supportedLocales = setOf(
         Locale("en"), // English
         Locale("pt", "PT"), // Portuguese (Portugal)
         Locale("es", "ES") // Spanish (Spain)
     )
+
 
     private var sensorManager: SensorManager? = null
     private var accelerometer: Sensor? = null
@@ -71,6 +72,10 @@ class MainActivity : AppCompatActivity() {
     private val SHAKE_THRESHOLD = 800
     private var moviesClicked = 0
     private var skipToRegistration=0
+
+
+
+
 
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(updateBaseContextLocale(base))
@@ -92,6 +97,7 @@ class MainActivity : AppCompatActivity() {
             else -> Locale.getDefault()
         }
     }
+
 
     lateinit var binding: ActivityMainBinding
     val job = Job()
@@ -141,15 +147,22 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.activity = this
+
         setSupportActionBar(binding.statusBar)
+
         supportActionBar?.setDisplayShowTitleEnabled(false)
+
+
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager?
         accelerometer = sensorManager?.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
         sensorManager?.registerListener(sensorEventListener, accelerometer, SensorManager.SENSOR_DELAY_NORMAL)
+
+
 
         // Initialize the NavController
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
@@ -180,6 +193,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         //load cinema list to the app
+
+
         val recyclerViews = recyclerViewSetupManager.getRecyclerViews()
         val movieAdapters = recyclerViewSetupManager.getMovieAdapters()
 
@@ -217,6 +232,7 @@ class MainActivity : AppCompatActivity() {
         val searchItem = menu?.findItem(R.id.search)
         mSearchView = searchItem?.actionView as SearchView
 
+
         //change search bar items to white, needs to be done with findviewbyid
         val searchText = mSearchView?.findViewById<EditText>(androidx.appcompat.R.id.search_src_text)
         searchText?.setTextColor(Color.WHITE) // Change to the desired text color
@@ -239,7 +255,11 @@ class MainActivity : AppCompatActivity() {
                 mSearchView?.clearFocus()
                 closeKeyboard()
                 mSearchView?.onActionViewCollapsed()
+
+
                 handleSearchQuery(query)
+
+
                 return true
             }
 
@@ -258,9 +278,13 @@ class MainActivity : AppCompatActivity() {
 
         return true
     }
+
+
     private fun onShake() {
         // Reset moviesClicked at the beginning of onShake
         moviesClicked = 0
+
+
 
         Log.d("MainActivity", "Shake detected!")
         val centerX = resources.displayMetrics.widthPixels / 2
@@ -328,33 +352,23 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+
+
+
     override fun onPause() {
         super.onPause()
         sensorManager?.unregisterListener(sensorEventListener)
     }
 
-
-
     fun closeKeyboard() {
-        val view = currentFocus
+        val view = this.currentFocus
         if (view != null) {
             val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(view.windowToken, 0)
-            recreate()
         }
     }
 
-    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
-        val view = currentFocus
-        if (view != null && ev?.action == MotionEvent.ACTION_DOWN) {
-            val rect = Rect()
-            view.getGlobalVisibleRect(rect)
-            if (!rect.contains(ev.rawX.toInt(), ev.rawY.toInt())) {
-                closeKeyboard()
-            }
-        }
-        return super.dispatchTouchEvent(ev)
-    }
 
     private fun handleSearchQuery(query: String) {
 
@@ -387,11 +401,13 @@ class MainActivity : AppCompatActivity() {
         bundle.putString("imdbId", imdbId)
         navController.navigate(destination, bundle)
     }
+
     fun hideKeyboard(activity: Activity) {
         val inputMethodManager = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         val view = activity.currentFocus ?: View(activity)
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
+
 
     fun promptVoiceInput() {
         val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
@@ -400,6 +416,8 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Say a movie name")
         speechResultLauncher.launch(intent)
     }
+
+
 
     private suspend fun searchApiForMovie(movieTitle: String) {
         // Replace spaces in the movie title with "+"
@@ -414,6 +432,8 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
+
+
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp()
     }
@@ -447,8 +467,12 @@ class MainActivity : AppCompatActivity() {
             binding.mainScrollView.smoothScrollTo(0, scrollTo)
         }
     }
+
+
     fun onMovieClicked(movie: Movie) {
         moviesClicked = 1
+
+
 
         if (moviesClicked == 1 && skipToRegistration==1) {
 
@@ -476,8 +500,12 @@ class MainActivity : AppCompatActivity() {
 
             moviesClicked=0
         }
+
+
         skipToRegistration=0
     }
+
+
     fun onWatchlistClicked(view: View) {
         Log.d("MainActivity", "onWatchlistClicked called")
         val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
