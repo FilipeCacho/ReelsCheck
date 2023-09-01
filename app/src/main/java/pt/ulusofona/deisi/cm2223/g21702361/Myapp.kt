@@ -14,23 +14,23 @@ class MyApp : Application() {
     )
 
 
-    override fun attachBaseContext(base: Context) {
-        super.attachBaseContext(updateBaseContextLocale(base))
+    override fun attachBaseContext(baseLanguage: Context) {
+        super.attachBaseContext(updateLocalLanguage(baseLanguage))
     }
 
-    private fun updateBaseContextLocale(context: Context): Context {
-        val locale = getPreferredLocale(context) // Define this function to determine preferred locale
-        val config = Configuration(context.resources.configuration)
-        Locale.setDefault(locale)
-        config.setLocale(locale)
-        return context.createConfigurationContext(config)
+    private fun updateLocalLanguage(context: Context): Context {
+        val chooseLocalLanguage = getPreferedLanguage(context) // Define this function to determine preferred local language
+        val configureLanguage = Configuration(context.resources.configuration)
+        Locale.setDefault(chooseLocalLanguage)
+        configureLanguage.setLocale(chooseLocalLanguage)
+        return context.createConfigurationContext(configureLanguage)
     }
 
-    private fun getPreferredLocale(context: Context): Locale {
-        val systemLocale = Locale.getDefault()
+    private fun getPreferedLanguage(context: Context): Locale {
+        val systemLanguage = Locale.getDefault()
         // Check if the user-selected locale is supported, and fallback to default if not
         return when {
-            supportedLocales.contains(systemLocale) -> systemLocale
+            supportedLocales.contains(systemLanguage) -> systemLanguage
             else -> Locale.getDefault()
         }
     }

@@ -9,14 +9,14 @@ class MainRecyclerViewSetupManager(
 
     fun getRecyclerViews(): List<RecyclerView> {
         return listOf(
-            activity.binding.recyclerView1,
-            activity.binding.recyclerView2,
-            activity.binding.recyclerView3,
-            activity.binding.recyclerView4,
-            activity.binding.recyclerView5,
-            activity.binding.recyclerView6,
-            activity.binding.recyclerView7,
-            activity.binding.recyclerView8
+            activity.mainBinding.recyclerView1,
+            activity.mainBinding.recyclerView2,
+            activity.mainBinding.recyclerView3,
+            activity.mainBinding.recyclerView4,
+            activity.mainBinding.recyclerView5,
+            activity.mainBinding.recyclerView6,
+            activity.mainBinding.recyclerView7,
+            activity.mainBinding.recyclerView8
         )
     }
 

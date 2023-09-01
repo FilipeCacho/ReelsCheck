@@ -57,7 +57,7 @@ class MovieRegistrationFragment : Fragment() {
             posterPath = it.getString("posterPath")
         }
 
-        // Bind the data to the XML using the binding object
+        // Bind the data to the XML using the mainBinding object
         binding.movieTitle = movieTitle
         binding.posterPath = posterPath // note: this doesn't load the image but sets the data
         binding.imdbId = imdbId

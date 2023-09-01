@@ -15,7 +15,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/slightlyBlack"
-            tools:context=".MovieDetailFragment">
+            tools:context=".MovieDetailFragment"
+            tools:ignore="ScrollViewSize">
 
             <TextView
                 android:id="@+id/statusBar"

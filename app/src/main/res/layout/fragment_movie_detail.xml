@@ -17,7 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/slightlyBlack"
-            tools:context=".MovieDetailFragment">
+            tools:context=".MovieDetailFragment"
+            tools:ignore="ScrollViewSize">
 
 
             <TextView
@@ -57,7 +58,8 @@
                     android:layout_height="360dp"
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop"
-                    app:imageUrl="@{movie.poster}" />
+                    app:imageUrl="@{movie.poster}"
+                    tools:ignore="ContentDescription" />
             </androidx.cardview.widget.CardView>
 
             <!-- Movie Title -->
@@ -74,7 +76,7 @@
                 android:paddingEnd="48dp"
                 app:layout_constraintStart_toStartOf="@id/cardPoster"
                 app:layout_constraintTop_toBottomOf="@id/cardPoster"
-                />
+                tools:ignore="RtlSymmetry,SpUsage" />
 
 
 
@@ -100,7 +102,8 @@
                 android:textSize="16dp"
 
                 app:layout_constraintStart_toStartOf="@+id/yellowLine"
-                app:layout_constraintTop_toBottomOf="@+id/yellowLine" />
+                app:layout_constraintTop_toBottomOf="@+id/yellowLine"
+                tools:ignore="SpUsage,TextSizeCheck" />
 
 
             <!-- Plot Text -->
@@ -143,7 +146,8 @@
                 android:scaleType="fitCenter"
                 app:layout_constraintTop_toTopOf="@+id/yellowSquare1"
                 app:layout_constraintStart_toStartOf="@+id/yellowSquare1"
-                app:layout_constraintEnd_toEndOf="@+id/yellowSquare1" />
+                app:layout_constraintEnd_toEndOf="@+id/yellowSquare1"
+                tools:ignore="ContentDescription" />
 
 
             <TextView
@@ -157,7 +161,8 @@
                 android:textSize="14dp"
                 app:layout_constraintEnd_toEndOf="@+id/yellowSquare1"
                 app:layout_constraintStart_toStartOf="@+id/yellowSquare1"
-                app:layout_constraintTop_toBottomOf="@+id/calendaricon" />
+                app:layout_constraintTop_toBottomOf="@+id/calendaricon"
+                tools:ignore="SpUsage,TextSizeCheck" />
 
 
             <!-- Release Date -->
@@ -194,7 +199,8 @@
                 android:scaleType="fitCenter"
                 app:layout_constraintTop_toTopOf="@+id/yellowSquare2"
                 app:layout_constraintStart_toStartOf="@+id/yellowSquare2"
-                app:layout_constraintEnd_toEndOf="@+id/yellowSquare2" />
+                app:layout_constraintEnd_toEndOf="@+id/yellowSquare2"
+                tools:ignore="ContentDescription" />
 
 
             <TextView
@@ -244,7 +250,8 @@
                 android:scaleType="fitCenter"
                 app:layout_constraintTop_toTopOf="@+id/yellowSquare3"
                 app:layout_constraintStart_toStartOf="@+id/yellowSquare3"
-                app:layout_constraintEnd_toEndOf="@+id/yellowSquare3" />
+                app:layout_constraintEnd_toEndOf="@+id/yellowSquare3"
+                tools:ignore="ContentDescription" />
 
 
             <TextView
@@ -303,7 +310,8 @@
                 android:paddingBottom="16dp"
                 app:layout_constraintTop_toBottomOf="@+id/lineBelowPlot"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:ignore="ExtraText">
 
                 <!-- New ImageView replacing the yellow movie ticket -->
                 <ImageView
@@ -318,7 +326,8 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent">
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:ignore="ContentDescription">
                 </ImageView>
 
                     <!-- Duplicated TextView inside the ImageView with padding -->
@@ -338,7 +347,7 @@
                 android:gravity="center_horizontal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                    tools:ignore="MissingConstraints" />
+                    tools:ignore="MissingConstraints,SpUsage,VisualLintOverlap" />
 
 
                 <!-- "Cinema" TextView below ticketTitleTextView -->
@@ -354,7 +363,8 @@
                     android:paddingStart="44dp"
                     android:paddingTop="40dp"
                     app:layout_constraintTop_toBottomOf="@+id/ticketTitleTextView"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="RtlSymmetry,VisualLintOverlap" />
 
                 <!-- Cinema Name TextView below cinemaTextView -->
                 <TextView
@@ -370,7 +380,8 @@
                 android:paddingEnd="16dp"
                 android:scaleY="1.15"
                 app:layout_constraintStart_toStartOf="@+id/cinemaTextView"
-                app:layout_constraintTop_toBottomOf="@+id/cinemaTextView" />
+                app:layout_constraintTop_toBottomOf="@+id/cinemaTextView"
+                    tools:ignore="VisualLintOverlap" />
 
 
                 <!-- User Score TextView -->
@@ -401,7 +412,8 @@
                     android:paddingTop="7dp"
                     android:paddingEnd="4dp"
                     app:layout_constraintEnd_toEndOf="@+id/userScoreTextView"
-                    app:layout_constraintTop_toBottomOf="@+id/userScoreTextView" />
+                    app:layout_constraintTop_toBottomOf="@+id/userScoreTextView"
+                    tools:ignore="RtlSymmetry" />
 
 
 
@@ -420,7 +432,8 @@
                     android:paddingStart="296dp"
                     android:paddingTop="52dp"
                     app:layout_constraintTop_toBottomOf="@+id/userRatingTextView"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="HardcodedText" />
 
 
 
@@ -437,7 +450,8 @@
 
                         android:scaleY="1.15"
                         app:layout_constraintEnd_toEndOf="@+id/CityTextView"
-                        app:layout_constraintTop_toBottomOf="@+id/CityTextView" />
+                        app:layout_constraintTop_toBottomOf="@+id/CityTextView"
+                        tools:ignore="RtlSymmetry" />
 
 
 
@@ -460,7 +474,8 @@
                         android:paddingTop="76dp"
                         android:layout_marginTop="4dp"
 
-                        app:layout_constraintTop_toBottomOf="@+id/cinemaTextView" />
+                        app:layout_constraintTop_toBottomOf="@+id/cinemaTextView"
+                        tools:ignore="MissingConstraints,RtlSymmetry" />
 
                     <!-- Times Watched TextView -->
                     <TextView
@@ -492,7 +507,8 @@
                         android:paddingStart="44dp"
                         android:paddingTop="16dp"
                         app:layout_constraintTop_toBottomOf="@+id/timesWatchedTextView"
-                    app:layout_constraintStart_toStartOf="@+id/timesWatchedTextView" />
+                    app:layout_constraintStart_toStartOf="@+id/timesWatchedTextView"
+                        tools:ignore="RtlSymmetry" />
 
                 <!-- Comments TextView -->
                 <TextView
@@ -561,7 +577,8 @@
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:ignore="VisualLintButtonSize" />
 
 
 

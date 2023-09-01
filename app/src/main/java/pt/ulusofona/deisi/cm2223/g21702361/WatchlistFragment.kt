@@ -25,7 +25,7 @@ import pt.ulusofona.deisi.cm2223.g21702361.databinding.FragmentWatchlistBinding
 
 class WatchlistFragment : Fragment() {
 
-    private lateinit var binding: FragmentWatchlistBinding
+    private lateinit var fragmentWatchlistBinding: FragmentWatchlistBinding
     private lateinit var db: AppDatabase
     private lateinit var watchlistAdapter: WatchlistAdapter
     private var locationFilterMode = 0  // 0: No filter, 1: 500m, 2: 1000m
@@ -41,10 +41,10 @@ class WatchlistFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         Log.d("WatchlistFragment", "onCreateView called")
-        binding = FragmentWatchlistBinding.inflate(inflater, container, false)
-        binding.lifecycleOwner = viewLifecycleOwner
-        binding.ratingtext0.visibility = View.VISIBLE // By default, show the initial text view
-        binding.distancetext0.visibility = View.VISIBLE // By default, show the initial text view
+        fragmentWatchlistBinding = FragmentWatchlistBinding.inflate(inflater, container, false)
+        fragmentWatchlistBinding.lifecycleOwner = viewLifecycleOwner
+        fragmentWatchlistBinding.ratingtext0.visibility = View.VISIBLE // By default, show the initial text view
+        fragmentWatchlistBinding.distancetext0.visibility = View.VISIBLE // By default, show the initial text view
         if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION)
             == PackageManager.PERMISSION_GRANTED) {
             val locationManager = requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
@@ -55,7 +55,7 @@ class WatchlistFragment : Fragment() {
 
         fetchCurrentLocation()
 
-        return binding.root
+        return fragmentWatchlistBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -68,13 +68,13 @@ class WatchlistFragment : Fragment() {
         }
 
         db = AppDatabase.getDatabase(requireContext())
-        binding.watchlistRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        binding.iconOrder.setOnClickListener {
+        fragmentWatchlistBinding.watchlistRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        fragmentWatchlistBinding.iconOrder.setOnClickListener {
             ratingOrderMode = (ratingOrderMode + 1) % 3
             updateMovieList()
         }
 
-        binding.iconLocation.setOnClickListener {
+        fragmentWatchlistBinding.iconLocation.setOnClickListener {
             locationFilterMode = (locationFilterMode + 1) % 3
             updateMovieList()
         }
@@ -145,7 +145,7 @@ class WatchlistFragment : Fragment() {
             watchlistAdapter = WatchlistAdapter(movieList, userMovieDetailsMap) { movie ->
                 navigateToMovieDetail(movie)
             }
-            binding.watchlistRecyclerView.adapter = watchlistAdapter
+            fragmentWatchlistBinding.watchlistRecyclerView.adapter = watchlistAdapter
             updateMovieList()
         }
     }
@@ -166,9 +166,6 @@ class WatchlistFragment : Fragment() {
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 10f, locationListener)
         }
     }
-
-
-
 
     private fun updateMovieList() {
         Log.d("WatchlistFragment", "updateMovieList called")
@@ -221,24 +218,24 @@ class WatchlistFragment : Fragment() {
             watchlistAdapter.updateMovies(sortedMovieList)
 
             when (ratingOrderMode) {
-                0 -> binding.iconOrder.setImageResource(R.drawable.unsorted)
-                1 -> binding.iconOrder.setImageResource(R.drawable.arrow_1_to_9)
-                2 -> binding.iconOrder.setImageResource(R.drawable.arrow_9_to_1)
+                0 -> fragmentWatchlistBinding.iconOrder.setImageResource(R.drawable.unsorted)
+                1 -> fragmentWatchlistBinding.iconOrder.setImageResource(R.drawable.arrow_1_to_9)
+                2 -> fragmentWatchlistBinding.iconOrder.setImageResource(R.drawable.arrow_9_to_1)
             }
 
             when (locationFilterMode) {
-                0 -> binding.iconLocation.setImageResource(R.drawable.no_location)
-                1 -> binding.iconLocation.setImageResource(R.drawable.location_near)
-                2 -> binding.iconLocation.setImageResource(R.drawable.location_far)
+                0 -> fragmentWatchlistBinding.iconLocation.setImageResource(R.drawable.no_location)
+                1 -> fragmentWatchlistBinding.iconLocation.setImageResource(R.drawable.location_near)
+                2 -> fragmentWatchlistBinding.iconLocation.setImageResource(R.drawable.location_far)
             }
 
-            binding.ratingtext0.visibility = if (ratingOrderMode == 0) View.VISIBLE else View.GONE
-            binding.ratingtext1.visibility = if (ratingOrderMode == 1) View.VISIBLE else View.GONE
-            binding.ratingtext2.visibility = if (ratingOrderMode == 2) View.VISIBLE else View.GONE
+            fragmentWatchlistBinding.ratingtext0.visibility = if (ratingOrderMode == 0) View.VISIBLE else View.GONE
+            fragmentWatchlistBinding.ratingtext1.visibility = if (ratingOrderMode == 1) View.VISIBLE else View.GONE
+            fragmentWatchlistBinding.ratingtext2.visibility = if (ratingOrderMode == 2) View.VISIBLE else View.GONE
 
-            binding.distancetext0.visibility = if (locationFilterMode == 0) View.VISIBLE else View.GONE
-            binding.distancetext1.visibility = if (locationFilterMode == 1) View.VISIBLE else View.GONE
-            binding.distancetext2.visibility = if (locationFilterMode == 2) View.VISIBLE else View.GONE
+            fragmentWatchlistBinding.distancetext0.visibility = if (locationFilterMode == 0) View.VISIBLE else View.GONE
+            fragmentWatchlistBinding.distancetext1.visibility = if (locationFilterMode == 1) View.VISIBLE else View.GONE
+            fragmentWatchlistBinding.distancetext2.visibility = if (locationFilterMode == 2) View.VISIBLE else View.GONE
         }
     }
 

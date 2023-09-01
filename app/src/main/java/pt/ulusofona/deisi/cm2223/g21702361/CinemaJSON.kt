@@ -15,7 +15,7 @@ object CinemaJSON {
         // Parse the string into a JSONObject first
         val jsonObject = JSONObject(jsonString)
 
-        // Then get the "cinemas" JSONArray from the JSONObject
+        // get the "cinemas" JSONArray from the JSONObject
         val cinemasArray = jsonObject.getJSONArray("cinemas")
 
         for (index in 0 until cinemasArray.length()) {
@@ -29,7 +29,7 @@ object CinemaJSON {
                 cinemaObject.getString("county")
             )
 
-            // Insert the cinema into the Room database
+            // Insert the cinema into the database
             cinemaDao.insertCinema(cinema)
             cinemasList.add(cinema)
         }

@@ -16,7 +16,4 @@ interface CinemaDao {
     @Query("SELECT COUNT(*) FROM cinema")
     suspend fun getCinemaCount(): Int
 
-
-
-    // Add other database operations as needed
 }

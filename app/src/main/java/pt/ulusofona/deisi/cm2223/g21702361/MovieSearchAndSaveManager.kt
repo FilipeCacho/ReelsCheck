@@ -11,60 +11,60 @@ import org.json.JSONObject
 import java.lang.ref.WeakReference
 
 class MovieSearchAndSaveManager(
-    private val contextReference: WeakReference<MainActivity>,
+    private val referenceMainActivity: WeakReference<MainActivity>,
     private val db: AppDatabase
 ) {
 
     private val client = OkHttpClient()
 
-    suspend fun searchAndSaveMovie(query: String): String? {
-        Log.d("MovieSearch", "searchAndSaveMovie called with query: $query")
-        val formattedQuery = query.replace(" ", "+")
+    suspend fun searchAndSaveMovie(userQuery: String): String? {
+        Log.d("MovieSearch", "searchAndSaveMovie called with query: $userQuery")
+        val formattedQuery = userQuery.replace(" ", "+")
         val apiKey = "187966"
         val apiUrl = "https://www.omdbapi.com/?t=$formattedQuery&apiKey=$apiKey"
 
         // Check if the movie title already exists in the database
-        val existingMovie = db.movieDao().getMovieByTitle(query)
+        val checkMovieInBd = db.movieDao().getMovieByTitle(userQuery)
 
-        if (existingMovie != null) {
+        if (checkMovieInBd != null) {
             // Movie already exists in the database
-            val context = contextReference.get()
+            val context = referenceMainActivity.get()
             context?.runOnUiThread {
                 Toast.makeText(context, "Movie already in the database!", Toast.LENGTH_SHORT).show()
             }
-            Log.d("MovieSearch", "Movie $query found in the database")
-            return existingMovie.imdbId // return the IMDb ID of the found movie
+            Log.d("MovieSearch", "Movie $userQuery found in the database")
+            return checkMovieInBd.imdbId // return the IMDb ID of the found movie
         }
 
         // If movie is not found in the database, proceed to search in the API
-        val request = Request.Builder()
+        val requestAPI = Request.Builder()
             .url(apiUrl)
             .build()
 
         try {
-            val response = withContext(Dispatchers.IO) {
-                client.newCall(request).execute()
+            val apiResponse = withContext(Dispatchers.IO) {
+                client.newCall(requestAPI).execute()
             }
 
-            if (response.isSuccessful) {
-                val jsonResponse = JSONObject(response.body?.string() ?: "")
-                if (jsonResponse.optString("Response", "True") == "False") {
-                    val context = contextReference.get()
+            if (apiResponse.isSuccessful) {
+                val jsonParseResponse = JSONObject(apiResponse.body?.string() ?: "")
+                if (jsonParseResponse.optString("Response", "True") == "False") {
+                    val context = referenceMainActivity.get()
                     context?.runOnUiThread {
                         Toast.makeText(context, "Movie not found in the API!", Toast.LENGTH_SHORT).show()
                     }
-                    Log.d("MovieSearch", "Movie $query not found in the API")
+                    Log.d("MovieSearch", "Movie $userQuery not found in the API")
                 } else {
-                    val title = jsonResponse.optString("Title", "N/A")
-                    val imdbId = jsonResponse.optString("imdbID", "N/A")
-                    val released = jsonResponse.optString("Released", "N/A")
-                    val plot = jsonResponse.optString("Plot", "N/A")
-                    val poster = jsonResponse.optString("Poster", "N/A")
-                    val imdbRating = jsonResponse.optString("imdbRating", "N/A")
-                    val genre = jsonResponse.optString("Genre", "N/A")
-                    val imdbTotalVotes = jsonResponse.optString("imdbVotes", "N/A")
+                    val title = jsonParseResponse.optString("Title", "N/A")
+                    val imdbId = jsonParseResponse.optString("imdbID", "N/A")
+                    val released = jsonParseResponse.optString("Released", "N/A")
+                    val plot = jsonParseResponse.optString("Plot", "N/A")
+                    val poster = jsonParseResponse.optString("Poster", "N/A")
+                    val imdbRating = jsonParseResponse.optString("imdbRating", "N/A")
+                    val genre = jsonParseResponse.optString("Genre", "N/A")
+                    val imdbTotalVotes = jsonParseResponse.optString("imdbVotes", "N/A")
 
-                    // remove comma from genre if it exists
+                    // remove comma from genre if it exists, UI only displays the first genre
                     val genreFormatted = genre.substringBefore(",")
 
                     if (title != "N/A") {
@@ -74,14 +74,14 @@ class MovieSearchAndSaveManager(
                     }
                 }
             } else {
-                Log.d("MovieSearch", "API response unsuccessful for query: $query")
+                Log.d("MovieSearch", "API response unsuccessful for query: $userQuery")
             }
         } catch (e: IOException) {
-            val context = contextReference.get()
+            val context = referenceMainActivity.get()
             context?.runOnUiThread {
-                Toast.makeText(context, "Error fetching data for $query", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Error fetching data for $userQuery", Toast.LENGTH_SHORT).show()
             }
-            Log.e("MovieSearch", "IOException while searching for $query", e)
+            Log.e("MovieSearch", "IOException while searching for $userQuery", e)
         }
         return null
     }

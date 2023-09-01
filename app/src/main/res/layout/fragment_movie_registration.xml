@@ -31,7 +31,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/slightlyBlack"
-            tools:context=".MovieDetailFragment">
+            tools:context=".MovieDetailFragment"
+            tools:ignore="ExtraText">
 
             <TextView
                 android:id="@+id/statusBarRegistration"
@@ -69,7 +70,8 @@
                     android:layout_height="360dp"
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop"
-                    app:imageUrl="@{posterPath}" />
+                    app:imageUrl="@{posterPath}"
+                    tools:ignore="ContentDescription" />
 
             </androidx.cardview.widget.CardView>
 
@@ -87,7 +89,8 @@
                 android:gravity="center"
                 app:layout_constraintTop_toBottomOf="@id/cardPosterRegistration"
                 app:layout_constraintStart_toStartOf="@id/cardPosterRegistration"
-                app:layout_constraintEnd_toEndOf="@id/cardPosterRegistration" />
+                app:layout_constraintEnd_toEndOf="@id/cardPosterRegistration"
+                tools:ignore="SpUsage" />
 
 
 
@@ -116,7 +119,8 @@
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintEnd_toStartOf="@+id/DateWatchedTextInputLayout"
-                android:layout_marginEnd="8dp">
+                android:layout_marginEnd="8dp"
+                tools:ignore="HardcodedText">
 
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -128,7 +132,8 @@
                     android:textColorHint="@color/white"
                     android:inputType="number"
                     android:maxLength="2"
-                    android:textColorLink="#000000" />
+                    android:textColorLink="#000000"
+                    tools:ignore="VisualLintTextFieldSize" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Date Watched -->
@@ -157,7 +162,8 @@
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
                     android:focusable="false"
-                    android:focusableInTouchMode="false"/>
+                    android:focusableInTouchMode="false"
+                    tools:ignore="VisualLintTextFieldSize" />
 
 
 
@@ -199,7 +205,8 @@
                     android:layout_height="wrap_content"
                     android:inputType="text"
                     android:textColor="@color/white"
-                    android:textColorHint="@color/white" />
+                    android:textColorHint="@color/white"
+                    tools:ignore="VisualLintTextFieldSize" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -232,7 +239,8 @@
                     android:inputType="textNoSuggestions"
 
                     android:textColor="@color/white"
-                    android:textColorHint="@color/white" />
+                    android:textColorHint="@color/white"
+                    tools:ignore="VisualLintTextFieldSize" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -263,7 +271,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
 
-                />
+                tools:ignore="VisualLintButtonSize" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

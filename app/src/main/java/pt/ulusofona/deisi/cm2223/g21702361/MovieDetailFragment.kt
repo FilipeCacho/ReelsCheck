@@ -49,7 +49,7 @@ class MovieDetailFragment : Fragment() {
 
 
 
-        //binding.userMovieRegisterTitle.visibility = View.GONE
+        //mainBinding.userMovieRegisterTitle.visibility = View.GONE
         binding.watchDateTextView.visibility = View.GONE
 
         //hide yellow ticket and gray text items
@@ -106,9 +106,9 @@ class MovieDetailFragment : Fragment() {
                 binding.userRatingTextView.visibility = View.VISIBLE
                 binding.timesWatchedTextView.visibility = View.VISIBLE
                 binding.cinemaNameTextView.visibility = View.VISIBLE
-                //binding.watchDateTextView.visibility = View.VISIBLE
+                //mainBinding.watchDateTextView.visibility = View.VISIBLE
                 binding.commentsTextView.visibility = View.VISIBLE
-                //binding.userMovieRegisterTitle.visibility= View.VISIBLE
+                //mainBinding.userMovieRegisterTitle.visibility= View.VISIBLE
                 binding.userCityTextView.visibility=View.VISIBLE
 
 
@@ -139,7 +139,7 @@ class MovieDetailFragment : Fragment() {
                 binding.watchDateTextView.visibility = View.GONE
                 binding.commentsTextView.visibility = View.GONE
                 binding.userCityTextView.visibility=View.GONE
-                //binding.userMovieRegisterTitle.visibility= View.GONE
+                //mainBinding.userMovieRegisterTitle.visibility= View.GONE
 
                 //hide yellow ticket and gray text items
                 binding.cinemaNameTextView.visibility = View.GONE

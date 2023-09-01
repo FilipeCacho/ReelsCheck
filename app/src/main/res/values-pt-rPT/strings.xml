@@ -35,4 +35,10 @@
     <string name="cinema_location">Localização</string>
     <string name="comments1">Comentários</string>
     <string name="user_rating">Avaliação</string>
+    <string name="movies_not_sorted_by_distance">Filmes não ordernados por distância</string>
+    <string name="showing_movies_in_500m_range">Filmes num alcançe de >=500m</string>
+    <string name="showing_movies_in_1000m_range">Filmes num alcançe de >=1000m</string>
+    <string name="not_ordered_by_user_rating">Não ordernados pela classificação</string>
+    <string name="ordered_by_user_rating_ascending">Classficação ascendente</string>
+    <string name="ordered_by_user_rating_descending">Classficação descendente</string>
 </resources>

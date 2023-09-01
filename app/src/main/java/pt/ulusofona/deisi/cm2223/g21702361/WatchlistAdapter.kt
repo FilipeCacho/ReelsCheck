@@ -14,24 +14,24 @@ class WatchlistAdapter(
     private val onMovieClick: (Movie) -> Unit
 ) : RecyclerView.Adapter<WatchlistAdapter.WatchlistViewHolder>() {
 
-    inner class WatchlistViewHolder(private val binding: WatchlistItemBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(movie: Movie) {
+    inner class WatchlistViewHolder(private val watchListBinder: WatchlistItemBinding) :
+        RecyclerView.ViewHolder(watchListBinder.root) {
+        fun loadMoviePosters(movie: Movie) {
             Glide.with(itemView.context)
                 .load(movie.poster)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(binding.posterImageView)
+                .into(watchListBinder.posterImageView)
 
-            binding.titleTextView.text = movie.title
+            watchListBinder.titleTextView.text = movie.title
 
             val userMovieDetails = userMovieDetailsMap[movie.imdbId]
-            binding.userRatingTextView.text = userMovieDetails?.userRating?.toString() ?: "N/A"
-            binding.countyTextView.text = userMovieDetails?.county ?: "N/A"
+            watchListBinder.userRatingTextView.text = userMovieDetails?.userRating?.toString() ?: "N/A"
+            watchListBinder.countyTextView.text = userMovieDetails?.county ?: "N/A"
 
             try {
-                binding.imdbRatingTextView.text = String.format(Locale.getDefault(), "%.1f", movie.imdbrating.toFloat())
+                watchListBinder.imdbRatingTextView.text = String.format(Locale.getDefault(), "%.1f", movie.imdbrating.toFloat())
             } catch (e: NumberFormatException) {
-                binding.imdbRatingTextView.text = "N/A"
+                watchListBinder.imdbRatingTextView.text = "N/A"
             }
 
             itemView.setOnClickListener {
@@ -48,7 +48,7 @@ class WatchlistAdapter(
     override fun getItemCount(): Int = movies.size
 
     override fun onBindViewHolder(holder: WatchlistViewHolder, position: Int) {
-        holder.bind(movies[position])
+        holder.loadMoviePosters(movies[position])
     }
 
     fun updateMovies(newMovies: List<Movie>) {

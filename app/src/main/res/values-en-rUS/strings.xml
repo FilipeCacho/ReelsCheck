@@ -35,5 +35,11 @@
     <string name="date_watched">Date Watched</string>
     <string name="cinema_location">Cinema Location</string>
     <string name="comments1">Comments</string>
+    <string name="movies_not_sorted_by_distance">Movies not sorted by distance</string>
+    <string name="showing_movies_in_500m_range">Showing Movies in >=500m range</string>
+    <string name="showing_movies_in_1000m_range">Showing Movies in >=1000m range</string>
+    <string name="not_ordered_by_user_rating">Not Ordered by User Rating</string>
+    <string name="ordered_by_user_rating_ascending">Ordered by User Rating Ascending</string>
+    <string name="ordered_by_user_rating_descending">Ordered by User Rating Descending</string>
 
 </resources>
