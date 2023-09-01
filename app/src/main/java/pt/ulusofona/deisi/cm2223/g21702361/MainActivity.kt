@@ -372,6 +372,10 @@ class MainActivity : AppCompatActivity() {
                     // Movie found in API, navigate to movie detail
                     navigateToMovieDetail(imdbId)
                 }
+                else {
+                    //i have to force the activity to redraw itself because of the searchview :(
+                    recreate()
+                }
             }
         }
     }
