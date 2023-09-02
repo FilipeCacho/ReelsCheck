@@ -77,3 +77,45 @@ A imagem abaixo mostra ambos os filtros a serem usados em conjunto
 Como indicado no enunciado este ecrã é o único que deve permitir ser colocado em modo landscape sem perda de dados. A imagem abaixo mostra isso mesmo
 
 <img src="screenshots/screenRotated.png" alt="screen rotated" width="600"/>
+
+## Detalhe do filme (Movie Detail)
+O ecrã detalhe do filme pode ser invocado através de várias formas:
+- Ao pressionar um filme no ecrã principal;
+- Ao pressionar um cinema no mapa de cinemas;
+- Ao pressionar um dos items da recycling view na lista de filmes vistos;
+- Ao pesquisar um filme no ecrã principal por voz ou texto;
+
+A imagem abaixo mostra o detalhe de um filme
+
+<img src="screenshots/movieDetail.png" alt="movie detail" width="300"/>
+
+O detalhe de todos os filmes são alimentados por informações retirada do API e guardadas na BD, portanto o detalhe de qualquer filme registados pode ser consultado offline
+
+Quando o utilizador pressiona o botão de registar filmes (register movie details) é levado para o ecrã abaixo
+
+Após o registo do filme ser concluido o ecrã do detalhe do filme fica diferente, passa a mostrar um ticket virtual com as informações do filme, é outra funcionalidade extra que inseri e foi preciso trabalhar o UI com muito cuidado e demorou bastante tempo a acertar tudo mas acho que faz a aplicação sobresair muito mais
+
+<img src="screenshots/movieTicket.png" alt="movie detail" width="300"/>
+
+## Registo de filmes (movie registration)
+<img src="screenshots/movieRegistration.png" alt="movie registration" width="300"/>
+
+Este é o ecrã aonde se regista o filme. De acordo com o que foi pedido o utilizador tem várias restrições:
+- O "rating" só aceita números de 1 a 10
+- O "date watched" só aceita datas no dia de hoje ou no passado
+- O "cinema location" só permite inserir cinemas obtidos apartir do json fornecido
+- Os "comments" só permite um máximo de 200 caracteres e são opcionais
+
+Só após todas estas restrições estarem preenchidas é que podemos finalizar o registo do filme. O ecrã abaixo mostra o que acontece quando o utilizador tenta selecionar um dos cinemas válidos.
+
+<img src="screenshots/cinemaList.png" alt="cinema List" width="300"/>
+
+## Suporte multi-idioma
+Outro requesito pedido foi que a app tem que suportar pelo menos 3 linguas.
+As linguas escolhidas foram o ingles como default, e depois se a linguagem do sistema mudar para portugues de portugal ou espanhol, a linguagem da app tambem muda, sendo estas as 3 linguas suportadas.
+
+Abaixo encontram-se 2 imagens da app em espanhol
+
+<img src="screenshots/languageEs1.png" alt="spanish app 1" width="300"/>
+
+<img src="screenshots/languageEs2.png" alt="spanish app 2" width="300"/>
