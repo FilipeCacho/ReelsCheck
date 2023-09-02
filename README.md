@@ -2,6 +2,42 @@
 
 # Nome dos elementos do grupo
  - Filipe Cacho, a21702361, LEI
+
+ # Tabela de avaliação
+
+Nesta seção está a tabela de avaliação e a indicação da implementação dos requisitos. Após a tabela encontra-se uma descrição detalhada dos ecrãs da app e o link do video
+
+| Descrição |Implementado |
+| --- | --- |
+| Regista Já | Sim |
+| Registo de filmes | Sim |
+| Inserir corretamente na base de dados | Sim |
+| Validação e obtenção dos dados dos filme via API | Sim |
+| Validação e obtenção dos dados do cinema via JSON | Sim |
+| Utilização de geo-localização | Sim |
+| Apresentação dos filmes -Lista  | Sim |
+| Apresentação dos filmes - Mapa  | Sim |
+| Filtros - Apresentação em Lista   | Sim |
+| Ordenação - Apresentação em Lista   | Sim |
+| Detalhe do filme (sem fotografias)   | Sim |
+| Detalhe do filme (apenas a parte das fotografias)  | Não |
+| Pesquisa de filmes por voz - Funcionalidade Avançada  | Sim |
+| Dashboard  | Sim |
+| Funcionamento Offline - Funcionalidade Avançada  | Sim |
+| Video   | Sim |
+| Extra  | Sim |
+| Ficheiro chatgpt.txt (ver secção Requisito Bónus - Interação com chatgpt)  | Sim |
+| --- | --- |
+| Total  | 20 valores |
+
+## Funcionalidade extra
+Após a tabela é descrito com detalhe como funciona a app, é descrito que foram implementadas pelo menos 2 funcionalidades extra, como por exemplo a pesquisa de filmes pelo API para permitir ao utilizador registar qualquer filme que exista.
+
+Segundo o que o enunciado diz, a app deve devolver filme não encontrado quando o utilizador procura por um filme que não está na App. Eu decidi portanto ir além disso e implementar uma forma de permitir ao utilizador procurar no API qualquer filme válido. Não sendo esse um requisito explicito do enunciado, este é um dos extras implementados.
+
+O outro requisito extra é a horizontal scroll view que permite ao utilizador facilmente escolher filmes de uma categoria.
+
+Tendo em conta estes 2 extras implementados e o seu correto funcionamento, creio puder dizer com confiança que posso ter cotação total na secção dos extras.
  
 # Funcionalidades & Screenshots
 
@@ -27,22 +63,28 @@ Isto foi uma funcionalidade extra que eu implementei e que eu acho que é de gra
 
 <img src="screenshots/textSearch.png" alt="Text search" width="300"/>
 
-Ao pressionar o icone de pesquisa por texto (o que se encontra no lado direito do icone do microfone) o utilizador invoca uma search view aonde pode escrever o nome de qualquer filme que esteja registado na aplicação ou no API na aplicação. O que vai acontencer é o seguinte:
+Ao pressionar o icone de pesquisa por texto (o que se encontra no lado direito do icone do microfone) o utilizador invoca uma search view aonde pode escrever o nome de qualquer filme que esteja registado na aplicação ou no API. O que vai acontencer é o seguinte:
 - Se o utilizador escrever o nome completo  de um filme e este corresponde a um titulo válido de um filme já registado na app o utilizador vai ser levado para o ecrã do detalhe do filme. Isto permite fazer pesquisa de filmes já registados em modo offline desde que o titulo inserido corresponda letra por letra ao titulo do filme (não é preciso inserir nenhuma letra em maiscula).
 - Caso o titulo inserido do filme não corresponda a nenhum filme registado na app, é feita uma pesquisa no API (se não houver internet a app devolve um erro em forma de mensagem Toast). O API devolve os dados de um filme que achou ser o correto e esses dados são descarregados e processados na app levando o utilizador para o registo do filme (caso o API não encontre o filme a app devolve um erro em forma de mensagem de Toast)
 
 ### Scroll Bar horizontal
 Por debaixo da Status Bar da aplicação vê-se um conjunto de icones. Isto é uma das funcionalidades extra que implementei que utiliza uma scroll view horizontal, que quando o utilizador carrega num dos icones, o ecrã faz scroll para cima ou baixo para a recycler view correspondente ao icone pressionado. 
 
+<img src="screenshots/horizontalIcons.png" alt="horizontal icons" width="300"/>
+
 A cor do icone corresponde ao titulo da recycler view, por exemplo o primeiro icone é azul que corresponde ao "Fight movies", o segundo icone é castanho claro que corresponde aos "History movies", etc.
 
 ### Posters dos filmes (recycling views)
 O ecrã principal é alimentado por **8 recycler views verticais**, cada uma representa um género diferente de filmes. Se o utilizador navegar horizontalmente numa recycling view irá ver mais filmes do mesmo género (max 20 por recycling view) e se navegar verticalmente na aplicação irá ver outras recycling views com filmes de outros géneros. 
 
-Cada filme tem debaixo do poster a classificação IMDB retirada do API~
+<img src="screenshots/moviePosters.png" alt="moviePosters" width="300"/>
+
+Cada filme tem debaixo do poster a classificação IMDB retirada do API
 
 ## Barra Inferior (Bottom Bar)
 No inferior do ecrã temos uma bottom bar que dá acesso ao mapa de cinemas (cinema Map) que mostra um mapa com a lista dos cinemas carregados apartir do json fornecido no enunciado e depois mostra os cinemas aonde o utilizador já viu um filme
+
+<img src="screenshots/bottomBar.png" alt="bottom bar" width="300"/>
 
 O outro icone leva o utilizador à lista de filmes já registados (watchlist) aonde o utilizador pode ver os filmes que já registou e pode ver o detalhe dos filmes
 
@@ -91,7 +133,7 @@ A imagem abaixo mostra o detalhe de um filme
 
 O detalhe de todos os filmes são alimentados por informações retirada do API e guardadas na BD, portanto o detalhe de qualquer filme registados pode ser consultado offline
 
-Quando o utilizador pressiona o botão de registar filmes (register movie details) é levado para o ecrã abaixo
+Quando o utilizador pressiona o botão de registar filmes (register movie details) é levado para o ecrã de registo de filmes mostrado na secção **"Registo de filmes""**
 
 Após o registo do filme ser concluido o ecrã do detalhe do filme fica diferente, passa a mostrar um ticket virtual com as informações do filme, é outra funcionalidade extra que inseri e foi preciso trabalhar o UI com muito cuidado e demorou bastante tempo a acertar tudo mas acho que faz a aplicação sobresair muito mais
 
@@ -119,3 +161,5 @@ Abaixo encontram-se 2 imagens da app em espanhol
 <img src="screenshots/languageEs1.png" alt="spanish app 1" width="300"/>
 
 <img src="screenshots/languageEs2.png" alt="spanish app 2" width="300"/>
+
+
