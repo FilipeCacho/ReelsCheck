@@ -117,7 +117,7 @@ class WatchlistFragment : Fragment() {
     override fun onPause() {
         Log.d("WatchlistFragment", "onPause called")
         super.onPause()
-        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+
     }
 
     private fun navigateToMovieDetail(movie: Movie) {
@@ -156,8 +156,21 @@ class WatchlistFragment : Fragment() {
             currentUserLocation = location
             updateMovieList()
         }
-        // Implement other LocationListener methods if needed
+
+        //empty functions need to be here to avoid app crash
+        override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
+            // Implement your logic here if needed
+        }
+
+        override fun onProviderEnabled(provider: String) {
+            // Implement your logic here if needed
+        }
+
+        override fun onProviderDisabled(provider: String) {
+            // Implement your logic here if needed
+        }
     }
+
 
     private fun fetchCurrentLocation() {
         if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION)

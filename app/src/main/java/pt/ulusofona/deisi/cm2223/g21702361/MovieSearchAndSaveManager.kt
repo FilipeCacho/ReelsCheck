@@ -19,12 +19,13 @@ class MovieSearchAndSaveManager(
 
     suspend fun searchAndSaveMovie(userQuery: String): String? {
         Log.d("MovieSearch", "searchAndSaveMovie called with query: $userQuery")
-        val formattedQuery = userQuery.replace(" ", "+")
+        //replaces each letter of the every word in the movie to make the offline search work, ex Lawless works but lawless would not without this
+        val formattedQuery = userQuery.split(" ").joinToString(" ") { it.replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() } }
         val apiKey = "187966"
         val apiUrl = "https://www.omdbapi.com/?t=$formattedQuery&apiKey=$apiKey"
 
         // Check if the movie title already exists in the database
-        val checkMovieInBd = db.movieDao().getMovieByTitle(userQuery)
+        val checkMovieInBd = db.movieDao().getMovieByTitle(formattedQuery)
 
         if (checkMovieInBd != null) {
             // Movie already exists in the database
@@ -32,7 +33,7 @@ class MovieSearchAndSaveManager(
             context?.runOnUiThread {
                 Toast.makeText(context, "Movie already in the database!", Toast.LENGTH_SHORT).show()
             }
-            Log.d("MovieSearch", "Movie $userQuery found in the database")
+            Log.d("MovieSearch", "Movie $formattedQuery found in the database")
             return checkMovieInBd.imdbId // return the IMDb ID of the found movie
         }
 
@@ -53,7 +54,7 @@ class MovieSearchAndSaveManager(
                     context?.runOnUiThread {
                         Toast.makeText(context, "Movie not found in the API!", Toast.LENGTH_SHORT).show()
                     }
-                    Log.d("MovieSearch", "Movie $userQuery not found in the API")
+                    Log.d("MovieSearch", "Movie $formattedQuery not found in the API")
                 } else {
                     val title = jsonParseResponse.optString("Title", "N/A")
                     val imdbId = jsonParseResponse.optString("imdbID", "N/A")
@@ -74,14 +75,14 @@ class MovieSearchAndSaveManager(
                     }
                 }
             } else {
-                Log.d("MovieSearch", "API response unsuccessful for query: $userQuery")
+                Log.d("MovieSearch", "API response unsuccessful for query: $formattedQuery")
             }
         } catch (e: IOException) {
             val context = referenceMainActivity.get()
             context?.runOnUiThread {
-                Toast.makeText(context, "Error fetching data for $userQuery", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Error fetching data for $formattedQuery", Toast.LENGTH_SHORT).show()
             }
-            Log.e("MovieSearch", "IOException while searching for $userQuery", e)
+            Log.e("MovieSearch", "IOException while searching for $formattedQuery", e)
         }
         return null
     }

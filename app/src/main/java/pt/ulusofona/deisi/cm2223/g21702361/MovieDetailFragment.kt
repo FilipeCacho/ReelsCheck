@@ -1,5 +1,6 @@
 package pt.ulusofona.deisi.cm2223.g21702361
 
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -32,11 +33,6 @@ class MovieDetailFragment : Fragment() {
     private lateinit var binding: FragmentMovieDetailBinding
     private lateinit var db: AppDatabase
 
-
-
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -45,9 +41,8 @@ class MovieDetailFragment : Fragment() {
         Log.d("MovieDetailFragment", "onCreateView called")
         binding = FragmentMovieDetailBinding.inflate(inflater, container, false)
 
-
-
-
+        //block the fragment from rotating
+        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         //mainBinding.userMovieRegisterTitle.visibility = View.GONE
         binding.watchDateTextView.visibility = View.GONE

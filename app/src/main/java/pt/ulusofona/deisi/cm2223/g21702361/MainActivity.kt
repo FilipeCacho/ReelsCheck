@@ -352,6 +352,8 @@ class MainActivity : AppCompatActivity() {
         sensorWatcher?.unregisterListener(sensorListener)
     }
 
+
+
     private fun handleSearchQuery(query: String) {
         // Hide the keyboard
         hideKeyboard(this)
