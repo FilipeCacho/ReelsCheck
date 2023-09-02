@@ -73,3 +73,7 @@ e/ou podemos só ver filmes que estejam a 500m/1000m ou menos da localização a
 A imagem abaixo mostra ambos os filtros a serem usados em conjunto
 
 <img src="screenshots/watchedListFilters.png" alt="watch list filters" width="300"/>
+
+Como indicado no enunciado este ecrã é o único que deve permitir ser colocado em modo landscape sem perda de dados. A imagem abaixo mostra isso mesmo
+
+<img src="screenshots/screenRotated.png" alt="screen rotated" width="600"/>
