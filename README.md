@@ -41,6 +41,12 @@ Segundo o que o enunciado diz, a app deve devolver filme não encontrado quando 
 O outro requisito extra é a horizontal scroll view que permite ao utilizador facilmente escolher filmes de uma categoria.
 
 Tendo em conta estes 2 extras implementados e o seu correto funcionamento, creio puder dizer com confiança que posso ter cotação total na secção dos extras.
+
+# Link para o video
+[Video de apresentação da aplicação Reels](https://youtu.be/7dgvRMI5qGI)
+
+
+
  
 # Funcionalidades & Screenshots
 
