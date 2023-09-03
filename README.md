@@ -55,7 +55,7 @@ O 1º elemento que se encontra no topo do ecra é a status bar que contem 3 elem
 - O icone de pesquisa por texto que ativa a search view para procurar um filme por texto
 
 #### Pesquisar filme por voz
-<img src="screenshots/textToSpeach.png" alt="Text To Speach" width="300"/>
+<img src="screenshots/TextToSpeach.png" alt="Text To Speach" width="300"/>
 
 Quando se pressiona o icone do microfone na status bar, isso invoca um menu que utiliza o serviço de reconhecimento de voz do google para traduzir o que o utilizador diz em texto **(este serviço só funciona quando o equipamento tem acesso à internet)**
 
