@@ -1,5 +1,3 @@
-# README
-
 # Nome dos elementos do grupo
  - Filipe Cacho, a21702361, LEI
 

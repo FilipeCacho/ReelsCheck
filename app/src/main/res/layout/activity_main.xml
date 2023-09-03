@@ -72,6 +72,7 @@
             android:layout_height="wrap_content"
             android:background="@color/slightlyBlack"
             android:scrollbarThumbHorizontal="@color/myYellow"
+            android:scrollbarSize="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/statusBar">
@@ -82,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <!-- Add your clickable icon views here -->
+                <!--  clickable icon views here -->
                 <ImageView
                     android:id="@+id/action"
                     android:layout_width="64dp"
@@ -217,6 +218,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:scrollbars="horizontal"
+                    android:scrollbarSize="2dp"
                     android:scrollbarThumbHorizontal="@color/myYellow"
                     app:layout_constraintTop_toBottomOf="@id/titleRecyclerView1"
                     app:layout_constraintStart_toStartOf="parent"
@@ -245,6 +247,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:scrollbars="horizontal"
+                    android:scrollbarSize="2dp"
                     android:scrollbarThumbHorizontal="@color/myYellow"
                     app:layout_constraintTop_toBottomOf="@id/titleRecyclerView2"
                     app:layout_constraintStart_toStartOf="parent"
@@ -275,6 +278,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:scrollbars="horizontal"
+                    android:scrollbarSize="2dp"
                     android:scrollbarThumbHorizontal="@color/myYellow"
                     app:layout_constraintTop_toBottomOf="@id/titleRecyclerView3"
                     app:layout_constraintStart_toStartOf="parent"
@@ -304,6 +308,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:scrollbars="horizontal"
+                    android:scrollbarSize="2dp"
                     android:scrollbarThumbHorizontal="@color/myYellow"
                     app:layout_constraintTop_toBottomOf="@id/titleRecyclerView4"
                     app:layout_constraintStart_toStartOf="parent"
@@ -332,6 +337,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:scrollbars="horizontal"
+                    android:scrollbarSize="2dp"
                     android:scrollbarThumbHorizontal="@color/myYellow"
                     app:layout_constraintTop_toBottomOf="@id/titleRecyclerView5"
                     app:layout_constraintStart_toStartOf="parent"
@@ -360,6 +366,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:scrollbars="horizontal"
+                    android:scrollbarSize="2dp"
                     android:scrollbarThumbHorizontal="@color/myYellow"
                     app:layout_constraintTop_toBottomOf="@id/titleRecyclerView6"
                     app:layout_constraintStart_toStartOf="parent"
@@ -388,6 +395,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:scrollbars="horizontal"
+                    android:scrollbarSize="2dp"
                     android:scrollbarThumbHorizontal="@color/myYellow"
                     app:layout_constraintTop_toBottomOf="@id/titleRecyclerView7"
                     app:layout_constraintStart_toStartOf="parent"
@@ -416,6 +424,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:scrollbars="horizontal"
+                    android:scrollbarSize="2dp"
                     android:scrollbarThumbHorizontal="@color/myYellow"
                     app:layout_constraintTop_toBottomOf="@id/titleRecyclerView8"
                     app:layout_constraintStart_toStartOf="parent"
