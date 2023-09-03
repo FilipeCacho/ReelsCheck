@@ -13,7 +13,6 @@ class MyApp : Application() {
         Locale("es", "ES") // Spanish (Spain)
     )
 
-
     override fun attachBaseContext(baseLanguage: Context) {
         super.attachBaseContext(updateLocalLanguage(baseLanguage))
     }

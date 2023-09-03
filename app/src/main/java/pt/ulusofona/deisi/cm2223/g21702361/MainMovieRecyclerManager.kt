@@ -163,7 +163,6 @@ class MainMovieRecyclerManager(
         }
     }
 
-
     fun cancelAllActiveCalls() {
         for (call in activeCalls) {
             if (!call.isCanceled()) {

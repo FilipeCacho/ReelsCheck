@@ -6,7 +6,6 @@ import kotlinx.coroutines.withContext
 import org.json.JSONObject
 
 object CinemaJSON {
-
     suspend fun readCinemasFromAssets(context: Context, cinemaDao: CinemaDao): List<Cinema> = withContext(Dispatchers.IO) {
         val jsonString = context.assets.open("cinemas.json").bufferedReader().use { it.readText() }
 
@@ -33,7 +32,6 @@ object CinemaJSON {
             cinemaDao.insertCinema(cinema)
             cinemasList.add(cinema)
         }
-
         cinemasList.toList()
     }
 }

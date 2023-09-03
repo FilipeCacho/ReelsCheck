@@ -4,7 +4,6 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-
 @Dao
 interface CinemaDao {
     @Query("SELECT * FROM cinema")
@@ -15,5 +14,4 @@ interface CinemaDao {
 
     @Query("SELECT COUNT(*) FROM cinema")
     suspend fun getCinemaCount(): Int
-
 }

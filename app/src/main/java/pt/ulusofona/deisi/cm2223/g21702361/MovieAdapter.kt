@@ -50,8 +50,7 @@ class MovieAdapter(
         }
     }
 
-
-    fun addMovies(movies: List<Movie>) {
+   fun addMovies(movies: List<Movie>) {
         this.movies.clear()
         this.movies.addAll(movies)
         notifyDataSetChanged()

@@ -304,6 +304,8 @@ class MainActivity : AppCompatActivity() {
             val clickY = screenY + offsetY
 
             val fragmentManager = supportFragmentManager
+
+            //needs to be done with find view by id because the <fragment> tag manages it itself, data binding cant access the fragment in this case
             val fragment = fragmentManager.findFragmentById(R.id.fragment_movie_detail)
 
             if (fragment == null) {
@@ -351,8 +353,6 @@ class MainActivity : AppCompatActivity() {
         super.onPause()
         sensorWatcher?.unregisterListener(sensorListener)
     }
-
-
 
     private fun handleSearchQuery(query: String) {
         // Hide the keyboard

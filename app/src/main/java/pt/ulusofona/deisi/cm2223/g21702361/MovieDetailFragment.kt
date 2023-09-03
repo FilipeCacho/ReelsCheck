@@ -27,8 +27,6 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
     }
 }
 
-
-
 class MovieDetailFragment : Fragment() {
     private lateinit var binding: FragmentMovieDetailBinding
     private lateinit var db: AppDatabase
@@ -107,7 +105,7 @@ class MovieDetailFragment : Fragment() {
                 binding.userCityTextView.visibility=View.VISIBLE
 
 
-                //show yellow ticket and gray text items
+                //show white ticket and gray text items
                 binding.cinemaNameTextView.visibility = View.VISIBLE
                 binding.userCityTextView.visibility = View.VISIBLE
                 binding.userScoreTextView.visibility = View.VISIBLE
@@ -126,8 +124,8 @@ class MovieDetailFragment : Fragment() {
 
 
             } else {
-                // User details not available for this movie, you can handle this case as needed
-                // For example, you might want to hide the text views again
+                // User details not available for this movie,
+                // For example, i might want to hide the text views again
                 binding.userRatingTextView.visibility = View.GONE
                 binding.timesWatchedTextView.visibility = View.GONE
                 binding.cinemaNameTextView.visibility = View.GONE
@@ -148,11 +146,6 @@ class MovieDetailFragment : Fragment() {
                 binding.watchDateTextView.visibility = View.GONE
                 binding.yellowTicket.visibility = View.GONE
                 binding.cinemaTextView.visibility = View.GONE
-
-
-
-
-
                 binding.root.requestLayout()
             }
         }
@@ -221,26 +214,14 @@ class MovieDetailFragment : Fragment() {
                     }
                 }
             }
-
-
             SharedVariable.triggerButtonClick = false // Reset the value after triggering the click
         }
-
-
-
-
-
-
-
         Log.d("MovieDetailFragment", "onViewCreated called")
 
         db = AppDatabase.getDatabase(requireContext())
         val movieImdbId = arguments?.getString("imdbId")
-
-
         val movieTitle = arguments?.getString("movieTitle")
         val posterPath = arguments?.getString("posterPath")
-
 
         if (movieImdbId != null) {
             Log.d("MovieDetailFragment", "Fetching movie details for IMDb ID: $movieImdbId")
@@ -282,7 +263,5 @@ class MovieDetailFragment : Fragment() {
         } else {
             Log.d("MovieDetailFragment", "No movie IMDb ID provided")
         }
-
-
-    }
+   }
 }

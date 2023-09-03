@@ -36,7 +36,6 @@ class MovieRegistrationFragment : Fragment() {
     private lateinit var db: AppDatabase // Add this line
     private var userRatingValue: String? = null
     private var dateWatchedValue: String? = null
-
     private var selectedCinema: Cinema? = null // Store the selected cinema here
 
     override fun onCreateView(
@@ -65,11 +64,6 @@ class MovieRegistrationFragment : Fragment() {
         // Set the user rating and date watched variables based on your logic
         binding.userRating = userRatingValue
         binding.dateWatched = dateWatchedValue
-
-
-
-
-
         return binding.root
     }
 
@@ -83,11 +77,6 @@ class MovieRegistrationFragment : Fragment() {
                 .load(it)
                 .into(binding.posterImageViewRegistration)
         }
-
-
-
-
-
 
         // Initialize the TextWatcher here, outside of any button click listeners
         binding.commentsEditText.addTextChangedListener(object : TextWatcher {
@@ -106,12 +95,6 @@ class MovieRegistrationFragment : Fragment() {
 
         })
 
-
-
-
-
-
-
         //make text inside outlied text box date watched not clickble, else it shows a keyboard
         //this for the datapicker
         binding.DateWatchedText.isFocusable = false
@@ -127,13 +110,9 @@ class MovieRegistrationFragment : Fragment() {
         // Set the user rating and date watched variables based on your logic
         binding.userRating = userRatingValue
         binding.dateWatched = dateWatchedValue
-
-
-
         binding.cinemaLocationEditText.setOnClickListener {
             showCinemaBottomSheet()
         }
-
 
         binding.userRatingEditText.setOnFocusChangeListener { v, hasFocus ->
             if (!hasFocus) { // When the focus is lost
@@ -147,28 +126,18 @@ class MovieRegistrationFragment : Fragment() {
                 }
             }
         }
-
-
         // show datetimer picker
         binding.DateWatchedText.setOnClickListener {
             showDatePickerDialog()
         }
-
-
-
-
         binding.finishButton.setOnClickListener {
             val userRatingText = binding.userRatingEditText.text.toString()
             val dateWatchedText = binding.DateWatchedText.text.toString()
             val cinemaLocation = binding.cinemaLocationEditText.text.toString()
             val comments = binding.commentsEditText.text.toString()
 
-
             //allow for empty comments
             val commentsToSave = if (comments.isBlank()) "" else comments
-
-
-
 
             if (userRatingText.isBlank() || dateWatchedText.isBlank() || cinemaLocation.isBlank() ) {
                 // Show a message indicating that all fields must be filled
@@ -239,11 +208,7 @@ class MovieRegistrationFragment : Fragment() {
                 findNavController().popBackStack()
             }
         }
-
-
-
     }
-
 
     fun showCinemaBottomSheet() {
         lifecycleScope.launch {
@@ -262,7 +227,6 @@ class MovieRegistrationFragment : Fragment() {
                 binding.cinemaLocationEditText.setText("${selectedCinema?.cinema_name}, ${selectedCinema?.address}, ${selectedCinema?.county}")
                 bottomSheetDialog.dismiss()
             }
-
             bottomSheetDialog.setContentView(listView)
             bottomSheetDialog.show()
         }
@@ -272,9 +236,7 @@ class MovieRegistrationFragment : Fragment() {
         super.onDestroyView()
         selectedCinema = null // Clear the selected cinema when the view is destroyed
     }
-
-
-    private fun showDatePickerDialog() {
+   private fun showDatePickerDialog() {
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
         val month = calendar.get(Calendar.MONTH)
@@ -291,7 +253,6 @@ class MovieRegistrationFragment : Fragment() {
             },
             year, month, day
         )
-
         datePickerDialog.datePicker.maxDate =
             calendar.timeInMillis  // This restricts the date picker to only allow past dates
         datePickerDialog.show()

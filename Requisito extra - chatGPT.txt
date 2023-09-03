@@ -645,3 +645,73 @@ class FragmentB : Fragment(), FragmentA.DataUpdateListener {
 In this example, WeakReference is used to hold a reference to the DataUpdateListener interface in Fragment A. This allows Fragment A to communicate with Fragment B (or any other listener) without holding a strong reference that would prevent Fragment B from being garbage collected when needed.
 
 By using a weak reference, you strike a balance between holding a reference for communication while still allowing the fragments to be garbage collected when they are no longer needed. Keep in mind that working with weak references requires careful management to ensure that the referenced object is still valid when you attempt to use it.
+
+show me a real use of weak reference using
+
+ChatGPT
+Sure! Here's an example of how you can use a WeakReference in a real-world scenario.
+
+Let's say you have a simple Android app with an activity that displays some data fetched from an API. To prevent memory leaks, you can use a WeakReference to hold a reference to the activity in your network callback, allowing the activity to be garbage collected when it's no longer needed.
+
+kotlin
+Copy code
+import android.app.Activity
+import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import java.lang.ref.WeakReference
+
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var textView: TextView
+    private lateinit var apiClient: ApiClient
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        textView = findViewById(R.id.textView)
+        apiClient = ApiClient()
+
+        fetchDataFromApi()
+    }
+
+    private fun fetchDataFromApi() {
+        apiClient.fetchData(object : ApiCallback {
+            override fun onSuccess(data: String) {
+                // Use weak reference to prevent memory leak
+                val activity = this@MainActivity
+                val activityRef = WeakReference(activity)
+
+                // Access UI elements safely from the main thread
+                val handler = Handler(Looper.getMainLooper())
+                handler.post {
+                    val activity = activityRef.get()
+                    activity?.textView?.text = data
+                }
+            }
+
+            override fun onFailure(error: String) {
+                // Handle failure
+            }
+        })
+    }
+}
+
+interface ApiCallback {
+    fun onSuccess(data: String)
+    fun onFailure(error: String)
+}
+
+class ApiClient {
+    fun fetchData(callback: ApiCallback) {
+        // Simulate fetching data from an API
+        val data = "Fetched data from API"
+        callback.onSuccess(data)
+    }
+}
+In this example, the fetchDataFromApi method of the MainActivity uses a WeakReference to hold a reference to the activity. This prevents a strong reference cycle between the ApiCallback and the MainActivity, which could potentially lead to memory leaks.
+
+By using a WeakReference, you allow the activity to be garbage collected when it's no longer needed, even if the ApiCallback instance still exists. This helps ensure that your app's memory usage remains efficient and that memory leaks are minimized.

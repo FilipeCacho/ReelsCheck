@@ -43,7 +43,6 @@ class CinemaMapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClic
     private var userPin: Marker? = null // New member variable for user marker
     private var isCameraInitialized = false
 
-
     // registers ask user for location
     private val requestPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
@@ -51,13 +50,11 @@ class CinemaMapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClic
                 enableUserLocation()
             }
         }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_cinema_map, container, false)
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -69,7 +66,6 @@ class CinemaMapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClic
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
     }
-
     // Callback when Map is ready
     override fun onMapReady(map: GoogleMap) {
         googleMap = map
@@ -82,7 +78,6 @@ class CinemaMapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClic
         enableUserLocation() // Enable user location on the map
         loadCinemas() // Load cinema colored circles on the map
     }
-
     //enable user location on the map
     private fun enableUserLocation() {
         if (ContextCompat.checkSelfPermission(
@@ -100,8 +95,6 @@ class CinemaMapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClic
             requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
         }
     }
-
-
     // Called when user location changes
     override fun onLocationChanged(location: Location) {
         val userLocation = LatLng(location.latitude, location.longitude)
@@ -121,7 +114,6 @@ class CinemaMapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClic
             isCameraInitialized = true
         }
     }
-
     // Load cinema colored circles on the map
     private fun loadCinemas() {
         viewLifecycleOwner.lifecycleScope.launch {
@@ -147,7 +139,6 @@ class CinemaMapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClic
             googleMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(firstLocation, 10f))
         }
     }
-
     // Get user movie rating for a cinema from the db
     private suspend fun getUserRatingForCinema(cinemaName: String): Int {
         return withContext(Dispatchers.IO) {
@@ -156,8 +147,6 @@ class CinemaMapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClic
             userMovieDetailsList?.firstOrNull()?.userRating ?: 0
         }
     }
-
-
     // Set colored circle color based on user's rating score
     private fun setColoredCircleBasedOnScore(score: Int): BitmapDescriptor {
         return when (score) {
@@ -169,8 +158,6 @@ class CinemaMapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClic
             else -> createCustomColoredCircle(Color.parseColor("#808080")) // Default color if something goes wrong
         }
     }
-
-
     //Defines custom colored circles for cinemas in map
     private fun createCustomColoredCircle(color: Int): BitmapDescriptor {
         val width = 48
@@ -186,8 +173,6 @@ class CinemaMapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClic
         canvas.drawCircle(width / 2f, height / 2f, width / 2f, paint)
         return BitmapDescriptorFactory.fromBitmap(bitmap)
     }
-
-
     //when colored circle is clicked loads one of the movies from that cinema
     override fun onMarkerClick(marker: Marker): Boolean {
         viewLifecycleOwner.lifecycleScope.launch {
