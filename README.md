@@ -1,6 +1,3 @@
-# Nome dos elementos do grupo
- - Filipe Cacho, a21702361, LEI
-
 # Nota importante
 Este projeto foi desenvolvido no emulador do android studio utilizando o telefone **"Pixel 6".**
 
